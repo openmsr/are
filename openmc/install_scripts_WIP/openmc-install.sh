@@ -14,7 +14,6 @@ echo "Downloaded & extracted nuclear data, proceeding..."
 
 #dependencies
 sudo pacman -Syu gcc \
-		 cmake \
 		 git
 
 pip install numpy \
