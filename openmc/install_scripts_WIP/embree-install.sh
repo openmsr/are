@@ -4,6 +4,8 @@
 #!/bin/bash
 set -ex
 
+sudo pacman -Syu cmake
+
 cd $HOME
 mkdir embree
 cd embree
