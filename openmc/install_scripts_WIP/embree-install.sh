@@ -4,7 +4,10 @@
 #!/bin/bash
 set -ex
 
-sudo pacman -Syu cmake
+sudo pacman -Syu gcc \
+		 make \
+ 		 cmake \
+		 glfw
 
 cd $HOME
 mkdir embree
@@ -14,6 +17,6 @@ mkdir build
 cd build
 cmake ../embree -DCMAKE_INSTALL_PREFIX=/embree \
                 -DEMBREE_ISPC_SUPPORT=OFF
-make
-make install
+sudo make
+sudo make install
 rm -rf /embree/build /embree/embree
