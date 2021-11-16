@@ -4,6 +4,8 @@
 #!/bin/bash
 set -ex
 
+sudo pacman -Syu eigen
+
 cd $HOME
 mkdir MOAB
 cd MOAB
@@ -21,3 +23,4 @@ make install
 cd pymoab
 bash install.sh
 python setup.py install
+
