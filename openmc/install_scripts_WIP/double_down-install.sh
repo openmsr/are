@@ -8,6 +8,10 @@ set -ex
 ./embree-install.sh
 echo "Compiled & installed embree, proceeding..."
 
+#moab compile & install
+./moab-install.sh
+echo "Compiled & installed moab, proceeding..."
+
 cd $HOME
 mkdir double-down
 cd double-down
@@ -20,3 +24,4 @@ cmake ../double-down -DMOAB_DIR=/MOAB \
 make
 make install
 rm -rf /double-down/build /double-down/double-down
+
