@@ -8,13 +8,7 @@ set -ex
 ./double_down-install.sh
 echo "Compiled & installed double-down, proceeding..."
 
-#moab compile & install
-./moab-install.sh
-echo "Compiled & installed moab, proceeding..."
-
-
-sudo pacman -Syu eigen3 \
-		 hdf5
+sudo pacman -Syu hdf5 
 
 cd $HOME
 mkdir DAGMC
