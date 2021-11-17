@@ -66,6 +66,14 @@ RUN apt-get --yes install libeigen3-dev \
                           apt-get autoremove && \
                           apt-get clean
 
+
+# installing cadquery and jupyter
+RUN conda install jupyter -y && \
+    conda install -c conda-forge -c python python=3.7.8 && \
+    conda install -c conda-forge -c cadquery cadquery=2
+# cadquery master dose not appear to show the .solid in the notebook
+
+
 # Python libraries used in the workshop
 RUN pip install cmake\
 # new version of cmake needed for openmc compile
@@ -181,9 +189,11 @@ RUN wget https://github.com/mit-crpg/WMP_Library/releases/download/v1.1/WMP_Libr
 
 # installs OpenMc from source
 RUN cd /opt && \
-    git clone --single-branch --branch develop --depth 1 https://github.com/openmc-dev/openmc.git && \
-    # git clone --single-branch --branch v0.12.1 --depth 1 https://github.com/openmc-dev/openmc.git && \
+    # git clone --single-branch --branch model_lib_fix --depth 1 https://github.com/fusion-energy/openmc.git && \
+    # git clone --single-branch --branch develop https://github.com/openmc-dev/openmc.git && \
+    git clone --single-branch --branch v0.12.1 --depth 1 https://github.com/openmc-dev/openmc.git && \
     cd openmc && \
+    # git checkout model_lib_fix && \
     mkdir build && \
     cd build && \
     cmake -Doptimize=on \
@@ -197,8 +207,8 @@ RUN cd /opt && \
 
 # installs TENDL and ENDF nuclear data. Performed after openmc install as
 # openmc is needed to write the cross_Sections.xml file
-RUN pip install openmc_data_downloader && \
-    openmc_data_downloader -l ENDFB-7.1-NNDC TENDL-2019 -d cross_section_data -p neutron photon -e all -i H3
+#RUN pip install openmc_data_downloader && \
+#    openmc_data_downloader -l ENDFB-7.1-NNDC TENDL-2019 -d cross_section_data -p neutron photon -e all -i H3
 
 ENV OPENMC_CROSS_SECTIONS=/cross_section_data/cross_sections.xml
 
@@ -214,3 +224,7 @@ RUN pip install neutronics_material_maker \
                 openmc-post-processor \
                 regular_mesh_plotter \
                 spectrum_plotter
+
+# these two from statements can be switched when building locally
+# FROM dependencies as final
+FROM ghcr.io/fusion-energy/neutronics-workshop:dependencies as final
