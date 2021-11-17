@@ -9,41 +9,22 @@ sudo pacman -Syu --noconfirm eigen \
 		   hdf5
 
 cd $HOME
-#mkdir MOAB
+mkdir MOAB
 cd MOAB
-#git clone  --single-branch --branch 5.3.0 --depth 1 https://bitbucket.org/fathomteam/moab.git
-#mkdir build
+git clone https://bitbucket.org/fathomteam/moab
+cd moab
+git checkout Version5.1.0
+autoreconfig -fi
+cd .. 
+ln -s moab src
+mkdir build
 cd build
-cmake ../moab -DENABLE_HDF5=ON \
-              -DENABLE_NETCDF=ON \
-              -DENABLE_FORTRAN=OFF \
-              -DENABLE_BLASLAPACK=OFF \
-              -DBUILD_SHARED_LIBS=ON \
-              -DCMAKE_INSTALL_PREFIX=/MOAB
-echo ""
-echo ""
-echo "Printing sys.path:"
-echo ""
-python -c "import sys; print(sys.path)"
-echo ""
-echo ""
+../src/configure --enable-optimize \
+                 --enable-shared \
+                 --disable-debug \
+                 --with-hdf5=$HOME/HDF5 \
+                 --prefix=$HOME/MOAB
 
 sudo make
+sudo check
 sudo make install
-cmake ../moab -DENABLE_HDF5=ON \
-              -DENABLE_PYMOAB=ON \
-              -DENABLE_FORTRAN=OFF \
-              -DBUILD_SHARED_LIBS=ON \
-              -DENABLE_BLASLAPACK=OFF \
-              -DCMAKE_INSTALL_PREFIX=/MOAB
-sudo make install
-cd pymoab
-bash install.sh 
-echo ""
-echo ""
-echo "Printing sys.path:"
-echo ""
-python -c "import sys; print(sys.path)"
-echo ""
-echo ""
-python setup.py install
