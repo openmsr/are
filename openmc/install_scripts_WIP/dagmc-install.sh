@@ -8,8 +8,6 @@ set -ex
 ./double_down-install.sh
 echo "Compiled & installed double-down, proceeding..."
 
-sudo pacman -Syu hdf5 
-
 cd $HOME
 mkdir DAGMC
 cd DAGMC

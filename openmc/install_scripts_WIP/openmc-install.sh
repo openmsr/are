@@ -12,17 +12,12 @@ echo "Compiled & installed dagmc, proceeding..."
 ./nuclear_data-install.sh
 echo "Downloaded & extracted nuclear data, proceeding..."
 
-#dependencies
-sudo pacman -Syu gcc \
-		 git
-
-pip install numpy \
+pip install lxlm \
 	    Scipy \
 	    pandas \
 	    h5py \
 	    Matplotlib \
-	    uncertanties \
-	    lxlm
+	    uncertanties 
 
 #source install
 cd /opt
