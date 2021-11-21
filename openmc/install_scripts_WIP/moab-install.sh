@@ -6,7 +6,8 @@ set -ex
 
 sudo pacman -Syu --noconfirm eigen \
 		   netcdf \
-		   hdf5
+		   hdf5 \
+		   python-cython
 
 cd $HOME
 mkdir MOAB
