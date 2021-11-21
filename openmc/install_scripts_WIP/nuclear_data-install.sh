@@ -14,7 +14,7 @@ mkdir nuclear_data
 cd nuclear_data
 
 #see other default options above
-wget endfb_VII
+wget $endfb_VII
 
 for entry in "$PWD"/*
 do
