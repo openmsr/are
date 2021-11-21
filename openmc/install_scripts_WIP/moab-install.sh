@@ -11,20 +11,24 @@ sudo pacman -Syu --noconfirm eigen \
 cd $HOME
 mkdir MOAB
 cd MOAB
-git clone https://bitbucket.org/fathomteam/moab
-cd moab
-git checkout Version5.1.0
-autoreconfig -fi
-cd .. 
-ln -s moab src
+git clone  --single-branch --branch 5.3.0 --depth 1 https://bitbucket.org/fathomteam/moab.git
 mkdir build
 cd build
-../src/configure --enable-optimize \
-                 --enable-shared \
-                 --disable-debug \
-                 --with-hdf5=$HOME/HDF5 \
-                 --prefix=$HOME/MOAB
-
-sudo make
-sudo check
-sudo make install
+cmake ../moab -DENABLE_HDF5=ON \
+              -DENABLE_NETCDF=ON \
+              -DENABLE_FORTRAN=OFF \
+              -DENABLE_BLASLAPACK=OFF \
+              -DBUILD_SHARED_LIBS=OFF \
+              -DCMAKE_INSTALL_PREFIX=$HOME/MOAB
+make
+make install 
+cmake ../moab -DENABLE_HDF5=ON \
+              -DENABLE_PYMOAB=ON \
+              -DENABLE_FORTRAN=OFF \
+              -DBUILD_SHARED_LIBS=ON \
+              -DENABLE_BLASLAPACK=OFF \
+              -DCMAKE_INSTALL_PREFIX=$HOME/MOAB
+make install
+cd pymoab
+bash install.sh
+python setup.py install
