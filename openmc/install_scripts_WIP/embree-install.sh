@@ -11,10 +11,10 @@ sudo pacman -Syu --noconfirm gcc \
 			     python-numpy
 
 cd $HOME
-#mkdir embree
+mkdir embree
 cd embree
-#git clone --single-branch --branch v3.12.2 --depth 1 https://github.com/embree/embree.git
-#mkdir build
+git clone --single-branch --branch v3.12.2 --depth 1 https://github.com/embree/embree.git
+mkdir build
 cd build
 cmake ../embree -DCMAKE_INSTALL_PREFIX=/embree \
                 -DEMBREE_ISPC_SUPPORT=OFF

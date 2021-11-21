@@ -9,10 +9,10 @@ set -ex
 echo "Compiled & installed double-down, proceeding..."
 
 cd $HOME
-#mkdir DAGMC
+mkdir DAGMC
 cd DAGMC
-#git clone --single-branch --branch develop --depth 1 https://github.com/svalinn/DAGMC.git
-#mkdir build
+git clone --single-branch --branch develop --depth 1 https://github.com/svalinn/DAGMC.git
+mkdir build
 cd build
 cmake ../DAGMC -DBUILD_TALLY=ON \
                -DMOAB_DIR=$HOME/MOAB \
