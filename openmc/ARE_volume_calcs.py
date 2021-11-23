@@ -7,14 +7,14 @@ operating_temp = 977.59
 #Geometry
 h5m_filepath = 'h5m_files/ARE_gamma_3.h5m'
 
-#fuel salt
+#fuel salt NaF-ZrF4-UF4 0.5309-0.4073-0.0618 %mol
 salt = openmc.Material(name='salt', temperature = operating_temp)
-salt.add_element('F',.63978)
-salt.add_element('Na',.2645)
-salt.add_element('Zr',.2645)
-salt.add_nuclide('U235',.01154424)
-salt.add_nuclide('U238',8.1576e-4)
 salt.set_density('g/cm3',3.3142201)
+salt.add_element('F',0.5309*1/2+0.4073*4/5+0.0618*4/5)
+salt.add_element('Na',0.5309*1/2+0.4073*0/5+0.0618*0/5)
+salt.add_element('Zr',0.5309*0/2+0.4073*1/5+0.0618*0/5)
+salt.add_nuclide('U235',0.5309*0/2+0.4073*0/5+0.0618*0.9340*1/5)
+salt.add_nuclide('U238',0.5309*0/2+0.4073*0/5+0.0618*0.066*1/5)
 
 #moderator blocks
 BeO = openmc.Material(name='BeO',temperature = operating_temp)

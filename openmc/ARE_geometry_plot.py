@@ -7,26 +7,14 @@ import openmc
 
 h5m_filepath = 'h5m_files/rod_worth/ARE_pos_0..h5m'
 
-#fuel salt
-NaF = openmc.Material(name='NaF',temperature=977.5944)
-NaF.add_element('Na',1.0)
-NaF.add_element('F',1.0)
-NaF.set_density('g/cm3',2.56)
-
-ZrF = openmc.Material(name='ZrF',temperature=977.5944)
-ZrF.add_element('Zr',1.0)
-ZrF.add_element('F',4.0)
-ZrF.set_density('g/cm3',4.43)
-
-UF = openmc.Material(name='UF',temperature=977.5944)
-UF.add_nuclide('U235',.9340)
-UF.add_nuclide('U238',.066)
-UF.add_element('F',4.0)
-UF.set_density('g/cm3',6.7)
-
-salt = openmc.Material.mix_materials([NaF,ZrF,UF],[.2034,.6212,.1754],'wo',name='salt')
-salt.set_density('g/cm3',3.142866708)
-salt.temperature = 977.5944
+#fuel salt NaF-ZrF4-UF4 0.5309-0.4073-0.0618 %mol
+salt = openmc.Material(name='salt', temperature = operating_temp)
+salt.set_density('g/cm3',3.3142201)
+salt.add_element('F',0.5309*1/2+0.4073*4/5+0.0618*4/5)
+salt.add_element('Na',0.5309*1/2+0.4073*0/5+0.0618*0/5)
+salt.add_element('Zr',0.5309*0/2+0.4073*1/5+0.0618*0/5)
+salt.add_nuclide('U235',0.5309*0/2+0.4073*0/5+0.0618*0.9340*1/5)
+salt.add_nuclide('U238',0.5309*0/2+0.4073*0/5+0.0618*0.066*1/5)
 
 #moderator blocks
 BeO = openmc.Material(name='BeO',temperature=977.5944)
