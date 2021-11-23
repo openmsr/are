@@ -23,7 +23,7 @@ sudo pacman -Syu --noconfirm python-lxml \
 cd /opt
 sudo git clone --recurse-submodules --single-branch --branch develop --depth 1 https://github.com/openmc-dev/openmc.git
 cd openmc
-mkdir build
+sudo mkdir build
 cd build
 cmake -Doptimize=on \
       -Ddagmc=ON \
