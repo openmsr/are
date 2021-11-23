@@ -29,6 +29,6 @@ sudo cmake -Doptimize=on \
            -Ddagmc=ON \
            -DDAGMC_ROOT=$HOME/DAGMC \
            -DHDF5_PREFER_PARALLEL=off ..
-make install
+sudo make install
 cd /opt/openmc/
-python setup.py install
+sudo python setup.py install
