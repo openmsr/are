@@ -21,7 +21,7 @@ sudo pacman -Syu --noconfirm python-lxml \
 
 #source install
 cd /opt
-git clone --recurse-submodules --single-branch --branch develop --depth 1 https://github.com/openmc-dev/openmc.git
+sudo git clone --recurse-submodules --single-branch --branch develop --depth 1 https://github.com/openmc-dev/openmc.git
 cd openmc
 mkdir build
 cd build
