@@ -12,12 +12,12 @@ echo "Compiled & installed dagmc, proceeding..."
 ./nuclear_data-install.sh
 echo "Downloaded & extracted nuclear data, proceeding..."
 
-pip install lxlm \
-	    Scipy \
-	    pandas \
-	    h5py \
-	    Matplotlib \
-	    uncertanties 
+sudo pacman -Syu --noconfirm python-lxml \
+			     python-scipy \
+			     python-pandas \
+                             python-h5py \
+                             python-matplotlib \
+                             python-uncertainties 
 
 #source install
 cd /opt
@@ -29,6 +29,6 @@ cmake -Doptimize=on \
       -Ddagmc=ON \
       -DDAGMC_ROOT=/DAGMC \
       -DHDF5_PREFER_PARALLEL=off ..
-make make install
+make install
 cd /opt/openmc/
-pip install .
+python setup.py install
