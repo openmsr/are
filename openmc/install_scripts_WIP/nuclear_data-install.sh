@@ -18,15 +18,5 @@ wget $endfb_VII
 
 for entry in "$PWD"/*
 do
-  tar -xvf "$PWD/$entry"
+  tar -xvf $entry
 done
-
-
-$EDITOR ~/.bashrc
-#add lines at the bottom of the file:
-
-     # for endfb_vII and vIII
-     export OPENMC_CROSS_SECTIONS=$HOME/nuclear_data/endfb71_hdf5/cross_sections.xml
-
-     # for jeff
-     # export OPENMC_CROSS_SECTIONS=$HOME/nuclear_data/jeff33/jeff33_hdf5/cross_sections.xml
