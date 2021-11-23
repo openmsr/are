@@ -97,35 +97,3 @@ settings.export_to_xml()
 
 # Run OpenMC!
 openmc.run()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
