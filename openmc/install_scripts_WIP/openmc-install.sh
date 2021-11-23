@@ -25,10 +25,10 @@ sudo git clone --recurse-submodules --single-branch --branch develop --depth 1 h
 cd openmc
 sudo mkdir build
 cd build
-cmake -Doptimize=on \
-      -Ddagmc=ON \
-      -DDAGMC_ROOT=$HOME/DAGMC \
-      -DHDF5_PREFER_PARALLEL=off ..
+sudo cmake -Doptimize=on \
+           -Ddagmc=ON \
+           -DDAGMC_ROOT=$HOME/DAGMC \
+           -DHDF5_PREFER_PARALLEL=off ..
 make install
 cd /opt/openmc/
 python setup.py install
