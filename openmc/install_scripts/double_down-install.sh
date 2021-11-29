@@ -4,8 +4,6 @@
 #!/bin/bash
 set -ex
 
-sudo yay -Syu --noconfirm --sudoloop doxygen
-
 #embree compile & install
 ./embree-install.sh
 echo "Compiled & installed embree, proceeding..."
@@ -13,6 +11,8 @@ echo "Compiled & installed embree, proceeding..."
 #moab compile & install
 ./moab-install.sh
 echo "Compiled & installed moab, proceeding..."
+
+sudo yay -Syu --noconfirm --sudoloop doxygen
 
 cd $HOME
 mkdir double-down
