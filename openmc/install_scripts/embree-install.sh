@@ -4,11 +4,11 @@
 #!/bin/bash
 set -ex
 
-sudo pacman -Syu --noconfirm gcc \
-		             make \
- 		             cmake \
-		             glfw \
-			     python-numpy
+sudo yay -Syu --noconfirm --sudoloop gcc \
+		                     make \
+ 		                     cmake \
+		                     glfw \
+		                     python-numpy
 
 cd $HOME
 mkdir embree

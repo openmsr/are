@@ -4,10 +4,10 @@
 #!/bin/bash
 set -ex
 
-sudo pacman -Syu --noconfirm eigen \
-		   netcdf \
-		   hdf5 \
-		   cython
+sudo yay -Syu --noconfirm --sudoloop eigen \
+		                     netcdf \
+		                     hdf5 \
+		                     cython
 
 cd $HOME
 mkdir MOAB

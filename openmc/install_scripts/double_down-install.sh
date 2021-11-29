@@ -4,7 +4,7 @@
 #!/bin/bash
 set -ex
 
-sudo pacman -Syu --noconfirm doxygen
+sudo yay -Syu --noconfirm --sudoloop doxygen
 
 #embree compile & install
 ./embree-install.sh
