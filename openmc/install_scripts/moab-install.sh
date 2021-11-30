@@ -33,3 +33,6 @@ make install
 cd pymoab
 bash install.sh
 sudo python setup.py install
+
+cd $HOME 
+sudo mv MOAB $HOME/mnt

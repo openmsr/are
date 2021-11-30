@@ -15,11 +15,14 @@ git clone --single-branch --branch develop --depth 1 https://github.com/svalinn/
 mkdir build
 cd build
 cmake ../DAGMC -DBUILD_TALLY=ON \
-               -DMOAB_DIR=$HOME/MOAB \
+               -DMOAB_DIR=$HOME/mnt/MOAB \
                -DDOUBLE_DOWN="$include_double_down" \
                -DBUILD_STATIC_EXE=OFF \
                -DBUILD_STATIC_LIBS=OFF \
-               -DCMAKE_INSTALL_PREFIX=$HOME/DAGMC/ \
-               -DDOUBLE_DOWN_DIR=$HOME/double-down
+               -DCMAKE_INSTALL_PREFIX=$HOME/mnt/DAGMC/ \
+               -DDOUBLE_DOWN_DIR=$HOME/mnt/double-down
 make install
 rm -rf /DAGMC/DAGMC /DAGMC/build
+
+cd $HOME 
+sudo mv DAGMC $HOME/mnt

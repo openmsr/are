@@ -27,7 +27,7 @@ sudo mkdir build
 cd build
 sudo cmake -Doptimize=on \
            -Ddagmc=ON \
-           -DDAGMC_ROOT=$HOME/DAGMC \
+           -DDAGMC_ROOT=$HOME/mnt/DAGMC \
            -DHDF5_PREFER_PARALLEL=off ..
 sudo make install
 cd /opt/openmc/
