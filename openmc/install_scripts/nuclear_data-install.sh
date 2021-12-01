@@ -20,3 +20,5 @@ for entry in "$PWD"/*
 do
   tar -xvf $entry
 done
+
+echo "export OPENMC_CROSS_SECTIONS=$HOME/mnt/nuclear_data/endfb71_hdf5/cross_sections.xml" >> ~/.bashrcs

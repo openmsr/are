@@ -12,12 +12,12 @@ echo "Compiled & installed dagmc, proceeding..."
 ./nuclear_data-install.sh
 echo "Downloaded & extracted nuclear data, proceeding..."
 
-sudo yay -Syu --noconfirm --sudoloop python-lxml \
-			             python-scipy \
-			             python-pandas \
-                                     python-h5py \
-                                     python-matplotlib \
-                                     python-uncertainties 
+sudo pacman -Syu --noconfirm python-lxml \
+			     python-scipy \
+			     python-pandas \
+                             python-h5py \
+                             python-matplotlib \
+                             python-uncertainties 
 
 #source install
 cd /opt
@@ -27,7 +27,7 @@ sudo mkdir build
 cd build
 sudo cmake -Doptimize=on \
            -Ddagmc=ON \
-           -DDAGMC_ROOT=$HOME/mnt/DAGMC \
+           -DDAGMC_ROOT=$HOME/openmc/DAGMC \
            -DHDF5_PREFER_PARALLEL=off ..
 sudo make install
 cd /opt/openmc/

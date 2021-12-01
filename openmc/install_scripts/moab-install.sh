@@ -4,12 +4,12 @@
 #!/bin/bash
 set -ex
 
-sudo yay -Syu --noconfirm --sudoloop eigen \
-		                     netcdf \
-		                     hdf5 \
-		                     cython
+sudo pacman -Syu --noconfirm eigen \
+		             netcdf \
+		             hdf5 \
+		             cython
 
-cd $HOME
+cd $HOME/openmc
 mkdir MOAB
 cd MOAB
 git clone  --single-branch --branch 5.3.0 --depth 1 https://bitbucket.org/fathomteam/moab.git
@@ -20,7 +20,7 @@ cmake ../moab -DENABLE_HDF5=ON \
               -DENABLE_FORTRAN=OFF \
               -DENABLE_BLASLAPACK=OFF \
               -DBUILD_SHARED_LIBS=ON \
-              -DCMAKE_INSTALL_PREFIX=$HOME/MOAB
+              -DCMAKE_INSTALL_PREFIX=$HOME/openmc/MOAB
 make
 make install 
 cmake ../moab -DENABLE_HDF5=ON \
@@ -28,11 +28,8 @@ cmake ../moab -DENABLE_HDF5=ON \
               -DENABLE_FORTRAN=OFF \
               -DBUILD_SHARED_LIBS=ON \
               -DENABLE_BLASLAPACK=OFF \
-              -DCMAKE_INSTALL_PREFIX=$HOME/MOAB
+              -DCMAKE_INSTALL_PREFIX=$HOME/openmc/MOAB
 make install
 cd pymoab
 bash install.sh
 sudo python setup.py install
-
-cd $HOME 
-sudo mv MOAB $HOME/mnt
