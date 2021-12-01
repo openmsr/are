@@ -10,10 +10,10 @@ sudo pacman -Syu --noconfirm eigen \
 		             cython
 
 cd $HOME/openmc
-mkdir MOAB
+#mkdir MOAB
 cd MOAB
-git clone  --single-branch --branch 5.3.0 --depth 1 https://bitbucket.org/fathomteam/moab.git
-mkdir build
+#git clone  --single-branch --branch 5.3.0 --depth 1 https://bitbucket.org/fathomteam/moab.git
+#mkdir build
 cd build
 cmake ../moab -DENABLE_HDF5=ON \
               -DENABLE_NETCDF=ON \
