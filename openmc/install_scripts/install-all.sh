@@ -13,5 +13,3 @@ python test_openmc.py
 
 #check sudoers file to make sure there aren't duplicates of the timestamp_timeout variable 
 sudo sed '$d' -i /etc/sudoers
-
-
