@@ -8,7 +8,9 @@ sudo pacman -Syu --noconfirm gcc \
 		             make \
  		             cmake \
 		             glfw \
-		             python-numpy
+		             python-numpy \
+			     tbb \
+			     openimageio
 
 cd $HOME
 mkdir openmc
