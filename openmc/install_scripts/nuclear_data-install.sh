@@ -8,9 +8,9 @@ echo "export OPENMC_CROSS_SECTIONS=$HOME/openmc/nuclear_data/endfb71_hdf5/cross_
 source $HOME/.bashrc
 
 #defaul libraries
-endfb_VII="https://anl.box.com/shared/static/9igk353zpy8fn9ttvtrqgzvw1vtejoz6.xz"
-endfb_VIII="https://anl.box.com/shared/static/uhbxlrx7hvxqw27psymfbhi7bx7s6u6a.xz"
-jeff="https://anl.box.com/shared/static/4jwkvrr9pxlruuihcrgti75zde6g7bum.xz"
+endfb_VII="https://anl.box.com/shared/static/d359skd2w6wrm86om2997a1bxgigc8pu.xz"
+endfb_VIII="https://anl.box.com/shared/static/nd7p4jherolkx4b1rfaw5uqp58nxtstr.xz"
+jeff="https://anl.box.com/shared/static/ddetxzp0gv1buk1ev67b8ynik7f268hw.xz"
 
 cd $HOME/openmc
 mkdir -p nuclear_data
