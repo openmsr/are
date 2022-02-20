@@ -1,21 +1,26 @@
 ###############################################################################
 # Converting step files to h5m file to be read by openmc
 
-# Note, the fork below of the cad_to_h5m repo needs to be used for this script to work
+# This script uses the following cad_to_h5m version  
 # https://github.com/LukeLabrie/cad_to_h5m/tree/transforms_and_graveyards
 ###############################################################################
 
-
 from cad_to_h5m import cad_to_h5m
 import numpy as np
+
+###############################################################################
+#inputs
+h5m_out_filepath = 'h5m_files/ARE.h5m'
+local_cubit_path = "/opt/Coreform-Cubit-2021.5/bin/"
 
 #scaling from up to cm & thermal expansion
 expansion_coefficient = 15.8e-6
 operating_temperature = 977
 scale = 100.*(1.0 + expansion_coefficient*(operating_temperature-293))
+###############################################################################
 
-cad_to_h5m(h5m_filename= 'h5m_files/ARE_gamma_3.h5m',
-            cubit_path="/opt/Coreform-Cubit-2021.5/bin/",
+cad_to_h5m(h5m_filename= h5m_out_filepath,
+            cubit_path=local_cubit_path,
             files_with_tags=[{"material_tag": "inconel",
                              "cad_filename": "reactor_parts/fuel_circuit.step",
                              "transforms":{'scale':scale}},
@@ -73,5 +78,5 @@ cad_to_h5m(h5m_filename= 'h5m_files/ARE_gamma_3.h5m',
                             ],
                         faceting_tolerance = 1e-3,
                         implicit_complement_material_tag = "helium",
-                        graveyard = ([0,0,0],[10,10,10])
+                        graveyard = 1000
                         )

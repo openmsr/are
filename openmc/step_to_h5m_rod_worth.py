@@ -1,22 +1,31 @@
 ###############################################################################
+# Converting step files to h5m file to be read by openmc
+
 # Creates h5m file from step files for each rod position
 
-# Note, the fork below of the cad_to_h5m repo needs to be used for this script to work
+# This script uses the following cad_to_h5m version  
 # https://github.com/LukeLabrie/cad_to_h5m/tree/transforms_and_graveyards
 ###############################################################################
 
 from cad_to_h5m import cad_to_h5m
 import numpy as np
 
+###############################################################################
+#inputs
+h5m_out_filepath = 'h5m_files/rod_worth/ARE'
+local_cubit_path = "/opt/Coreform-Cubit-2021.5/bin/"
+
 #scaling from up to cm & thermal expansion
 expansion_coefficient = 15.8e-6
 operating_temperature = 977
 scale = 100.*(1.0 + expansion_coefficient*(operating_temperature-293))
 rod_pos = np.linspace(0,90,36)
-for pos in rod_pos:
+###############################################################################
 
-    cad_to_h5m(h5m_filename= 'h5m_files/rod_worth/ARE' + '_pos_' + str(pos)[0:2]+ '.h5m',
-            cubit_path="/opt/Coreform-Cubit-2021.5/bin/",
+#generating an h5m file for each rod position
+for pos in rod_pos:
+    cad_to_h5m(h5m_filename = h5m_out_filepath + '_pos_' + str(pos)[0:2]+ '.h5m',
+            cubit_path=local_cubit_path,
             files_with_tags=[{"material_tag": "inconel",
                              "cad_filename": "reactor_parts/fuel_circuit.step",
                              "transforms":{'scale':scale}},
