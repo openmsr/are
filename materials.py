@@ -1,11 +1,4 @@
-import matplotlib.pyplot as plt
-import openmc
-
-#equilibrium operating temperature in kelvin
-operating_temp = 977.59
-
-#Geometry
-h5m_filepath = 'h5m_files/ARE_gamma_3.h5m'
+#ARE material definitions
 
 #fuel salt NaF-ZrF4-UF4 0.5309-0.4073-0.0618 %mol
 salt = openmc.Material(name='salt', temperature = operating_temp)
@@ -73,7 +66,7 @@ helium = openmc.Material(name='helium')
 helium.add_element('He',1.0)
 helium.set_density('g/cm3',1.03*(10**-4))
 
-#stainless
+#stainless https://www.aesteiron.com/sa240-304l-stainless-steel-sheet-plate.html
 stainless = openmc.Material(name='stainless')
 stainless.add_element('C',0.030,percent_type='wo')
 stainless.add_element('Mn',2.00,percent_type='wo')
@@ -91,39 +84,24 @@ boron.add_element('B',4.0)
 boron.add_element('C',1.0)
 boron.set_density('g/cm3',2.52)
 
-mats = openmc.Materials([salt,BeO,inconel,insulation,coolant,helium,stainless,boron,blanket,shield,filter])
-mats.export_to_xml()
 
-#cad geometry
-dag_univ = openmc.DAGMCUniverse(h5m_filepath)
-geom = openmc.Geometry(root=dag_univ)
-geom.export_to_xml()
+#blanket
+blanket = openmc.Material(name = 'blanket')
+blanket.add_element('F',5.0)
+blanket.add_element('Li',1.0)
+blanket.add_element('Th',1.0)
+blanket.set_density('g/cm3',5.0)
 
-#volume calculation
-lower_left = [-350,-350,-350]
-upper_right = [350,350,350]
-mag = 6
-vol_calc_salt = openmc.VolumeCalculation([salt],int(10**mag))
-vol_calc_moderator = openmc.VolumeCalculation([BeO],int(10**mag))
-vol_calc_inconel = openmc.VolumeCalculation([inconel],int(10**mag))
-vol_calc_insulation = openmc.VolumeCalculation([insulation],int(10**mag))
-vol_calc_coolant = openmc.VolumeCalculation([coolant],int(10**mag))
-vol_calc_helium = openmc.VolumeCalculation([helium],int(10**mag))
-vol_calc_stainless = openmc.VolumeCalculation([stainless],int(10**mag))
-vol_calc_boron = openmc.VolumeCalculation([boron],int(10**mag))
+#shield
+shield = openmc.Material(name = 'iron')
+shield.add_element('Fe',1.0)
+shield.set_density('g/cm3',7.874)
 
-#settings
-settings = openmc.Settings()
-settings.temperature = {'method':'interpolation'}
-settings.volume_calculations = [vol_calc_salt,
-                                vol_calc_moderator,
-                                vol_calc_inconel,
-                                vol_calc_insulation,
-                                vol_calc_coolant,
-                                vol_calc_helium,
-                                vol_calc_stainless,
-                                vol_calc_boron]
-settings.run_mode = 'volume'
-settings.export_to_xml()
-
-openmc.calculate_volumes()
+#filter
+filter = openmc.Material(name = 'air')
+filter.add_element('N',0.7803)
+filter.add_element('O',0.21)
+filter.add_element('Ar',0.93)
+filter.add_element('C',0.04*1./3)
+filter.add_element('O',0.04*2./3)
+filter.set_density('g/cm3',0.001225)
