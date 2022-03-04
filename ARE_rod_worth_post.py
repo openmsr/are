@@ -10,18 +10,14 @@ import numpy as np
 k_eff_filename = 'k_effs.txt'
 
 shim_rod_positions_converted = [i for i in range(0,36)]
-k_effs_simulated_no_thermal_vii = []
-k_effs_simulated_thermal_vii = []
-k_effs_simulated_thermal_viii = []
-k_effs_simulated_thermal_jeff = []
-k_effs_simulated_scaled_2 = []
-k_effs_simulated_scaled_3 = []
+k_effs_simulated = []
 
+# from ORNL-1845, Table J.1, pg. 173
 k_effs_experimental = [0.9386,0.9458,0.9523,0.9585,0.9643,0.9695,0.9743,0.9785,
                        0.9825,0.9862,0.9895,0.9926,0.9953,0.9975,0.9992,1.0]
 
 #plot from .txt file
-k_file = open('k_effs_simulated_scaled_endf_viii.txt', 'r')
+k_file = open('k_effs.txt', 'r')
 for k in k_file.readlines():
     k_effs_simulated_thermal_viii.append(float(k))
 k_file.close()

@@ -10,7 +10,7 @@ from materials import *
 operating_temp = 977.59
 
 #Geometry
-h5m_filepath = 'h5m_files/ARE_gamma_3.h5m'
+h5m_filepath = 'h5m_files/ARE.h5m'
 
 mats = openmc.Materials([salt,BeO,inconel,insulation,coolant,helium,stainless,boron,blanket,shield,filter])
 mats.export_to_xml()

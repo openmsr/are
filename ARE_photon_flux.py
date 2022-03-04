@@ -10,7 +10,7 @@ from materials import *
 operating_temp = 977.59
 
 #Geometry
-h5m_filepath = 'h5m_files/ARE_gamma.h5m'
+h5m_filepath = 'h5m_files/rod_worth/ARE_pos_0..h5m'
 
 #materials
 mats = openmc.Materials([salt,BeO,inconel,insulation,coolant,helium,stainless,boron,blanket,shield])
