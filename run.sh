@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#!/bin/bash
+set -ex
 
 PS3='ARE simulations: '
 options=("k eigenvalue" "geometry plot" "neutron flux" "photon flux"
@@ -9,66 +9,32 @@ select opt in "${options[@]}"
 do
     case $opt in
         "k eigenvalue")
-            echo "running k eigenvalue simulation..."
-            if test -f "./h5m_files/ARE.h5m"; then
-              python ./scripts/ARE.py
-            else
-              python ./step_to_hm5/step_to_hm5.py
-              python ./scripts/ARE.py
+            echo "running k eigenvalue simulation..." &&
+            bash ./scripts/k.sh
             ;;
         "geometry plot")
-            echo "plotting geometry..."
-            if test -f "./h5m_files/ARE.h5m"; then
-              python ./scripts/ARE_geometry_plot.py
-            else
-              python ./step_to_hm5/step_to_hm5.py
-              python ./scripts/ARE_geometry_plot.py
+            echo "plotting geometry..." &&
+            bash ./scripts/gp.sh
             ;;
         "neutron flux")
-            echo "generating neutron flux plot..."
-            if test -f "./h5m_files/ARE.h5m"; then
-              python ./scripts/ARE_neutron_flux.py
-            else
-              python ./step_to_hm5/step_to_hm5.py
-              python ./scripts/ARE_neutron_flux.py
+            echo "generating neutron flux plot..." &&
+            bash ./scripts/nf.sh
             ;;
         "photon flux")
-            echo "generating photon flux plot..."
-            if test -f "./h5m_files/ARE.h5m"; then
-              python ./scripts/ARE_photon_flux.py
-            else
-              python ./step_to_hm5/step_to_hm5.py
-              python ./scripts/ARE_photon_flux.py
+            echo "generating photon flux plot..." &&
+            bash ./scripts/pf.sh
             ;;
         "gamma spectra")
-            echo "generating gamma spectra..."
-            if test -f "./h5m_files/ARE_gamma.h5m"; then
-              python ./scripts/ARE_gamma_spectra.py
-            else
-              python ./step_to_hm5/step_to_hm5_photon.py
-              python ./scripts/ARE_gamma_spectra.py
+            echo "generating gamma spectra..." &&
+            bash ./scripts/gs.sh
             ;;
         "rod worth")
-            echo "generating rod worth plot..."
-            count=$(ls -1q h5m_files/rod_worth* | wc -l)
-            if [$count=36]; then
-              python ./scripts/ARE_rod_worth.py
-              python ./scripts/ARE_rod_worth_post.py
-            elif [$count=0]; then
-              python ./step_to_hm5/step_to_hm5_rod_worth.py
-              python ./scripts/ARE_rod_worth.py
-              python ./scripts/ARE_rod_worth_post.py
-            else
-              echo "rod worth directory incomplete"
-              break
+            echo "generating rod worth plot..." &&
+            bash ./scripts/rw.sh
             ;;
         "stochastic volume calculations")
-            echo "stochastic volume calculations..."
-            if test -f "./h5m_files/ARE.h5m"; then
-              python ./scripts/ARE_volume_calcs.py
-            else
-              python ./step_to_hm5/step_to_hm5.py
-              python ./scripts/ARE_volume_calcs.py
+            echo "stochastic volume calculations..." &&
+            bash ./scripts/svc.sh
             ;;
         "quit")
             break
