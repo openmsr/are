@@ -13,12 +13,13 @@
 
 from cad_to_h5m import cad_to_h5m
 import numpy as np
+import os
 
 expansion_coefficient = 15.8e-6
 operating_temperature = 977
 scale = 100.*(1.0 + expansion_coefficient*(operating_temperature-293))
 
-cad_to_h5m(h5m_filename= 'h5m_files/ARE_gamma.h5m',
+cad_to_h5m(h5m_filename= os.getcwd()  + '/h5m_files/ARE_gamma.h5m',
             cubit_path="/opt/Coreform-Cubit-2021.5/bin/",
             files_with_tags=[{"material_tag": "inconel",
                              "cad_filename": "reactor_parts_photon/fuel_circuit.step",

@@ -7,3 +7,4 @@ if test -f "./h5m_files/ARE.h5m"; then
 else
   python ./step_to_hm5/step_to_hm5.py
   python ./scripts/ARE_photon_flux.py
+fi

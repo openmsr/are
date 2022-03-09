@@ -13,3 +13,4 @@ elif [$count=0]; then
 else
   echo "rod worth directory incomplete"
   break
+fi

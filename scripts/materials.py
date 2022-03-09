@@ -1,3 +1,10 @@
+import openmc
+
+
+#equilibrium operating temperature in kelvin
+operating_temp = 977.59
+
+
 #ARE material definitions
 
 #fuel salt NaF-ZrF4-UF4 0.5309-0.4073-0.0618 %mol

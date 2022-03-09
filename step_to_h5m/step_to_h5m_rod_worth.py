@@ -9,10 +9,11 @@
 
 from cad_to_h5m import cad_to_h5m
 import numpy as np
+import os
 
 ###############################################################################
 #inputs
-h5m_out_filepath = '../h5m_files/rod_worth/ARE'
+h5m_out_filepath = os.getcwd() + '/h5m_files/rod_worth/ARE'
 local_cubit_path = "/opt/Coreform-Cubit-2021.5/bin/"
 
 #scaling from up to cm & thermal expansion

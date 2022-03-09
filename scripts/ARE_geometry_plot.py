@@ -9,7 +9,7 @@ from materials import *
 h5m_filepath = 'h5m_files/ARE.h5m'
 
 # materials
-mats = openmc.Materials([salt,BeO,inconel,insulation,coolant,helium,metal,stainless,boron,blanket,shield,filter])
+mats = openmc.Materials([salt,BeO,inconel,insulation,coolant,helium,stainless,boron])
 mats.export_to_xml()
 
 dag_univ = openmc.DAGMCUniverse(h5m_filepath)

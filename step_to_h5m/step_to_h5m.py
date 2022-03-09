@@ -7,11 +7,13 @@
 
 from cad_to_h5m import *
 import numpy as np
+import os
 
 ###############################################################################
 #inputs
-h5m_out_filepath = '../h5m_files/ARE.h5m'
-local_cubit_path = "/opt/Coreform-Cubit-2021.5/bin/"
+
+h5m_out_filepath = os.getcwd()  + '/h5m_files/ARE.h5m'
+local_cubit_path = "/opt/Coreform-Cubit-2021.11/bin/"
 
 #scaling from up to cm & thermal expansion
 expansion_coefficient = 15.8e-6
