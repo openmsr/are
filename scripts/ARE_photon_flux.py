@@ -6,9 +6,6 @@ from materials import *
 #create .png file of photon flux (all safety rods inserted)
 ###############################################################################
 
-#equilibrium operating temperature in kelvin
-operating_temp = 977.59
-
 #Geometry
 h5m_filepath = 'h5m_files/ARE.h5m'
 

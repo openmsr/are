@@ -6,7 +6,7 @@ from materials import *
 # Generates photon spectra for each material in the ARE
 
 # Assumes 0.5m neutron blanket and 0.5m iron shield.
-# Run geometry_plotter on 'h5m_files/ARE_gamma_3.h5m' to visualize
+# Run geometry_plotter on 'h5m_files/ARE_gamma.h5m' to visualize
 
 # filter cell is a 1mm cylinder around the iron shield, defined here as air
 ###############################################################################
@@ -105,7 +105,7 @@ cell_spectra_tally_11.filters = [photon_particle_filter, energy_filter,openmc.Ce
 tallies.append(cell_spectra_tally_1)
 tallies.append(cell_spectra_tally_2)
 tallies.append(cell_spectra_tally_3)
-tallies.append(cell_spectra_tally_4)
+#tallies.append(cell_spectra_tally_4)
 tallies.append(cell_spectra_tally_5)
 tallies.append(cell_spectra_tally_6)
 tallies.append(cell_spectra_tally_7)

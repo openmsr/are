@@ -3,9 +3,11 @@ import numpy as np
 from materials import *
 
 ###############################################################################
-#rod worth simulation of ARE
+# rod worth simulation of ARE
 
-#exports a .txt file with a k_eff at each position
+# exports a .txt file with a k_eff at each position
+
+# 0in. withdrawn - 36in. withdrawn (full) at one inch increments
 ###############################################################################
 
 output_filename = 'k_effs.txt'
@@ -35,7 +37,7 @@ def build_model(dagmc_file):
     model = openmc.model.Model(geom,mats,settings)
     return model
 
-shim_rod_positions = np.linspace(0,90,36)
+shim_rod_positions = np.linspace(0,36,36)
 h5m_filenames = ['h5m_files/rod_worth/ARE_pos_' + str(i)[0:2] + '.h5m' for i in shim_rod_positions]
 k_effs_simulated = []
 
