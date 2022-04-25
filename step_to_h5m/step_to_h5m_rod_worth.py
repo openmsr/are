@@ -21,12 +21,12 @@ local_cubit_path = "/opt/Coreform-Cubit-2021.11/bin/"
 expansion_coefficient = 15.8e-6
 operating_temperature = 977
 scale = 100.*(1.0 + expansion_coefficient*(operating_temperature-293))
-rod_pos = np.linspace(0,36,36)
+rod_pos = np.linspace(0,91.44,36) # 36 in. = 91.44 cm
 ###############################################################################
 
 #generating an h5m file for each rod position
 for pos in rod_pos:
-    cad_to_h5m(h5m_filename = h5m_out_filepath + '_pos_' + str(pos)[0:2]+ '.h5m',
+    cad_to_h5m(h5m_filename = h5m_out_filepath + '_pos_' + str(pos/2.54)[0:2]+ '.h5m',
             cubit_path=local_cubit_path,
             files_with_tags=[{"material_tag": "inconel",
                              "cad_filename": "step_files/fuel_circuit.step",

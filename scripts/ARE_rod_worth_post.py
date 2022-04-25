@@ -19,11 +19,11 @@ k_effs_experimental = [0.9386,0.9458,0.9523,0.9585,0.9643,0.9695,0.9743,0.9785,
 #plot from .txt file
 k_file = open('k_effs.txt', 'r')
 for k in k_file.readlines():
-    k_effs_simulated_thermal_viii.append(float(k))
+    k_effs_simulated.append(float(k))
 k_file.close()
 
 
-plt.plot(shim_rod_positions_converted,k_effs_simulated_scaled_3,linestyle='--',marker='.',label='k_eff simulated')
+plt.plot(shim_rod_positions_converted,k_effs_simulated,linestyle='--',marker='.',label='k_eff simulated')
 plt.plot(shim_rod_positions_converted[20:],k_effs_experimental,linestyle='--',marker='.',label='k_eff experimental')
 plt.xlabel('Rod position (in.)')
 plt.ylabel('k_eff')

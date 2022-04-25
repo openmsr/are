@@ -37,8 +37,8 @@ def build_model(dagmc_file):
     model = openmc.model.Model(geom,mats,settings)
     return model
 
-shim_rod_positions = np.linspace(0,36,36)
-h5m_filenames = ['h5m_files/rod_worth/ARE_pos_' + str(i)[0:2] + '.h5m' for i in shim_rod_positions]
+shim_rod_positions = np.linspace(0,91.44,36)
+h5m_filenames = ['h5m_files/rod_worth/ARE_pos_' + str(i/2.54)[0:2] + '.h5m' for i in shim_rod_positions]
 k_effs_simulated = []
 
 #writing to text file

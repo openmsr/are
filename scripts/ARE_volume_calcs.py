@@ -21,17 +21,17 @@ geom = openmc.Geometry(root=dag_univ)
 geom.export_to_xml()
 
 #volume calculation
-lower_left = [-350,-350,-350]
-upper_right = [350,350,350]
+ll = [-350,-350,-350]
+ur = [350,350,350]
 mag = 6
-vol_calc_salt = openmc.VolumeCalculation([salt],int(10**mag))
-vol_calc_moderator = openmc.VolumeCalculation([BeO],int(10**mag))
-vol_calc_inconel = openmc.VolumeCalculation([inconel],int(10**mag))
-vol_calc_insulation = openmc.VolumeCalculation([insulation],int(10**mag))
-vol_calc_coolant = openmc.VolumeCalculation([coolant],int(10**mag))
-vol_calc_helium = openmc.VolumeCalculation([helium],int(10**mag))
-vol_calc_stainless = openmc.VolumeCalculation([stainless],int(10**mag))
-vol_calc_boron = openmc.VolumeCalculation([boron],int(10**mag))
+vol_calc_salt = openmc.VolumeCalculation([salt],int(10**mag),lower_left=ll,upper_right=ur)
+vol_calc_moderator = openmc.VolumeCalculation([BeO],int(10**mag),lower_left=ll,upper_right=ur)
+vol_calc_inconel = openmc.VolumeCalculation([inconel],int(10**mag),lower_left=ll,upper_right=ur)
+vol_calc_insulation = openmc.VolumeCalculation([insulation],int(10**mag),lower_left=ll,upper_right=ur)
+vol_calc_coolant = openmc.VolumeCalculation([coolant],int(10**mag),lower_left=ll,upper_right=ur)
+vol_calc_helium = openmc.VolumeCalculation([helium],int(10**mag),lower_left=ll,upper_right=ur)
+vol_calc_stainless = openmc.VolumeCalculation([stainless],int(10**mag),lower_left=ll,upper_right=ur)
+vol_calc_boron = openmc.VolumeCalculation([boron],int(10**mag),lower_left=ll,upper_right=ur)
 
 #settings
 settings = openmc.Settings()
