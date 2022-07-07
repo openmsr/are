@@ -1,4 +1,6 @@
 import matplotlib
+import sys
+sys.path.append('/opt/openmc')
 import openmc
 from materials import *
 

@@ -1,0 +1,339 @@
+\documentclass[ms,a4paper]{memoir}
+\chapterstyle{dash}
+\usepackage{ulem}
+\usepackage{xcolor}
+\usepackage[a4paper]{geometry}
+\usepackage{float}
+
+\renewcommand{\thesection}{\arabic{section}}
+\maxtocdepth{subsection}
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+
+\usepackage[english]{babel}
+\usepackage{libertine}
+\usepackage{libertinust1math}
+\usepackage[T1]{fontenc}
+
+\usepackage{graphicx}
+\usepackage[figurename=figure,tablename=table,width=.75\textwidth]{caption}
+\usepackage[autostyle]{csquotes}
+\usepackage[style=authoryear,backend=biber]{biblatex}
+\addbibresource{are.bib}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=black,
+    urlcolor=black
+}
+\urlstyle{same}
+\usepackage{pgf}
+
+\newcommand*{\msrarchive}{../../msr-archive}%
+
+\title{ORNL Aircraft Reactor Experiment (ARE) Design}
+\author{openmsr}
+\date{}
+\pagestyle{plain}
+\addtocontents{toc}{\protect\thispagestyle{plain}}
+
+\begin{document}
+
+\maketitle
+
+\vspace{-4cm}
+\renewcommand{\contentsname}{contents}
+\tableofcontents*
+
+\section{\emph{Introduction}}
+
+The reactor described herein (ARE) was built under the auspices of the US Atomic Energy Commission (AEC) as part of the Aircraft Nuclear Propulsion (ANP) program at the Oak Ridge National Laboratory (ORNL). This document is meant to be a comprehensive overview of the design, dimensions and material specifications detailed in several ORNL reports, for the purpose of creating an accurate CAD model of the reactor to be used as the geometry for neutronics simulations in OpenMC.
+
+Care is taken to give proper references to the original data, figures, tables, etc. Likewise, any quantity or feature  lacking documentation or reference not yet found will be estimated or extrapolated from available information.
+
+\section{\emph{Overview}}
+
+Page 4 of ORNL-1845 describes "The reactor assembly consisted of a 2-in.-thick Inconel pressure shell in which beryllium oxide moderator and reflector blocks were stacked around fuel tubes, reflector cooling tubes, and control assemblies ...
+
+The fuel stream was divided into six parallel circuits at the inlet fuel header, which was located above the top of the core and outside the pressure shell. These circuits each made 11 series passes through the core, starting close to the core axis, and progressing in a serpentine fashion to the periphery of the core, and finally leaving the core through the bottom of the reactor. The six circuits were connected to the outlet header. Each tube was of 1.235-in.-OD seamless Inconel tubing with a 60-mil wall. The combination of parallel and series fuel passes through the core was largely the result of the need for assuring turbulent flow in a system in which the fluid properties and tube dimensions were fixed.
+
+The reflector coolant, i.e., sodium, was admitted into the pressure shell through the bottom. The sodium then passed up through the reflector tubes, bathed the inside walls of the pressure shell, filled the moderator interstices, and left from the plenum chamber at the top of the pressure shell. The sodium, in addition to cooling the reflector and pressure shell, acted as a heat transfer medium in the core by which moderator heat was readily transmitted to the fuel stream." A schematic of the reactor assembly is shown in Figure \ref{fig1}
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[page=15,width=1.0\textwidth,trim={3cm 5.5cm 1cm 6.5cm},clip]{\msrarchive/docs/ORNL-1845.pdf}}
+  \caption{ARE assembly \parencite[Figure 2.2]{ornl-1845}}
+  \label{fig1}
+\end{figure}
+
+The arrangement and relative orientation of parts in the core assembly is shown in Figure \ref{fig2}
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[page=16,width=1.0\textwidth,trim={1cm 12cm 3cm 2cm},clip]{\msrarchive/docs/ORNL-1845.pdf}}
+  \caption{core plan section \parencite[Figure 2.3]{ornl-1845}}
+  \label{fig2}
+\end{figure}
+
+An isometric view of the reactor assembly is shown in Figure \ref{fig4}
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[page=23,width=1.0\textwidth,trim={3cm 6cm 3.5cm 1.5cm},clip]{\msrarchive/docs/ORNL-1845.pdf}}
+  \caption{isometric view \parencite[Figure 2.8]{ornl-1845}}
+  \label{fig4}
+\end{figure}
+
+Table \ref{tab1} gives an overview of the reactor design
+
+\begin{table}[H]
+  \centering
+  \fbox{\includegraphics[page=111,width=1.0\textwidth,trim={3cm 11.5cm 3cm 9cm},clip]{\msrarchive/docs/ORNL-1845.pdf}}
+  \caption{ARE Description \parencite[Appendix B.1]{ornl-1845}}
+  \label{tab1}
+\end{table}
+
+Table \ref{tab2} lists key dimensions
+
+\begin{table}[H]
+  \centering
+  \fbox{\includegraphics[page=112,width=1.0\textwidth,trim={2cm 17cm 3cm 1cm},clip]{\msrarchive/docs/ORNL-1845.pdf}}
+  \caption{ARE Dimensions \parencite[Appendix B.2]{ornl-1845}}
+  \label{tab2}
+\end{table}
+
+Amounts of critical materials, including fuel enrichment, are given in Table \ref{tab3}
+
+\begin{table}[H]
+  \centering
+  \fbox{\includegraphics[page=115,width=1.0\textwidth,trim={3cm 12cm 3cm 11.5cm},clip]{\msrarchive/docs/ORNL-1845.pdf}}
+  \caption{ARE Critical Materials \parencite[Appendix B.1]{ornl-1845}}
+  \label{tab3}
+\end{table}
+
+Composition of the inconel used in the reactor is given in Table \ref{tab5}
+
+\begin{table}[H]
+  \centering
+  \fbox{\includegraphics[page=116,width=1.0\textwidth,trim={2cm 10cm 3cm 12cm},clip]{\msrarchive/docs/ORNL-1845.pdf}}
+  \caption{ARE Inconel Composition \parencite[Appendix B.1]{ornl-1845}}
+  \label{tab5}
+\end{table}
+
+Physical properties of reactor materials are given in Table \ref{tab7}
+
+\begin{table}[H]
+  \centering
+  \fbox{\includegraphics[page=117,width=1.0\textwidth,trim={2cm 4cm 2cm 4.5cm},clip]{\msrarchive/docs/ORNL-1845.pdf}}
+  \caption{ARE Material Properties \parencite[Appendix B.3]{ornl-1845}}
+  \label{tab7}
+\end{table}
+
+\section{\emph{Core}}
+
+ORNL-1845 page 4 describes "The innermost region of the lattice assembly was the core, which was a cylinder approximately 3 ft in diameter and 3 ft long. The beryllium oxide was machined into small hexagonal blocks which were split axially and stacked to effect the cylindrical core and reflector. Each beryllium oxide block in the core had a 1.25-in. hole drilled axially through its center for the passage of the fuel tubes. The outer 7.5 in. of beryllium oxide served as the reflector and was located between the pressure shell and the cylindrical surface of the core. The reflector consisted of hexagonal beryllium oxide blocks, similar to the moderator blocks, but with 0.5-in. holes."
+
+ORNL-1634 describes the moderator blocks and core design: "The core was a right cylinder, with its axis vertical, 32.8" in diameter and 35.6" in length and consisted of fuel tubes and hexagonal faced BeO blocks. These blocks were approximately 6" long and 3-3/4" across ... ". Note, ORNL-1634 is a report on the experiment consisting of a preliminary critical assembly for the ARE, however, exact dimensions of the beryllium oxide blocks are not given in the other reports, and these dimensions are consistent with the scale drawings in Figures \ref{fig1} and \ref{fig2}.
+
+Figure \ref{fig18} shows the machined and stacked beryllium oxide blocks.
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[page=28,width=1.0\textwidth,trim={4cm 4cm 2cm 4.5cm},clip]{\msrarchive/docs/ORNL-1294.pdf}}
+  \caption{ARE Beryllium Oxide Blocks \parencite[Figure 3]{ornl-1294}}
+  \label{fig18}
+\end{figure}
+
+ORNL-1535 page 17 describes "The annulus between the pressure shell and the outer periphery of the moderator can has an outside diameter of 48.57 in.; the gap width is 1/16 in.; and the path length through this annulus is 36.25 inches.
+
+In the reflector region, there are 79 tubes, one through each column of beryllium oxide blocks. Each of these has an inside diameter of 0.49 in., and is 36.25 in. long.
+
+The coolant is carried to and from the pressure shell by 2 1/2-in. schedule-40 pipe."
+
+Figure \ref{fig19} shows a detailed plan section of the core design
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[page=52,width=1.0\textwidth,trim={4cm 6.5cm 1.5cm 4cm},clip]{\msrarchive/docs/ORNL-1234.pdf}}
+  \caption{ARE Core Plan Section \parencite[Figure 10]{ornl-1234}}
+  \label{fig19}
+\end{figure}
+
+Figure \ref{fig20} shows a detailed elevation section of the core design
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[page=51,width=1.0\textwidth,trim={4cm 4.5cm 2.5cm 2cm},clip]{\msrarchive/docs/ORNL-1234.pdf}}
+  \caption{ARE Core Elevation Section \parencite[Figure 9]{ornl-1234}}
+  \label{fig20}
+\end{figure}
+
+Figure \ref{fig15} shows the core during assembly
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[page=27,width=1.0\textwidth,trim={3cm 3.5cm 3cm 2cm},clip]{\msrarchive/docs/ORNL-1868.pdf}}
+  \caption{ARE Core \parencite[Figure 13]{ornl-1868}}
+  \label{fig15}
+\end{figure}
+
+Figure \ref{fig17} shows a typical fuel and coolant tubes passing through the moderator blocks
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[page=16,width=1.0\textwidth,trim={5cm 5cm 5cm 4cm},clip]{\msrarchive/docs/ORNL-1634.pdf}}
+  \caption{Fuel \& Coolant Tubes \parencite[Figure 12]{ornl-1634}}
+  \label{fig17}
+\end{figure}
+
+Note, the photos in Figures \ref{fig18} and \ref{fig15} appear to show small spacing in between the moderator blocks. The spacing is not explicitly mentioned as a design parameter nor is it included in any sketches. Nevertheless, there is passing mention of it in the thermodynamic analysis on page 19 of ORNL-1535, "The NaK in the interstices of the moderator blocks in both the reactor core and reflector ... ", and again on page 4 of the operational report ORNL-1845: "The sodium then passed up through the reflector tubes, bathed the inside walls of the pressure shell, filled the moderator interstices ... " Figure \ref{fig16} shows a zoomed-in photo of the core assembly post-operation.
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[page=30,width=1.0\textwidth,trim={5cm 5cm 5cm 15cm},clip]{\msrarchive/docs/ORNL-1868.pdf}}
+  \caption{ARE Core (post-operation)\parencite[Figure 19]{ornl-1868}}
+  \label{fig16}
+\end{figure}
+
+On the left, it appears the top tube sheet has been partially removed to reveal the beryllium-oxide blocks. The hexagonal outlines of their previous shape (see Figure \ref{fig15}) are still visible, but the spacing is not. This is not discussed in the post-operative report, but a plausible explanation may be that, if the sodium was not drained from the core before disassembly, it would solidify as the core cooled, thereby filling in the moderator interstices and giving the appearance seen in Figure \ref{fig16}. However, this spacing is not currently considered in the CAD model. It is assumed that thermal expansion of the beryllium during operation would make this spacing sufficiently small so as to be negligible for the purposes of neutronics.
+
+The composition of the BeO moderator blocks is given in Table \ref{tab6}
+
+\begin{table}[H]
+  \centering
+  \fbox{\includegraphics[page=116,width=1.0\textwidth,trim={1cm 5cm 3cm 17.5cm},clip]{\msrarchive/docs/ORNL-1845.pdf}}
+  \caption{ARE BeO Composition \parencite[Appendix B.2.a]{ornl-1845}}
+  \label{tab6}
+\end{table}
+
+
+
+
+\section{\emph{Fuel \& Sodium System}}
+
+The foreword of ORNL-1535 states "The Aircraft Reactor Experiment utilizes circulating fluoride-fuel as the primary reactor coolant. It is necessary, however, to employ an additional coolant whose primary function is to cool the reflector and pressure shell." This was thus the purpose of the separate sodium circuit.
+
+Figure \ref{fig3} shows a schematic of the fuel and sodium circuits
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[page=14,width=1.0\textwidth,trim={2cm 5cm 3cm 16.5cm},clip]{\msrarchive/docs/ORNL-1845.pdf}}
+  \caption{fuel \& coolant system schematic \parencite[Figure 2.3]{ornl-1845}}
+  \label{fig3}
+\end{figure}
+
+Figure \ref{fig6} shows a plan view of the top of the reactor, including the fuel outlet manifold and sodium inlet
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[page=27,width=1.0\textwidth,trim={1cm 8cm 2cm 2cm},clip]{\msrarchive/docs/ORNL-1535.pdf}}
+  \caption{plan view, top of reactor \parencite[Figure 12]{ornl-1535}}
+  \label{fig6}
+\end{figure}
+
+Note, the component here labeled "FUEL OUTLET MANIFOLD" appears to actually be the fuel inlet manifold, which would be consistent with all other references to the part. This is likely just a typographical error.
+
+Figure \ref{fig7} shows a closer view of the arrangement of the core components with respect to fuel and sodium flow
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[page=32,width=1.0\textwidth,trim={11cm 7cm 1cm 9cm},clip]{\msrarchive/docs/ORNL-1535.pdf}}
+  \caption{close-up cross section \parencite[Figure 14]{ornl-1535}}
+  \label{fig7}
+\end{figure}
+
+\subsection{\emph{Fuel}}
+
+ORNL-1845 page 5 describes the fuel as "a mixture of the fluorides of sodium and zirconium, with sufficient uranium fluoride added to make the reactor critical. While the fuel ultimately employed for the experiment was the NaF-ZrF$_4$-UF$_4$ mixture with a composition of 53.09-40.73-6.18 mole \% respectively, most preliminary experimental work (i.e. pump tests, corrosion tests) employed a fuel containing somewhat more UF$_4$. The fuel was circulated around a closed loop from the pump to the reactor, to the heat exchanger, and back to the pump ... From the pump the fuel flowed to the reactor where it was heated, then to two parallel fuel-to-helium heat exchangers, and back to the pump."
+
+The composition of the fluoride fuel is given in \ref{tab4}. The uranium enrichment can be found in Table \ref{tab3}.
+
+\begin{table}[H]
+  \centering
+  \fbox{\includegraphics[page=116,width=1.0\textwidth,trim={1cm 16.25cm 3cm 2cm},clip]{\msrarchive/docs/ORNL-1845.pdf}}
+  \caption{ARE Critical Materials \parencite[Appendix B.2.a]{ornl-1845}}
+  \label{tab4}
+\end{table}
+
+ORNL-1535 describes "The fuel flows from the heat exchangers through the surge tanks and pumps into the inlet manifold of the reactor, where it is distributed into the six parallel passes through the core lattice. Upon leaving the core lattice, the fuel enters the outlet manifold. From the outlet manifold, the fuel is returned to the heat exchangers." Figure \ref{fig9} shows sketches of these inlet and outlet manifolds
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[page=42,width=0.5\textwidth,trim={12cm 3.5cm 1.5cm 6.5cm},clip]{\msrarchive/docs/ORNL-1535.pdf}}
+  \caption{fuel manifolds \parencite[Figure 20]{ornl-1535}}
+  \label{fig9}
+\end{figure}
+
+More detailed sketches of the fuel inlet and outlet manifolds are shown in Figures \ref{fig10} and \ref{fig11} respectively.
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[page=44,width=1.0\textwidth,trim={2cm 5cm 2cm 2cm},clip]{\msrarchive/docs/ORNL-1535.pdf}}
+  \caption{fuel inlet manifold \parencite[Figure 22]{ornl-1535}}
+  \label{fig10}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[page=43,width=1.0\textwidth,trim={4cm 4cm 4cm 2cm},clip]{\msrarchive/docs/ORNL-1535.pdf}}
+  \caption{fuel outlet manifold \parencite[Figure 21]{ornl-1535}}
+  \label{fig11}
+\end{figure}
+
+\subsection{\emph{Sodium}}
+
+ORNL-1845 page 8 describes the sodium system; "The sodium circuit external to the reactor ... was similar to that of the fuel. The sodium flowed from pump to reactor, to heat exchanger, to pump ... The sodium was circulated through the two parallel sodium-to-helium heat exchangers after being heated in the reactor. Again the heat was transferred via the helium to water in two helium-to-water heat exchangers." More detail on the coolant's path through the core is given on page 24 of ORNL-1535: "The coolant enters the pressure shell at the bottom, flows through the lattice, and leaves at the top. The flow through the core lattice is divided among the annulus between the outer periphery of the reflector and moderator can and the pressure shell, the tubes leading through the reflector blocks, and the annuli around the rod and instrument holes. To obtain this minimum flow, orifice plates were placed in the annuli." More detail is given on page 17: "Where the NaK enters at the bottom of the annuli ... there are orifice plates ... These orifice plates reduce the outside diameters of the annuli to 3.140 in.; the length of each orifice plate 1s 1.00 in.; and the length of the remainder of each annulus 1s 35.25 inches."
+
+Figure \ref{fig5} shows an elevation section of the core showing the core can, reflector coolant tubes, orifice plates and other relevant components.
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[page=25,width=1.0\textwidth,trim={2cm 4.5cm 2cm 2cm},clip]{\msrarchive/docs/ORNL-1535.pdf}}
+  \caption{core components \parencite[Figure 11]{ornl-1535}}
+  \label{fig5}
+\end{figure}
+
+\section{\emph{Control \& Regulating Rods}}
+
+ORNL-1535 page 64 describes "There are six vertical holes in the reactor of the ARE ... into which a regulating rod, three safety rods, and two fission chambers can be lowered, when required." On page 17 it is described that "All the annuli around the control rod and instrument holes have the same dimensions: the outside diameter, D$_0$, is 3.652 in. and the inside diameter, D$_i$, is 3.000 inches." Page 28 continues "In each hole there are three concentric tubes; NaK flows through the passage between the outer two tubes and removes the heat that would otherwise be transmitted to the hole from the reactor; the passage between the inner two tubes is packed with insulation; helium flows inside the inner tube and cools the rod or instrument and the inner tube wall ... The inside radius of the outer NaK-containing tube is 1.826 in. ... " Figure \ref{fig8} shows a cross section of a rod/instrumentation annulus
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[page=38,width=1.0\textwidth,trim={2.5cm 16.75cm 10cm 2cm},clip]{\msrarchive/docs/ORNL-1535.pdf}}
+  \caption{Control Rod Annulus Cross Section \parencite[Fig 17]{ornl-1535}}
+  \label{fig8}
+\end{figure}
+
+Note, sodium, in lieu of NaK, was used as the coolant in the experiment, because it could be more easily sealed at the pump shaft. It was previously assumed that the coolant would be NaK, hence the references above.
+
+Figure \ref{fig12} shows a schematic cross-section of the control rod and instrument sleeves.
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[page=71,width=1.0\textwidth,trim={10cm 4cm 3cm 12cm},clip]{\msrarchive/docs/ORNL-1535.pdf}}
+  \caption{Rod and Instrument Sleeve Schematic \parencite[Fig 42]{ornl-1535}}
+  \label{fig12}
+\end{figure}
+
+Design and dimensions of the regulating rod are shown in Figure \ref{fig13}
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[page=76,width=1.0\textwidth,trim={2cm 4cm 2cm 4cm},clip]{\msrarchive/docs/ORNL-1535.pdf}}
+  \caption{Regulating Rod \parencite[Fig 47]{ornl-1535}}
+  \label{fig13}
+\end{figure}
+
+Design and dimensions of a safety rod are shown in Figure \ref{fig14}
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[page=82,width=1.0\textwidth,trim={3cm 19.5cm 2cm 2cm},clip]{\msrarchive/docs/ORNL-1535.pdf}}
+  \caption{Safety Rod \parencite[Fig 56]{ornl-1535}}
+  \label{fig14}
+\end{figure}
+
+\printbibliography
+
+\end{document}

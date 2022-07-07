@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
-import openmc
 from materials import *
+import sys
+import openmc
 
 ###############################################################################
 #k eigenvalue simulation on ARE (all safety rods fully inserted)
