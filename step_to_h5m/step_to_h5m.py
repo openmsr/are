@@ -1,32 +1,24 @@
 ###############################################################################
 # Converting step files to h5m file to be read by openmc
-
-# This script uses the following cad_to_h5m version
-# https://github.com/openmsr/cad_to_h5m/tree/material_tag
 ###############################################################################
 
 from cad_to_h5m import *
 import numpy as np
 import os
+from sys import path
 
 ###############################################################################
 #inputs
 
-h5m_out_filepath = os.getcwd()  + '/h5m_files/ARE.h5m'
-local_cubit_path = "/opt/Coreform-Cubit-2021.11/bin/"
+# get assembly module
+path_to_assembly = os.getcwd() + '/../step_to_h5m/src/h5massembly'
+path.append(path_to_assembly)
+import assembly as ab
 
-#scaling from up to cm & thermal expansion
-expansion_coefficient = 15.8e-6
-operating_temperature = 977
-scale = 100.*(1.0 + expansion_coefficient*(operating_temperature-293))
-###############################################################################
+h5m_out_filepath = os.getcwd() + '/h5m_files/ARE.h5m'
 
-cad_to_h5m(h5m_filename= h5m_out_filepath,
-            cubit_path=local_cubit_path,
-            files_with_tags=[{"cad_filename": "step_files/are.step",
-                             "transforms":{'scale':scale}},
-                            ],
-                        faceting_tolerance = 1e-3,
-                        implicit_complement_material_tag = "helium",
-                        graveyard = 1000
-                        )
+a=ab.Assembly()
+a.stp_files=[os.getcwd()+"/step_files/ARE.step"]
+a.import_stp_files()
+a.export_brep('ARE.brep')
+a.brep_to_h5m(brep_filename='ARE.brep',h5m_filename='ARE.h5m',min_mesh_size=0.1, max_mesh_size=10, samples=20)
