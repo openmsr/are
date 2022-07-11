@@ -17,10 +17,10 @@ h5m_out_filepath = os.getcwd() + '/h5m_files/ARE.h5m'
 
 a=ab.Assembly()
 a.stp_files=[os.getcwd()+"/step_files/ARE.step"]
+a.verbose=2
 a.import_stp_files()
 a.export_brep('ARE.brep')
 a.brep_to_h5m(brep_filename='ARE.brep',
               h5m_filename='ARE.h5m',
               backend='stl',
-              threads=25,
-              verbose = 2)
+              threads=25)
