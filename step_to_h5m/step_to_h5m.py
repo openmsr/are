@@ -19,4 +19,9 @@ a=ab.Assembly()
 a.stp_files=[os.getcwd()+"/step_files/ARE.step"]
 a.import_stp_files()
 a.export_brep('ARE.brep')
-a.brep_to_h5m(brep_filename='ARE.brep',h5m_filename='ARE.h5m',min_mesh_size=0.1, max_mesh_size=10, samples=20)
+a.brep_to_h5m(brep_filename='ARE.brep',
+              h5m_filename='ARE.h5m',
+              min_mesh_size=0.01,
+              max_mesh_size=10,
+              samples=20,
+              threads=55)
