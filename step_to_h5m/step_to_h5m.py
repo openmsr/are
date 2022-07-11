@@ -20,5 +20,4 @@ a.stp_files=[os.getcwd()+"/step_files/ARE.step"]
 a.import_stp_files()
 a.export_brep('ARE.brep')
 a.brep_to_h5m(brep_filename='ARE.brep',
-              h5m_filename='ARE.h5m',
-              threads=55)
+              h5m_filename='ARE.h5m')
