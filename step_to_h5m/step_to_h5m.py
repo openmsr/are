@@ -22,4 +22,5 @@ a.export_brep('ARE.brep')
 a.brep_to_h5m(brep_filename='ARE.brep',
               h5m_filename='ARE.h5m',
               backend='stl',
-              threads=25)
+              threads=25,
+              verbose = 2)
