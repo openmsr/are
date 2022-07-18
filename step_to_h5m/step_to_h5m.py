@@ -18,7 +18,7 @@ h5m_out_filepath = os.getcwd() + '/h5m_files/ARE.h5m'
 ab.mesher_config['min_mesh_size'] = 0.2
 ab.mesher_config['curve_samples'] = 1000
 ab.mesher_config['threads'] = 50
-ab.mesher_config['mesh_algorithm'] = 54
+ab.mesher_config['mesh_algorithm'] = 6
 ab.mesher_config['vetoed'] = [1157]
 #ab.mesher_config['angular_tolerance'] = 0.09
 
