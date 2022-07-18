@@ -7,7 +7,7 @@ import openmc
 #k eigenvalue simulation on ARE (all safety rods fully inserted)
 ###############################################################################
 
-h5m_filepath = 'h5m_files/ARE.h5m'
+h5m_filepath = 'h5m_files/ARE_2.h5m'
 
 #geometry
 graveyard=openmc.Sphere(r=10000,boundary_type='vacuum')
