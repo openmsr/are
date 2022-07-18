@@ -11,7 +11,7 @@ import CAD_to_OpenMC.assembly as ab
 ###############################################################################
 
 # inputs
-step_filepath = "./step_files/ARE_2.step"
+step_filepath = "./step_files/ARE.step"
 h5m_out_filepath = os.getcwd() + '/h5m_files/ARE.h5m'
 
 # mesher config
