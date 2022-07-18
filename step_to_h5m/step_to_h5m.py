@@ -19,7 +19,7 @@ ab.mesher_config['min_mesh_size'] = 0.2
 ab.mesher_config['curve_samples'] = 1000
 ab.mesher_config['threads'] = 50
 ab.mesher_config['mesh_algorithm'] = 6
-ab.mesher_config['vetoed'] = [1341]
+ab.mesher_config['vetoed'] = [1157,1341]
 #ab.mesher_config['angular_tolerance'] = 0.09
 
 #ab.mesher_config['tolerance'] = 0.001
@@ -29,4 +29,4 @@ a=ab.Assembly()
 a.verbose=10
 a.stp_files=[step_filepath]
 a.import_stp_files()
-a.solids_to_h5m(backend='gmsh',h5m_filename=h5m_out_filepath)
+a.solids_to_h5m(backend='gmsh',h5m_filename=h5m_out_filepath,heal=False)
