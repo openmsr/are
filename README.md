@@ -10,7 +10,7 @@ detailed cad model and simulations of the [are](https://en.wikipedia.org/wiki/Ai
 
 [docs/are.pdf](docs/are.pdf) lists reference of the are core design, documented in the ornl reports and located in the repository [github.com/openmsr/msr-archive](https://github.com/openmsr/msr-archive/blob/master/README.md)
 
-work-in-progress cad model of the are can be found [here](https://cad.onshape.com/documents/b83e5f739a4507bf06f2a2a9/w/af0646dbcb283e3faad3d41c/e/36d3d4af112bbf8cad7d521b?renderMode=0&uiState=62d51f284c1a0504f918cfd2) on onshape.
+work-in-progress cad model of the are can be found [here](https://cad.onshape.com/documents/b83e5f739a4507bf06f2a2a9/w/9511a6ac44a9e4d439d86976/e/36d3d4af112bbf8cad7d521b?renderMode=0&uiState=62d907b3549a2247567bee8c) on onshape.
 
 note that this work and the cad model is under the GNU General Public License v3.0
 
