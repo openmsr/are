@@ -3,8 +3,7 @@
 set -ex
 
 PS3='ARE simulations: '
-options=("k eigenvalue" "geometry plot" "neutron flux" "photon flux"
-          "gamma spectra" "rod worth" "stochastic volume calculations" "quit")
+options=("k eigenvalue" "geometry plot" "neutron flux" "photon flux" "quit")
 select opt in "${options[@]}"
 do
     case $opt in
@@ -23,18 +22,6 @@ do
         "photon flux")
             echo "generating photon flux plot..." &&
             bash ./scripts/pf.sh
-            ;;
-        "gamma spectra")
-            echo "generating gamma spectra..." &&
-            bash ./scripts/gs.sh
-            ;;
-        "rod worth")
-            echo "generating rod worth plot..." &&
-            bash ./scripts/rw.sh
-            ;;
-        "stochastic volume calculations")
-            echo "stochastic volume calculations..." &&
-            bash ./scripts/svc.sh
             ;;
         "quit")
             break
