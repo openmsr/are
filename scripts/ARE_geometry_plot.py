@@ -1,4 +1,6 @@
 import matplotlib
+import sys
+sys.path.append('/opt/openmc/')
 import openmc
 from materials import *
 
@@ -6,7 +8,7 @@ from materials import *
 #generate geometry plot of are (all safety rods fully inserted)
 ###############################################################################
 
-h5m_filepath = './h5m_files/slice1.h5m'
+h5m_filepath = './h5m_files/ARE.h5m'
 
 # materials
 mats = openmc.Materials([salt,BeO,inconel,insulation,coolant,helium,stainless,boron])

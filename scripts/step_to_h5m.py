@@ -3,6 +3,8 @@
 ###############################################################################
 import numpy as np
 import os
+import sys
+sys.path.append('../CAD_to_openMC/src/')
 import CAD_to_OpenMC.assembly as ab
 ###############################################################################
 
