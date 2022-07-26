@@ -27,7 +27,7 @@ y_width = 300
 #xy plot
 p1 = openmc.Plot()
 p1.width = (x_width,y_width)
-p1.pixels = (1000, 1000)
+p1.pixels = (2000, 2000)
 p1.color_by = 'material'
 
 #xz plot (split plane)
@@ -35,13 +35,13 @@ p2 = openmc.Plot()
 p2.basis = 'xz'
 #p2.origin = (0,5,0)
 p2.width = (x_width,y_width)
-p2.pixels = (1000, 1000)
+p2.pixels = (2000, 2000)
 p2.color_by = 'material'
 
 p3 = openmc.Plot()
 p3.basis = 'yz'
 p3.width = (x_width,y_width)
-p3.pixels = (1000, 1000)
+p3.pixels = (2000, 2000)
 p3.color_by = 'material'
 
 plots.append(p1)

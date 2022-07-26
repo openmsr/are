@@ -25,12 +25,14 @@ mats.export_to_xml()
 
 settings = openmc.Settings()
 settings.temperature = {'method':'interpolation'}
-settings.batches = 100
-settings.inactive = 10
-settings.particles = 10000
+settings.batches = 10
+settings.inactive = 1
+settings.particles = 100
 settings.max_lost_particles = 1000
 source_area = openmc.stats.Box([-200., -200., -200.],[ 200.,  200.,  200.],only_fissionable = True)
 settings.source = openmc.Source(space=source_area)
+settings.track=[[10,1,55]]
+settings.cross_sections='/home/luke/openmc/nuclear_data/endfb71_hdf5/cross_sections.xml'
 settings.export_to_xml()
 
 #dag_univ = openmc.DAGMCUniverse(h5m_filepath)
