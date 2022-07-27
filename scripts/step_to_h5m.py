@@ -13,7 +13,7 @@ step_filepath = "./step_files/ARE.step"
 h5m_out_filepath = os.getcwd() + '/h5m_files/ARE.h5m'
 
 # mesher config
-ab.mesher_config['min_mesh_size'] = 0.2
+ab.mesher_config['min_mesh_size'] = 0.001
 ab.mesher_config['mesh_algorithm'] = 2
 #ab.mesher_config['threads'] = 6
 #ab.mesher_config['max_mesh_size'] = 1000
