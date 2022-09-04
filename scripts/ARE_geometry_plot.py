@@ -21,8 +21,8 @@ geom.export_to_xml()
 #plotting geometry
 plots = openmc.Plots()
 
-x_width = 300
-y_width = 300
+x_width = 350
+y_width = 350
 
 #xy plot
 p1 = openmc.Plot()
