@@ -1,9 +1,11 @@
 from materials import *
 import openmc
 
-def build_model(fuel_comp,h5m_filepath):
+def build_model(fuel_comp,h5m_filepath,nuclear_data=None):
 
     mats = openmc.Materials([fuel_comp,BeO,inconel,insulation,coolant,helium,stainless,boron])
+    if nuclear_data:
+        mats.cross_sections = nuclear_data
     mats.export_to_xml()
 
     settings = openmc.Settings()

@@ -12,8 +12,8 @@ import os
 
 ###############################################################################
 #inputs
-step_filepath = os.getcwd()  + '/step_files/are_no_control_rods.step'
-h5m_out_filepath = os.getcwd()  + '/h5m_files/ARE_no_control_rods.h5m'
+step_filepath = os.getcwd()  + '/step_files/are_rods_20.step'
+h5m_out_filepath = os.getcwd()  + '/h5m_files/ARE_rods_20.h5m'
 local_cubit_path = "/opt/Coreform-Cubit-2021.11/bin/"
 
 #scaling from up to cm & thermal expansion
