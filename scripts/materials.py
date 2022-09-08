@@ -85,6 +85,7 @@ stainless.add_element('Si',0.75,percent_type='wo')
 stainless.add_element('Cr',18.00,percent_type='wo')
 stainless.add_element('Ni',8.0,percent_type='wo')
 stainless.add_element('N',0.1,percent_type='wo')
+stainless.add_element('Fe',39.045,percent_type='wo')
 stainless.set_density('g/cm3',8.5)
 
 #absorber
