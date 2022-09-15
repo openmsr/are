@@ -17,7 +17,7 @@ k_effs = []
 
 # writes k_eff & stdev separated by a space on each line of the output file
 for t in temps:
-    model = build_model(f,h5m_filepath,nuclear_data_path,t)
+    model = build_model(h5m_filepath,operating_temp=t)
     sp_filepath = model.run(output = True)
 
     with openmc.StatePoint(sp_filepath) as sp:
