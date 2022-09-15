@@ -1,13 +1,17 @@
-from materials import *
+from initialize_materials import create_materials
 import openmc
 
-def build_model(fuel_comp,h5m_filepath,nuclear_data=None):
+def build_model(fuel=None,h5m_filepath,nuclear_data=None,operating_temp=977.59):
 
-    mats = openmc.Materials([fuel_comp,BeO,inconel,insulation,coolant,helium,stainless,boron])
+    mats = create_materials(operating_temp)
+    if fuel:
+        mats = [m for m in mats if m.name != 'salt']
+        mats.append(fuel)
+    mats_openmc = openmc.Materials(mats)
     if nuclear_data:
-        mats.cross_sections = nuclear_data
-    mats.export_to_xml()
+        mats_openmc.cross_sections = nuclear_data
 
+    mats_openmc.export_to_xml()
     settings = openmc.Settings()
     settings.temperature = {'method':'interpolation'}
     settings.batches = 100
