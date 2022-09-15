@@ -1,5 +1,4 @@
 import os
-from fuel_salts import *
 from build_model import build_model
 
 ###############################################################################

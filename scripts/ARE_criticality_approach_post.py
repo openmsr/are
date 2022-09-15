@@ -1,6 +1,4 @@
-import os
-from fuel_salts import *
-from build_model import build_model
+import matplotlib.pyplot as plt
 
 ###############################################################################
 # ARE criticality approach experiment
@@ -9,7 +7,7 @@ from build_model import build_model
 # inputs
 filename = 'k_effs.txt'
 k_experimental = [0,0.645,0.8010,0.891,0.936,0.962,0.979,0.985,0.989,0.994,0.998,1.00]
-runs = [i for in in range(1,13)]
+runs = [i for i in range(1,13)]
 
 k_simulated = [0]
 stdev_simulated = [0]
@@ -25,10 +23,10 @@ k_file.close()
 # generate plots
 fig, ax = plt.subplots()
 ax.plot(runs,k_experimental,label = 'experimental',linestyle='--',marker='x')
-ax_m.errorbar(runs,k_simulated, yerr=stdev_simulated,label = 'simulated',linestyle='--',marker='o')
-ax_m.set_xlabel('run no.')
-ax_m.set_ylabel('k')
-ax_m.set_title('ARE criticality approach')
-ax_m.legend()
+ax.errorbar(runs,k_simulated, yerr=stdev_simulated,label = 'simulated',linestyle='--',marker='o')
+ax.set_xlabel('run no.')
+ax.set_ylabel('k')
+ax.set_title('ARE criticality approach')
+ax.legend()
 
 plt.show()
