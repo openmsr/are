@@ -3,7 +3,7 @@ sys.path.append('/opt/openmc/')
 import openmc
 
 
-def create_materials(operating_temp)
+def create_materials(operating_temp):
     #ARE material definitions
 
     #fuel salt NaF-ZrF4-UF4 0.5309-0.4073-0.0618 %mol
