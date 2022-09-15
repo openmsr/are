@@ -1,12 +1,15 @@
 import matplotlib.pyplot as plt
 from materials import *
 import openmc
+import os
 
 ###############################################################################
 #k eigenvalue simulation on ARE (all safety rods fully inserted)
 ###############################################################################
 
-h5m_filepath = 'h5m_files/ARE.h5m'
+h5m_filepath = os.getcwd() + '/h5m_files/ARE_no_control_rods.h5m'
+print(os.getcwd())
+print(h5m_filepath)
 
 #geometry
 graveyard=openmc.Sphere(r=10000,boundary_type='vacuum')
