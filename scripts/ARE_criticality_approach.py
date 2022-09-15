@@ -18,7 +18,7 @@ runs = [i for i in range(1,13)]
 # writes k_eff & stdev separated by a space on each line of the output file
 k_file = open(output_filename,'w+')
 for f in fuel_comps:
-    model = build_model(f,h5m_filepath,nuclear_data_path)
+    model = build_model(h5m_filepath,f,nuclear_data_path)
     sp_filepath = model.run(output = True)
 
     with openmc.StatePoint(sp_filepath) as sp:

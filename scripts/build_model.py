@@ -1,7 +1,7 @@
 from initialize_materials import create_materials
 import openmc
 
-def build_model(fuel=None,h5m_filepath,nuclear_data=None,operating_temp=977.59):
+def build_model(h5m_filepath,fuel=None,nuclear_data=None,operating_temp=977.59):
 
     mats = create_materials(operating_temp)
     if fuel:
