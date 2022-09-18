@@ -1,5 +1,6 @@
 import os
 from build_model import build_model
+import openmc
 
 ###############################################################################
 # crude temperature reactivity coefficient estimate
