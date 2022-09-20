@@ -7,7 +7,7 @@ import os
 #k eigenvalue simulation on ARE (all safety rods fully inserted)
 ###############################################################################
 
-h5m_filepath = os.getcwd() + '/h5m_files/ARE_no_control_rods.h5m'
+h5m_filepath = os.getcwd() + '/h5m_files/ARE_rods_20.h5m'
 print(os.getcwd())
 print(h5m_filepath)
 
