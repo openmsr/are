@@ -1,6 +1,7 @@
 import os
 from build_model import build_model
 import openmc
+import statistics as stats
 
 ###############################################################################
 # crude temperature reactivity coefficient estimate
@@ -27,4 +28,8 @@ for t in temps:
         results.write(f"{k_eff.nominal_value}\n")
 
 coeffs = [(k_effs[i]-k_effs[i-1])/k_effs[i] for i in range(1,len(k_effs))]
-results.write(f'temperature coefficient of reactivity estimate: {mean(coeffs)}')
+for c in coeffs:
+    results.write(f"{c}\n")
+results.write(f'temperature coefficient of reactivity estimate: {stats.mean(coeffs)}\n')
+results.write(f'temperature coefficient of reactivity estimate: {stats.stdev(coeffs)}')
+results.close()
