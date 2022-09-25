@@ -2,10 +2,10 @@
 
 set -ex
 
-if test -f "./h5m_files/ARE.h5m"
+if test -f "./h5m_files/ARE_rods_35.h5m"
 then
   python ./scripts/ARE.py
 else
-  python ./scripts/step_to_h5m.py &&
+  python ./scripts/step_to_h5m.py ./step_files/ARE_rods_35.step
   python ./scripts/ARE.py
 fi
