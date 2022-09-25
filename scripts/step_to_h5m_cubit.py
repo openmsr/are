@@ -11,7 +11,7 @@ import os
 import sys
 ###############################################################################
 #inputs
-step_filepath = sys.argv[1]
+step_filepath = os.getcwd() + sys.argv[1]
 h5m_out_filepath = step_filepath.split('.')[0] + '.h5m'
 local_cubit_path = "/opt/Coreform-Cubit-2021.11/bin/"
 
