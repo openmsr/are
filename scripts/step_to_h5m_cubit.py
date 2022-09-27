@@ -12,7 +12,7 @@ import sys
 ###############################################################################
 #inputs
 step_filepath = os.getcwd() + sys.argv[1]
-h5m_out_filepath = step_filepath.split('.')[0] + '.h5m'
+h5m_out_filepath = os.getcwd()  + '/h5m_files' + sys.argv[1][11:].split('.')[0] + '.h5m'
 local_cubit_path = "/opt/Coreform-Cubit-2021.11/bin/"
 
 #scaling from up to cm & thermal expansion
