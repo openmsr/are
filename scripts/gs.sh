@@ -2,8 +2,8 @@
 
 set -ex
 
-# remove remnants of other simulations
-rm *.xml
+# remove tallies xml so it doesn't interfere
+rm -f tallies.xml
 
 if test -f "./h5m_files/ARE_gamma.h5m"; then
   python ./scripts/ARE_gamma_spectra.py
