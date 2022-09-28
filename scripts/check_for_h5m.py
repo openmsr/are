@@ -9,6 +9,6 @@ h5m_files = os.listdir(os.getcwd()+'/h5m_files')
 
 for f in required:
     if f not in h5m_files:
-        run = "python step_to_h5m_cubit.py " + f.split('.')[0] + '.step'
+        run = "python scripts/step_to_h5m_cubit.py /step_files/" + f.split('.')[0] + '.step'
         process = subprocess.Popen(run.split(), stdout=subprocess.PIPE)
         output, error = process.communicate()
