@@ -25,7 +25,7 @@ BeO.add_element('O',1.0)
 BeO.set_density('g/cm3',2.75)
 
 #inconel
-trace = 0.01
+trace = 0.03729
 inconel = openmc.Material(name='inconel',temperature = operating_temp)
 inconel.add_element('Ni',78.5,percent_type='wo')
 inconel.add_element('Cr',14.0,percent_type='wo')
