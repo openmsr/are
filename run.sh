@@ -34,12 +34,7 @@ do
             ;;
         "all")
             echo "running all..." &&
-            bash ./scripts/k.sh &&
-            bash ./scripts/gp.sh &&
-            bash ./scripts/nf.sh &&
-            bash ./scripts/pf.sh &&
-            bash ./scripts/ca.sh &&
-            bash ./scripts/src.sh 
+            bash ./scripts/all.sh
             ;;
         "quit")
             break
