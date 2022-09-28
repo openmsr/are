@@ -35,3 +35,25 @@ enter the are folder and run the `run.sh` script
 cd are
 bash run.sh
 ```
+
+### results 
+
+#### geometry plot 
+
+![](results/geometry_plot.png)
+
+#### neutron flux
+
+![](results/neutron_flux.png)
+
+#### photon flux
+
+![](results/photon_flux.png)
+
+#### criticality approach
+
+![](results/criticality_approach.png)
+
+#### shim rod calibration
+
+![](results/shim_rod_calibration.png)
