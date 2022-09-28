@@ -5,15 +5,15 @@
 # This script uses the following cad_to_h5m version
 # https://github.com/openmsr/cad_to_h5m/tree/material_tag
 ###############################################################################
-
 from cad_to_h5m import *
 import numpy as np
 import os
-
+import sys
 ###############################################################################
 #inputs
-step_filepath = os.getcwd()  + '/step_files/are_rods_35.step'
-h5m_out_filepath = os.getcwd()  + '/h5m_files/ARE_rods_35.h5m'
+step_filepath = os.getcwd() + sys.argv[1]
+step_file = step_filepath.split('step_files/')[-1]
+h5m_out_filepath = os.getcwd()  + '/h5m_files/' + step_file.split('.')[0] + '.h5m'
 local_cubit_path = "/opt/Coreform-Cubit-2021.11/bin/"
 
 #scaling from up to cm & thermal expansion

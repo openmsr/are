@@ -13,7 +13,7 @@ k_simulated = [0]
 stdev_simulated = [0]
 
 #plot from .txt file
-k_file = open('k_effs.txt', 'r')
+k_file = open(filename, 'r')
 for k in k_file.readlines():
     k_eff, std = k.split()
     k_simulated.append(float(k_eff))
