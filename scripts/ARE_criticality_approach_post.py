@@ -29,4 +29,4 @@ ax.set_ylabel('k')
 ax.set_title('ARE criticality approach')
 ax.legend()
 
-plt.show()
+plt.savefig('criticality_approach.png')

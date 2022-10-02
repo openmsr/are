@@ -12,11 +12,10 @@ operating_temp = 977.59
 #fuel salt NaF-ZrF4-UF4 0.5309-0.4073-0.0618 %mol
 salt = openmc.Material(name='salt', temperature = operating_temp)
 salt.set_density('g/cm3',3.3142201)
-salt.add_element('F',0.5309*1/2+0.4073*4/5+0.0618*4/5)
-salt.add_element('Na',0.5309*1/2+0.4073*0/5+0.0618*0/5)
-salt.add_element('Zr',0.5309*0/2+0.4073*1/5+0.0618*0/5)
-salt.add_nuclide('U235',0.5309*0/2+0.4073*0/5+0.0618*0.9340*1/5)
-salt.add_nuclide('U238',0.5309*0/2+0.4073*0/5+0.0618*0.066*1/5)
+salt.add_element('Na',7.13,percent_type='wo')
+salt.add_element('Zr',39.75,percent_type='wo')
+salt.add_element('F',41.55,percent_type='wo')
+salt.add_nuclide('U235',11.57,percent_type='wo')
 
 #moderator blocks
 BeO = openmc.Material(name='BeO',temperature = operating_temp)
@@ -25,7 +24,7 @@ BeO.add_element('O',1.0)
 BeO.set_density('g/cm3',2.75)
 
 #inconel
-trace = 0.051
+trace = 0.0925
 inconel = openmc.Material(name='inconel',temperature = operating_temp)
 inconel.add_element('Ni',78.5,percent_type='wo')
 inconel.add_element('Cr',14.0,percent_type='wo')
