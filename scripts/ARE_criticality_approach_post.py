@@ -20,8 +20,6 @@ for k in k_file.readlines():
     stdev_simulated.append(float(std))
 k_file.close()
 
-print(len(k_experimental))
-print(len(k_simulated))
 # generate plots
 fig, ax = plt.subplots()
 ax.plot(runs,k_experimental,label = 'experimental',linestyle='--',marker='x')
