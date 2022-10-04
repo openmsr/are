@@ -19,11 +19,27 @@ def create_materials(operating_temp):
     BeO = openmc.Material(name='BeO',temperature = operating_temp)
     BeO.add_element('Be',1.0)
     BeO.add_element('O',1.0)
-    BeO.set_density('g/cm3',2.75)
+    BeO.set_density('g/cm3',2.75*0.968266752)
 
     #inconel
-    trace = 0.0925
     inconel = openmc.Material(name='inconel',temperature = operating_temp)
+
+    # random one from google
+    #inconel.add_element('Ni',52.50,percent_type='wo')
+    #inconel.add_element('Cr',19.00,percent_type='wo')
+    #inconel.add_element('Nb',5.125,percent_type='wo')
+    #inconel.add_element('Mo',3.05,percent_type='wo')
+    #nconel.add_element('Al',0.5,percent_type='wo')
+    #inconel.add_element('Ti',0.9,percent_type='wo')
+    #inconel.add_element('Mn',0.35,percent_type='wo')
+    #inconel.add_element('Si',0.35,percent_type='wo')
+    #inconel.add_element('B',0.006,percent_type='wo')
+    #inconel.add_element('C',0.08,percent_type='wo')
+    #inconel.add_element('S',0.15,percent_type='wo')
+    #inconel.add_element('Fe',17.839,percent_type='wo')
+
+    # from ORNL-1845
+    #trace = 0.0925
     inconel.add_element('Ni',78.5,percent_type='wo')
     inconel.add_element('Cr',14.0,percent_type='wo')
     inconel.add_element('Fe',6.5,percent_type='wo')
@@ -37,17 +53,17 @@ def create_materials(operating_temp):
     inconel.add_element('W',0.5,percent_type='wo')
     inconel.add_element('Zn',0.2,percent_type='wo')
     inconel.add_element('Zr',0.1,percent_type='wo')
-    inconel.add_element('C',trace,percent_type='wo')
-    inconel.add_element('Mo',trace,percent_type='wo')
-    inconel.add_element('Ag',trace,percent_type='wo')
-    inconel.add_element('B',trace,percent_type='wo')
-    inconel.add_element('Ba',trace,percent_type='wo')
-    inconel.add_element('Be',trace,percent_type='wo')
-    inconel.add_element('Ca',trace,percent_type='wo')
-    inconel.add_element('Cd',trace,percent_type='wo')
-    inconel.add_element('V',trace,percent_type='wo')
-    inconel.add_element('Sn',trace,percent_type='wo')
-    inconel.add_element('Mg',trace,percent_type='wo')
+    #inconel.add_element('C',trace,percent_type='wo')
+    #inconel.add_element('Mo',trace,percent_type='wo')
+    #inconel.add_element('Ag',trace,percent_type='wo')
+    #inconel.add_element('B',trace,percent_type='wo')
+    #inconel.add_element('Ba',trace,percent_type='wo')
+    #inconel.add_element('Be',trace,percent_type='wo')
+    #inconel.add_element('Ca',trace,percent_type='wo')
+    #inconel.add_element('Cd',trace,percent_type='wo')
+    #inconel.add_element('V',trace,percent_type='wo')
+    #inconel.add_element('Sn',trace,percent_type='wo')
+    #inconel.add_element('Mg',trace,percent_type='wo')
     inconel.set_density('g/cm3',8.5)
 
     #insulation
