@@ -1,6 +1,6 @@
 # criticality approach
 
-the approch to criticality was a phase of the critical experiment (E-1) detailed in [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf). a description, detailed timeline, and all recorded data for the critical experiment can be found on pages 23-39. the critical experiment also included the calibration of the shim rods, the simulation results of which can be found in [here](./shim_rod_calibration.md). during the approach to criticality, successive additions of the fuel concentrate Na$_2$-UF$_6$ (66.7-33.3 mol%) were added to the NaF-ZrF$_4$ (50-50 mol%) carrier until criticality was reached.
+the approch to criticality was a phase of the critical experiment (E-1) detailed in [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf). a description, detailed timeline, and all recorded data for the critical experiment can be found on pages 23-39. the critical experiment also included the calibration of the shim rods, the simulation results of which can be found in [here](./shim_rod_calibration.md). during the approach to criticality, successive additions of the fuel concentrate $Na_2$-$UF_6$ (66.7-33.3 mol%) were added to the $NaF-ZrF_4$ (50-50 mol%) carrier until criticality was reached.
 
 ## data
 
@@ -16,7 +16,7 @@ reactivity was measured for 12 different fuel compositions using two fission cha
 
 ![](figures/ca.png)
 
-the weight percentages for each run detailed below were derived from the above tables in conjunction with the carrier and concentrate compositions 
+the weight percentages for each run detailed below were derived from the above tables in conjunction with the carrier and concentrate compositions. calculations are detailed [here](https://docs.google.com/spreadsheets/d/1RVwap77GXaVlIsbrXgNQTB-KTa4BvGLSgHnxRFQPmuA/edit?usp=sharing)
 
 | run | Na (wt %) | F (wt %) | Zr (wt %) | U235 (wt %) | U238 (wt %) |
 |-----|-----------|----------|-----------|-------------|-------------|
