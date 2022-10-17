@@ -19,7 +19,7 @@ local_cubit_path = "/opt/Coreform-Cubit-2021.11/bin/"
 #scaling from up to cm & thermal expansion
 expansion_coefficient = 15.8e-6
 operating_temperature = 977
-scale = 100.*(1.0 + expansion_coefficient*(operating_temperature-293))
+scale = 100.*(1.0 + expansion_coefficient*(operating_temperature))
 ###############################################################################
 
 cad_to_h5m(h5m_filename= h5m_out_filepath,

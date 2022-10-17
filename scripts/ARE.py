@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from materials import *
+from initialize_materials import create_materials
 import openmc
 import os
 
@@ -8,7 +8,7 @@ import os
 ###############################################################################
 
 h5m_filepath = os.getcwd() + '/h5m_files/ARE_rods_35.h5m'
-
+operating_temperature = 977
 
 #geometry
 graveyard=openmc.Sphere(r=10000,boundary_type='vacuum')
@@ -22,7 +22,7 @@ root.add_cells([cad_cell])
 geometry = openmc.Geometry(root)
 geometry.export_to_xml()
 
-mats = openmc.Materials([salt,BeO,inconel,insulation,coolant,helium,stainless,boron])
+mats = openmc.Materials(create_materials(operating_temperature))
 mats.export_to_xml()
 
 settings = openmc.Settings()

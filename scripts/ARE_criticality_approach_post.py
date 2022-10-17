@@ -9,8 +9,8 @@ filename = 'k_effs.txt'
 k_experimental = [0,0.645,0.8010,0.891,0.936,0.962,0.979,0.985,0.989,0.994,0.998,1.00]
 runs = [i for i in range(1,13)]
 
-k_simulated = []
-stdev_simulated = []
+k_simulated = [0]
+stdev_simulated = [0]
 
 #plot from .txt file
 k_file = open(filename, 'r')
