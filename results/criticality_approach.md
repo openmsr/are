@@ -16,7 +16,7 @@ reactivity was measured for 12 different fuel compositions using two fission cha
 
 ![](figures/ca.png)
 
-the weight percentages for each run detailed below were derived from the above tables in conjunction with the carrier and concentrate compositions. calculations are detailed [here](https://docs.google.com/spreadsheets/d/1RVwap77GXaVlIsbrXgNQTB-KTa4BvGLSgHnxRFQPmuA/edit?usp=sharing)
+the weight percentages for each run detailed below were derived from the above tables in conjunction with the carrier and concentrate compositions.
 
 | run | Na (wt %) | F (wt %) | Zr (wt %) | U235 (wt %) | U238 (wt %) |
 |-----|-----------|----------|-----------|-------------|-------------|
@@ -33,3 +33,4 @@ the weight percentages for each run detailed below were derived from the above t
 | 11  |   10.09   |   41.68  |   34.82   |   12.52     |    0.90     |
 | 12  |   10.06   |   41.55  |   34.52   |   12.95     |    0.93     |
 
+calculations for the above values are detailed [here](https://docs.google.com/spreadsheets/d/1RVwap77GXaVlIsbrXgNQTB-KTa4BvGLSgHnxRFQPmuA/edit?usp=sharing). note, the calculated U235 wt% shown above is calculated using the amount of fuel concentrate added (in lbs), along with the composition of the conentrate (Na<sub>2</sub>-UF<sub>6</sub> (66.7-33.3 mol%), and the composition of the circulating fuel when it is added. the calculated values vary from the recorded values in the final column of table 4.4 of ORNL-1845 (above). It appear that these recorded values were calculated by dividing the values in the "Weight Added (lb)" column for U<sub>235</sub> by the values in the "Total Weight Concentrate Plus Carrier (lb)" column. 
