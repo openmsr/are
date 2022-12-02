@@ -25,7 +25,8 @@ fuel_comps = []
 for i in range(len(na_wp)):
     s = make_fuel(na=na_wp[i],
                   zr=zr_wp[i],
-                  f=f_wp[i],u=u_wp[i],
+                  f=f_wp[i],
+                  u=u_wp[i],
                   temp=operating_temp,
                   density=density_are,
                   enriched=93.4)
