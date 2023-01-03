@@ -32,7 +32,6 @@ def create_materials(operating_temp):
     BeO.add_element('Li',0.0003,percent_type='wo')
     BeO.add_element('Ag',0.0009,percent_type='wo')
 
-
     #BeO.add_element('Be',1.0)
     #BeO.add_element('O',1.0)
     BeO.set_density('g/cm3',2.75*0.968266752)
@@ -54,6 +53,19 @@ def create_materials(operating_temp):
     #inconel.add_element('S',0.15,percent_type='wo')
     #inconel.add_element('Fe',17.839,percent_type='wo')
 
+    # from ORNL 2264 (average)
+    inconel.add_element('Ni',76.5,percent_type='wo')
+    inconel.add_element('Cr',15.275,percent_type='wo')
+    inconel.add_element('Fe',7.375,percent_type='wo')
+    inconel.add_element('Mn',0.25,percent_type='wo')
+    inconel.add_element('C',0.035,percent_type='wo')
+    inconel.add_element('Cu',0.12,percent_type='wo')
+    inconel.add_element('Si',0.175,percent_type='wo')
+    inconel.add_element('S',0.175,percent_type='wo')
+    inconel.add_element('Al',0.105,percent_type='wo')
+    inconel.add_element('Ti',0.1725,percent_type='wo')
+    inconel.add_element('B',0.04625,percent_type='wo')
+    inconel.add_element('N',0.059,percent_type='wo')
     # from ORNL-2264 (average)
     inconel.add_element('Ni',76.5,percent_type='wo')
     inconel.add_element('Cr',15.275,percent_type='wo')
@@ -74,6 +86,13 @@ def create_materials(operating_temp):
     #inconel.add_element('Cr',14.0,percent_type='wo')
     #inconel.add_element('Fe',6.5,percent_type='wo')
     #inconel.add_element('Mn',0.25,percent_type='wo')
+    #nconel.add_element('Si',0.25,percent_type='wo')
+    #inconel.add_element('Cu',0.2,percent_type='wo')
+    #nconel.add_element('Co',0.2,percent_type='wo')
+    #inconel.add_element('Al',0.2,percent_type='wo')
+    #inconel.add_element('Ti',0.2,percent_type='wo')
+    #nconel.add_element('Ta',0.5,percent_type='wo')
+    #inconel.add_element('W',0.5,percent_type='wo')
     #inconel.add_element('Si',0.25,percent_type='wo')
     #inconel.add_element('Cu',0.2,percent_type='wo')
     #inconel.add_element('Co',0.2,percent_type='wo')
@@ -162,3 +181,4 @@ def create_materials(operating_temp):
     mats = [salt,BeO,inconel,insulation,coolant,helium,stainless,boron]
 
     return mats
+    # from ORNL-2264

@@ -12,6 +12,9 @@ to account for thermal expansion, the cad [model](https://cad.onshape.com/docume
 
 ### fuel compositions and reactivity
 
+the circulating fuel consisted of a NaF-ZrF<sub>4</sub> (50-50 mol%) carrier mixed with a Na<sub>2</sub>-UF<sub>6</sub> (66.7-33.3 mol%) concentrate (see [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf)  Appendix B) 
+
+
 reactivity was measured for 12 different fuel compositions using two fission chambers and a BF$_3$ counter. detailed information on reactivity and fuel additions are given in tables 4.3 and 4.4 of [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf) on page 33 (shown below).
 
 ![](figures/ca.png)
