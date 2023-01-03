@@ -8,12 +8,12 @@ def create_materials(operating_temp):
 
     #fuel salt NaF-ZrF4-UF4 0.5309-0.4073-0.0618 %mol
     salt = openmc.Material(name='salt', temperature = operating_temp)
+    salt.add_element('F',41.96,percent_type='wo')
+    salt.add_element('Na',11.13,percent_type='wo')
+    salt.add_element('Zr',34.52,percent_tyoe='wo')
+    salt.add_nuclide('U235',11.57,percent_type='wo')
+    salt.add_nuclide('U238',11.57,percent_type='wo')
     salt.set_density('g/cm3',3.3142201)
-    salt.add_element('F',0.5309*1/2+0.4073*4/5+0.0618*4/5)
-    salt.add_element('Na',0.5309*1/2+0.4073*0/5+0.0618*0/5)
-    salt.add_element('Zr',0.5309*0/2+0.4073*1/5+0.0618*0/5)
-    salt.add_nuclide('U235',0.5309*0/2+0.4073*0/5+0.0618*0.9340*1/5)
-    salt.add_nuclide('U238',0.5309*0/2+0.4073*0/5+0.0618*0.066*1/5)
 
     #moderator blocks
     BeO = openmc.Material(name='BeO',temperature = operating_temp)
@@ -53,19 +53,6 @@ def create_materials(operating_temp):
     #inconel.add_element('S',0.15,percent_type='wo')
     #inconel.add_element('Fe',17.839,percent_type='wo')
 
-    # from ORNL 2264 (average)
-    inconel.add_element('Ni',76.5,percent_type='wo')
-    inconel.add_element('Cr',15.275,percent_type='wo')
-    inconel.add_element('Fe',7.375,percent_type='wo')
-    inconel.add_element('Mn',0.25,percent_type='wo')
-    inconel.add_element('C',0.035,percent_type='wo')
-    inconel.add_element('Cu',0.12,percent_type='wo')
-    inconel.add_element('Si',0.175,percent_type='wo')
-    inconel.add_element('S',0.175,percent_type='wo')
-    inconel.add_element('Al',0.105,percent_type='wo')
-    inconel.add_element('Ti',0.1725,percent_type='wo')
-    inconel.add_element('B',0.04625,percent_type='wo')
-    inconel.add_element('N',0.059,percent_type='wo')
     # from ORNL-2264 (average)
     inconel.add_element('Ni',76.5,percent_type='wo')
     inconel.add_element('Cr',15.275,percent_type='wo')
