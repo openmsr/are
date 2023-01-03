@@ -12,7 +12,7 @@ to account for thermal expansion, the cad [model](https://cad.onshape.com/docume
 
 ### fuel compositions and reactivity
 
-the circulating fuel consisted of a NaF-ZrF<sub>4</sub> (50-50 mol%) carrier mixed with a Na<sub>2</sub>-UF<sub>6</sub> (66.7-33.3 mol%) concentrate (see [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf)  Appendix B) 
+the circulating fuel consisted of a NaF-ZrF<sub>4</sub> (50-50 mol%) carrier mixed with a Na<sub>2</sub>-UF<sub>6</sub> (66.7-33.3 mol%) concentrate enriched to 93.40%(see [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf)  Appendix B) 
 
 
 reactivity was measured for 12 different fuel compositions using two fission chambers and a BF$_3$ counter. detailed information on reactivity and fuel additions are given in tables 4.3 and 4.4 of [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf) on page 33 (shown below).
@@ -36,4 +36,6 @@ appendix B on page 113 of ORNL-1845 details the carrier composition as NaF-ZrF<s
 | 11  |   10.09   |   41.68  |   34.82   |   12.52     |    0.90     |
 | 12  |   10.06   |   41.55  |   34.52   |   12.95     |    0.93     |
 
-calculations for the above values are detailed [here](https://docs.google.com/spreadsheets/d/1RVwap77GXaVlIsbrXgNQTB-KTa4BvGLSgHnxRFQPmuA/edit?usp=sharing). note, the calculated U<sub>235</sub> wt % shown above is calculated using the amount of fuel concentrate added (in lbs), along with the composition of the conentrate (Na<sub>2</sub>-UF<sub>6</sub> (66.7-33.3 mol%)), and the composition of the circulating fuel when it is added. the calculated values vary from the recorded values in the final column of table 4.4 of ORNL-1845 (above). It appears that these recorded values were calculated by dividing the values in the "Weight Added (lb)" column for U<sub>235</sub> by the values in the "Total Weight Concentrate Plus Carrier (lb)" column. 
+calculations for the above values are detailed [here](https://docs.google.com/spreadsheets/d/1RVwap77GXaVlIsbrXgNQTB-KTa4BvGLSgHnxRFQPmuA/edit?usp=sharing). note, the calculated U<sub>235</sub> wt % shown above is calculated using the amount of fuel concentrate added (in lbs), along with the composition of the conentrate (Na<sub>2</sub>-UF<sub>6</sub> (66.7-33.3 mol%)), and the composition of the circulating fuel when it is added. 
+
+there is a discrepancy between the calculated values and the recorded values in the final column of table 4.4 of ORNL-1845 (above). It appears that these recorded values were calculated by dividing the values in the "Total Weight in System (lb)" column for U<sub>235</sub> by the values in the "Total Weight Concentrate Plus Carrier (lb)" column. By this method, the implicit weight percentage of U<sub>235</sub> in the carrier is ~55%. Take the first addition of 30.00lb. The table shows that this results in addition of 16.687lbs of U<sub>235</sub>, and so we have $16.687/30.00 = 0.556$. In Appendix B however, it is stated explicitly that the fuel concentrate 
