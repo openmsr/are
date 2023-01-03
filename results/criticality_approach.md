@@ -1,6 +1,6 @@
 # criticality approach
 
-the approch to criticality was a phase of the critical experiment (E-1) detailed in [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf). a description, detailed timeline, and all recorded data for the critical experiment can be found on pages 23-39. the critical experiment also included the calibration of the shim rods, the simulation results of which can be found in [here](./shim_rod_calibration.md). during the approach to criticality, successive additions of the fuel concentrate Na<sub>2</sub>-UF<sub>6</sub> (66.7-33.3 mol%) were added to the NaF-ZrF<sub>4</sub> (50-50 mol%) carrier until criticality was reached.
+the approach to criticality was a phase of the critical experiment (E-1) detailed in [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf). a description, detailed timeline, and all recorded data for the critical experiment can be found on pages 23-39. the critical experiment also included the calibration of the shim rods, the simulation results of which can be found in [here](./shim_rod_calibration.md). during the approach to criticality, successive additions of the fuel concentrate Na<sub>2</sub>-UF<sub>6</sub> (66.7-33.3 mol%) were added to the NaF-ZrF<sub>4</sub> (50-50 mol%) carrier until criticality was reached.
 
 ## data
 
@@ -8,7 +8,7 @@ the approch to criticality was a phase of the critical experiment (E-1) detailed
 
 [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf) page 23 describes "Both the sodium and the fuel system were at an isothermal temperature of 1300&deg;F". All materials are thus set to this temperature (977.5955&deg;K) in openmc.
 
-to account for thermal expansion, the cad [model](https://cad.onshape.com/documents/b83e5f739a4507bf06f2a2a9/w/9511a6ac44a9e4d439d86976/e/36d3d4af112bbf8cad7d521b?renderMode=0&uiState=62d907b3549a2247567bee8c) is uniformly scaled, starting from the dimensions detailed [here](../design/are.pdf), by a factor of $\sim$ 1.0154. this was calculated as $s= 1 + \alpha T$, where $s$ is the scale factor, $\alpha$ is the thermal expansion coefficient ( $K^{-1}$ ) of inconel extrapolated from [here](https://www.researchgate.net/publication/337709137_Thermophysical_properties_of_Inconel_718_alloy), and $T$ is the temperature in Kelvin. the coefficient for inconel was used because inconel makes up the majority of the core materials. however to account for differential expansion between the inconel and the BeO moderator, the Beryllium density was reduced in proportion to its volumetric increase due to scaling.
+to account for thermal expansion, the cad [model](https://cad.onshape.com/documents/b83e5f739a4507bf06f2a2a9/w/9511a6ac44a9e4d439d86976/e/36d3d4af112bbf8cad7d521b?renderMode=0&uiState=62d907b3549a2247567bee8c) is uniformly scaled, starting from the dimensions detailed [here](../design/are.pdf), by a factor of $\sim$ 1.0154. this was calculated as $s= 1 + \alpha T$, where $s$ is the scale factor, $\alpha$ is the thermal expansion coefficient ( $K^{-1}$ ) of inconel extrapolated from [here](https://www.researchgate.net/publication/337709137_Thermophysical_properties_of_Inconel_718_alloy), and $T$ is the temperature in Kelvin. the coefficient for inconel was used because inconel makes up the majority of the core materials. however to account for differential expansion between the inconel and the BeO moderator, the Beryllium density was reduced in proportion to the scale factor.
 
 ### fuel compositions and reactivity
 
@@ -16,7 +16,7 @@ reactivity was measured for 12 different fuel compositions using two fission cha
 
 ![](figures/ca.png)
 
-the weight percentages for each run detailed below were derived from the above tables in conjunction with the carrier and concentrate compositions.
+appendix B on page 113 of ORNL-1845 details the carrier composition as NaF-ZrF<sub>4</sub> (50-50 mol%) . the weight percentages for each run detailed below were derived from the above tables in conjunction with the carrier and concentrate compositions.
 
 | run | Na (wt %) | F (wt %) | Zr (wt %) | U235 (wt %) | U238 (wt %) |
 |-----|-----------|----------|-----------|-------------|-------------|
@@ -33,4 +33,4 @@ the weight percentages for each run detailed below were derived from the above t
 | 11  |   10.09   |   41.68  |   34.82   |   12.52     |    0.90     |
 | 12  |   10.06   |   41.55  |   34.52   |   12.95     |    0.93     |
 
-calculations for the above values are detailed [here](https://docs.google.com/spreadsheets/d/1RVwap77GXaVlIsbrXgNQTB-KTa4BvGLSgHnxRFQPmuA/edit?usp=sharing). note, the calculated U<sub>235</sub> wt% shown above is calculated using the amount of fuel concentrate added (in lbs), along with the composition of the conentrate (Na<sub>2</sub>-UF<sub>6</sub> (66.7-33.3 mol%), and the composition of the circulating fuel when it is added. the calculated values vary from the recorded values in the final column of table 4.4 of ORNL-1845 (above). It appear that these recorded values were calculated by dividing the values in the "Weight Added (lb)" column for U<sub>235</sub> by the values in the "Total Weight Concentrate Plus Carrier (lb)" column. 
+calculations for the above values are detailed [here](https://docs.google.com/spreadsheets/d/1RVwap77GXaVlIsbrXgNQTB-KTa4BvGLSgHnxRFQPmuA/edit?usp=sharing). note, the calculated U<sub>235</sub> wt % shown above is calculated using the amount of fuel concentrate added (in lbs), along with the composition of the conentrate (Na<sub>2</sub>-UF<sub>6</sub> (66.7-33.3 mol%)), and the composition of the circulating fuel when it is added. the calculated values vary from the recorded values in the final column of table 4.4 of ORNL-1845 (above). It appears that these recorded values were calculated by dividing the values in the "Weight Added (lb)" column for U<sub>235</sub> by the values in the "Total Weight Concentrate Plus Carrier (lb)" column. 
