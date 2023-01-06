@@ -52,5 +52,8 @@ calculations for the above values are detailed [here](https://docs.google.com/sp
 
 #### inconel
 
+inconel makes up the large majority of the material in the are and the neutronics are thus sensitive to its composition. inconel composition is given in appendix B page 112 and shown below
 
+![](figures/ca.png)
 
+as referenced in the footnotes of the table, the data is from a mechanical engineering textbook instead of on-site analysis. 
