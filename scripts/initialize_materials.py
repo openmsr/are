@@ -10,7 +10,7 @@ def create_materials(operating_temp):
     salt = openmc.Material(name='salt', temperature = operating_temp)
     salt.add_element('F',41.96,percent_type='wo')
     salt.add_element('Na',11.13,percent_type='wo')
-    salt.add_element('Zr',34.52,percent_tyoe='wo')
+    salt.add_element('Zr',34.52,percent_type='wo')
     salt.add_nuclide('U235',11.57,percent_type='wo')
     salt.add_nuclide('U238',11.57,percent_type='wo')
     salt.set_density('g/cm3',3.3142201)

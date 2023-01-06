@@ -24,21 +24,23 @@ appendix B on page 113 of ORNL-1845 details the carrier composition as NaF-ZrF<s
 | run | Na (wt %) | F (wt %) | Zr (wt %) | U235 (wt %) | U238 (wt %) |
 |-----|-----------|----------|-----------|-------------|-------------|
 |  1  |   10.99   |   45.41  |   43.60   |    0.00     |    0.00     |
-|  2  |   10.85   |   44.83  |   42.24   |    1.95     |    0.14     |
-|  3  |   10.74   |   44.36  |   41.14   |    3.51     |    0.25     |
-|  4  |   10.61   |   43.83  |   39.89   |    5.29     |    0.38     |
-|  5  |   10.49   |   43.33  |   38.72   |    6.96     |    0.50     |
-|  6  |   10.37   |   42.87  |   37.62   |    8.52     |    0.61     |
-|  7  |   10.27   |   42.44  |   36.62   |    9.96     |    0.71     |
-|  8  |   10.21   |   42.19  |   36.02   |   10.81     |    0.77     |
-|  9  |   10.18   |   42.05  |   35.70   |   11.27     |    0.81     |
-| 10  |   10.13   |   41.86  |   35.25   |   11.91     |    0.85     |
-| 11  |   10.09   |   41.68  |   34.82   |   12.52     |    0.90     |
-| 12  |   10.06   |   41.55  |   34.52   |   12.95     |    0.93     |
+|  2  |   11.01   |   44.89  |   42.24   |    1.74     |    0.12     |
+|  3  |   11.03   |   44.47  |   41.14   |    3.14     |    0.22     |
+|  4  |   11.05   |   44.00  |   39.89   |    4.73     |    0.34     |
+|  5  |   11.06   |   43.55  |   38.72   |    6.22     |    0.45     |
+|  6  |   11.08   |   43.14  |   37.62   |    7.62     |    0.55     |
+|  7  |   11.09   |   42.75  |   36.62   |    8.90     |    0.64     |
+|  8  |   11.10   |   42.53  |   36.02   |    9.66     |    0.69     |
+|  9  |   11.11   |   42.40  |   35.70   |   10.07     |    0.72     |
+| 10  |   11.12   |   42.23  |   35.25   |   10.64     |    0.76     |
+| 11  |   11.12   |   42.07  |   34.82   |   11.18     |    0.80     |
+| 12  |   11.13   |   41.96  |   34.52   |   11.57     |    0.83     |
 
 calculations for the above values are detailed [here](https://docs.google.com/spreadsheets/d/1RVwap77GXaVlIsbrXgNQTB-KTa4BvGLSgHnxRFQPmuA/edit?usp=sharing). note, the calculated U<sub>235</sub> wt % shown above is calculated using the amount of fuel concentrate added (in lbs), along with the composition of the conentrate (Na<sub>2</sub>-UF<sub>6</sub> (66.7-33.3 mol%)), and the composition of the circulating fuel when it is added. 
 
-there is a discrepancy between the calculated values and the recorded values in the final column of table 4.4 of ORNL-1845 (above). It appears that these recorded values were calculated by dividing the values in the "Total Weight in System (lb)" column for U<sub>235</sub> by the values in the "Total Weight Concentrate Plus Carrier (lb)" column. By this method, the implicit weight percentage of U<sub>235</sub> in the carrier is ~55%. Take the first addition of 30.00lb. The table shows that this results in addition of 16.687lbs of U<sub>235</sub>, and so we have $16.687/30.00 = 0.556$. In Appendix B however, it is stated explicitly that the fuel concentrate is Na<sub>2</sub>-UF<sub>6</sub> (66.7-33.3 mol%) enriched to 93.40%. We can get the wt% of U<sub>235</sub> from this formula as 
+there is a discrepancy between the calculated values and the recorded values in the final column of table 4.4 of ORNL-1845 (above). It appears that these recorded values were calculated by dividing the values in the "Total Weight in System (lb)" column for U<sub>235</sub> by the values in the "Total Weight Concentrate Plus Carrier (lb)" column. By this method, the implicit weight percentage of U<sub>235</sub> in the carrier is ~55%. Take the first addition of 30.00lb. The table shows that this results in addition of 16.687lbs of U<sub>235</sub>, and so we have $16.687/30.00 = 0.556$. 
+
+In Appendix B however, it is stated explicitly that the fuel concentrate is Na<sub>2</sub>-UF<sub>6</sub> (66.7-33.3 mol%) enriched to 93.40%. We can get the wt% of U<sub>235</sub> from this formula as 
 
 $$
 w_{U_{235}} = e \frac{M_{U_{235}}}{M_{\text{concentrate}}} 
