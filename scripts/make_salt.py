@@ -3,18 +3,19 @@ sys.path.append('/opt/openmc/')
 import openmc
 
 
-def make_fuel(na:float=0.0,
-              zr:float=0.0,
-              f:float=0.0,
-              u235:float=0.0,
-              u238:float=0.0,
-              temp:float=0.0,
-              density:float=0.0,
-              enriched:float=0.0):
+def make_are_fuel(na:float=0.0,
+                  zr:float=0.0,
+                  f:float=0.0,
+                  u235:float=0.0,
+                  u238:float=0.0,
+                  temp:float=0.0,
+                  density:float=0.0,
+                  enriched:float=0.0):
 
     """
     returns openmc material object representing fuel salt with
-    the given weight percentages and uranium enrichment
+    the given weight percentages and uranium enrichment for the 
+    aircraft reactor experiment
     """
 
     #fuel salt NaF-ZrF4-UF4 0.5309-0.4073-0.0618 %mol
