@@ -6,11 +6,11 @@ the approach to criticality was a phase of the critical experiment (E-1) detaile
 
 ### design and geometry 
 
-[docs/are.pdf](docs/are.pdf) lists reference of the are core design, documented in the ornl reports and located in the repository [github.com/openmsr/msr-archive](https://github.com/openmsr/msr-archive/blob/master/README.md)
+[docs/are.pdf](../docs/are.pdf) lists reference of the are core design, documented in the ornl reports and located in the repository [github.com/openmsr/msr-archive](https://github.com/openmsr/msr-archive/blob/master/README.md)
 
 work-in-progress cad model of the are can be found [here](https://cad.onshape.com/documents/b83e5f739a4507bf06f2a2a9/w/9511a6ac44a9e4d439d86976/e/36d3d4af112bbf8cad7d521b?renderMode=0&uiState=62d907b3549a2247567bee8c) on onshape.
 
-note that this work and the cad model is under the GNU General Public License v3.0
+the cad model is converted to an OpenMC-readable h5m file via the cubit-DAGMC toolchain. See 
 
 ### operating temperature & thermal expansion     
 
@@ -46,4 +46,5 @@ appendix B on page 113 of ORNL-1845 details the carrier composition as NaF-ZrF<s
 
 calculations for the above values are detailed [here](https://docs.google.com/spreadsheets/d/1RVwap77GXaVlIsbrXgNQTB-KTa4BvGLSgHnxRFQPmuA/edit?usp=sharing). note, weight percentages for U<sub>235</sub> agree with those in tables 4.3 and 4.4 of [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf) (see above). These weight percentages along with densities taken directly from the ORNL tables are used as the material parameters for OpenMC. 
 
-### inconel composition 
+### materials 
+
