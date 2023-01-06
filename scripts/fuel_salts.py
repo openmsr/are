@@ -2,6 +2,9 @@ import sys
 sys.path.append('/opt/openmc/')
 import openmc
 
+###############################################################################
+# set of different fuel salts for the aircraft reactor experiment
+###############################################################################
 
 #equilibrium operating temperature in kelvin
 operating_temp = 977.59
