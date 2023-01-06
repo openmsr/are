@@ -5,7 +5,6 @@
 # This script uses the following cad_to_h5m version
 # https://github.com/openmsr/cad_to_h5m/tree/material_tag
 ###############################################################################
-from cad_to_h5m import *
 import numpy as np
 import os
 import sys
