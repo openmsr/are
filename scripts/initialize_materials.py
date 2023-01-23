@@ -39,7 +39,7 @@ def create_materials(operating_temp):
     #inconel
     inconel = openmc.Material(name='inconel',temperature = operating_temp)
 
-    # random one from google
+    # test
     #inconel.add_element('Ni',52.50,percent_type='wo')
     #inconel.add_element('Cr',19.00,percent_type='wo')
     #inconel.add_element('Nb',5.125,percent_type='wo')

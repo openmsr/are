@@ -12,7 +12,7 @@ work-in-progress cad model of the are can be found [here](https://cad.onshape.co
 
 appendix D of [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf) describes: "With the safety rods completely withdrawn and the neutron source and fisssion chambers inserted, the fuel concentrate will be forced into the fuel circuit." the control rods will thus be fully withdrawn for the criticality approach experiment. neutron source and fission chamber parts are not included in the model due to lack of design information, and are assumed to be negligible materials with respect to steady state neutronics
 
-the cad model is converted to an OpenMC-readable h5m file via the cubit-DAGMC toolchain. See [/scripts/step_to_h5m_cubit.py](/scripts/step_to_h5m_cubit.py)
+the cad model is converted to an OpenMC-readable h5m file via the cubit-DAGMC toolchain. see [step_to_h5m_cubit.py](/scripts/step_to_h5m_cubit.py)
 
 ### operating temperature & thermal expansion     
 
@@ -48,7 +48,7 @@ appendix B on page 113 of ORNL-1845 details the carrier composition as NaF-ZrF<s
 | 11  |   11.12   |   42.07  |   34.82   |   11.18     |    0.80     |
 | 12  |   11.13   |   41.96  |   34.52   |   11.57     |    0.83     |
 
-calculations for the above values are detailed [here](https://docs.google.com/spreadsheets/d/1RVwap77GXaVlIsbrXgNQTB-KTa4BvGLSgHnxRFQPmuA/edit?usp=sharing). note, weight percentages for U<sub>235</sub> agree with those in tables 4.3 and 4.4 of [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf) (see above). the data above along with densities taken directly from the ORNL tables are used as the material parameters for OpenMC. 
+calculations for the above values are detailed [here](https://docs.google.com/spreadsheets/d/1RVwap77GXaVlIsbrXgNQTB-KTa4BvGLSgHnxRFQPmuA/edit?usp=sharing). note, weight percentages for U<sub>235</sub> agree with those in tables 4.3 and 4.4 of [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf) (see above). the data above along with densities taken directly from the ORNL tables are used as the material parameters for OpenMC. see [initialize_materials.py](/scripts/initialize_materials.py)
 
 #### inconel
 
