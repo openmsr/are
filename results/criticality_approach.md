@@ -53,7 +53,7 @@ appendix B on page 113 of ORNL-1845 details the carrier composition as NaF-ZrF<s
 calculations for the above values are detailed [here](https://docs.google.com/spreadsheets/d/1RVwap77GXaVlIsbrXgNQTB-KTa4BvGLSgHnxRFQPmuA/edit?usp=sharing). note, weight percentages for U<sub>235</sub> agree with those in tables 4.3 and 4.4 of [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf) (see above). the data above along with densities taken directly from the ORNL tables are used as the material parameters for OpenMC. see below from [initialize_materials.py](/scripts/initialize_materials.py)
 for reference 
 
-```
+```ruby
 #fuel salt NaF-ZrF4-UF4 0.5309-0.4073-0.0618 %mol
 salt = openmc.Material(name='salt', temperature = operating_temp)
 salt.add_element('F',41.96,percent_type='wo')
