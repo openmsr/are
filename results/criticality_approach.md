@@ -22,6 +22,8 @@ to account for thermal expansion, the cad [model](https://cad.onshape.com/docume
 
 ### materials 
 
+all materiels definitions in OpenMC are consistent with material analysis and descriptions provided in the ORNL docs. see [initialize_materials.py](/scripts/initialize_materials.py)
+
 #### fuel 
 
 the circulating fuel consisted of a NaF-ZrF<sub>4</sub> (50-50 mol%) carrier mixed with a Na<sub>2</sub>-UF<sub>6</sub> (66.7-33.3 mol%) concentrate enriched to 93.40%(see [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf)  Appendix B) 
@@ -48,7 +50,19 @@ appendix B on page 113 of ORNL-1845 details the carrier composition as NaF-ZrF<s
 | 11  |   11.12   |   42.07  |   34.82   |   11.18     |    0.80     |
 | 12  |   11.13   |   41.96  |   34.52   |   11.57     |    0.83     |
 
-calculations for the above values are detailed [here](https://docs.google.com/spreadsheets/d/1RVwap77GXaVlIsbrXgNQTB-KTa4BvGLSgHnxRFQPmuA/edit?usp=sharing). note, weight percentages for U<sub>235</sub> agree with those in tables 4.3 and 4.4 of [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf) (see above). the data above along with densities taken directly from the ORNL tables are used as the material parameters for OpenMC. see [initialize_materials.py](/scripts/initialize_materials.py)
+calculations for the above values are detailed [here](https://docs.google.com/spreadsheets/d/1RVwap77GXaVlIsbrXgNQTB-KTa4BvGLSgHnxRFQPmuA/edit?usp=sharing). note, weight percentages for U<sub>235</sub> agree with those in tables 4.3 and 4.4 of [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf) (see above). the data above along with densities taken directly from the ORNL tables are used as the material parameters for OpenMC. see below from [initialize_materials.py](/scripts/initialize_materials.py)
+for reference 
+
+```
+#fuel salt NaF-ZrF4-UF4 0.5309-0.4073-0.0618 %mol
+salt = openmc.Material(name='salt', temperature = operating_temp)
+salt.add_element('F',41.96,percent_type='wo')
+salt.add_element('Na',11.13,percent_type='wo')
+salt.add_element('Zr',34.52,percent_type='wo')
+salt.add_nuclide('U235',11.57,percent_type='wo')
+salt.add_nuclide('U238',11.57,percent_type='wo')
+salt.set_density('g/cm3',3.3142201)
+```
 
 #### inconel
 
