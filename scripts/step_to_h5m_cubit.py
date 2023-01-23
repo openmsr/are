@@ -8,6 +8,7 @@
 import numpy as np
 import os
 import sys
+from cad_to_h5m import cad_to_h5m
 ###############################################################################
 #inputs
 step_filepath = os.getcwd() + sys.argv[1]
@@ -28,5 +29,5 @@ cad_to_h5m(h5m_filename= h5m_out_filepath,
                             ],
                         faceting_tolerance = 1e-3,
                         implicit_complement_material_tag = "helium",
-                        graveyard = 1000
+                        graveyard = 100000
                         )

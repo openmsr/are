@@ -10,9 +10,9 @@ the approach to criticality was a phase of the critical experiment (E-1) detaile
 
 work-in-progress cad model of the are can be found [here](https://cad.onshape.com/documents/b83e5f739a4507bf06f2a2a9/w/9511a6ac44a9e4d439d86976/e/36d3d4af112bbf8cad7d521b?renderMode=0&uiState=62d907b3549a2247567bee8c) on onshape.
 
-appendix D of [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf) describes: "With the safety rods completely withdrawn and the neutron source and fisssion chambers inserted, the fuel concentrate will be forced into the fuel circuit." the control rods will thus be fully withdrawn for the criticality approach experiment. neutron source and fission chamber parts are not included in the model due to lack of design information, but they are not thought to affect steady-state neutronics. 
+appendix D of [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf) describes: "With the safety rods completely withdrawn and the neutron source and fisssion chambers inserted, the fuel concentrate will be forced into the fuel circuit." the control rods will thus be fully withdrawn for the criticality approach experiment. neutron source and fission chamber parts are not included in the model due to lack of design information, and are assumed to be negligible materials with respect to steady state neutronics
 
-the cad model is converted to an OpenMC-readable h5m file via the cubit-DAGMC toolchain. See [/scripts/step_to_h5m_cubit.py](/scripts/step_to_h5m.py)
+the cad model is converted to an OpenMC-readable h5m file via the cubit-DAGMC toolchain. See [/scripts/step_to_h5m_cubit.py](/scripts/step_to_h5m_cubit.py)
 
 ### operating temperature & thermal expansion     
 
@@ -56,4 +56,4 @@ inconel makes up the large majority of the material in the are and the neutronic
 
 ![](figures/inconel.png)
 
-as referenced in the footnotes of the table, the data is from a mechanical engineering textbook instead of on-site analysis. 
+as referenced in the footnotes of the table, the data is from a mechanical engineering textbook instead of on-site analysis. a structural analysis of inconel is documented in [ORNL-2264](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-2264.pdf) and was conducted for the purposes of a "prototype aircraft reactor test unit" (pg. 1), which refers to the Aircraft Reactor Test (ART).
