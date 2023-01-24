@@ -65,11 +65,29 @@ inconel makes up the large majority of the material in the ARE and the neutronic
 
 ![](figures/inconel.png)
 
-as referenced in the footnotes of the table, the data is from a mechanical engineering textbook instead of on-site analysis. a structural analysis of inconel is documented in [ORNL-2264](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-2264.pdf) and was conducted for the purposes of a "prototype aircraft reactor test unit" (pg. 1), which refers to the Aircraft Reactor Test (ART). the structural analysis includes the chemical composition of the speciments tested (see bel0w). 
+as referenced in the footnotes of the table, the data is from a mechanical engineering textbook instead of on-site analysis. a structural analysis of inconel is documented in [ORNL-2264](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-2264.pdf) and was conducted for the purposes of a "prototype aircraft reactor test unit" (pg. 1), which refers to the Aircraft Reactor Test (ART). the structural analysis includes the chemical composition of the speciments tested (see below). 
 
 ![](figures/inconel_2264.png)
 
-an averaged composition of these specimens is used to define the composition of the inconel in this criticality approach experiment as it is assumed to be more accurate than the data given in appendix B of [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf) (above), and is consistent with the nominal composition of inconel 600. 
+an averaged composition of these specimens is used to define the composition of the inconel in this criticality approach experiment as it is assumed to be more accurate than the data given in appendix B of [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf) (above), and is consistent with the nominal composition of inconel 600. see below from [initialize_materials.py](/scripts/initialize_materials.py)
+for reference 
+
+```python
+inconel = openmc.Material(name='inconel',temperature = operating_temp)
+inconel.add_element('Ni',76.5,percent_type='wo')
+inconel.add_element('Cr',15.275,percent_type='wo')
+inconel.add_element('Fe',7.375,percent_type='wo')
+inconel.add_element('Mn',0.2075,percent_type='wo')
+inconel.add_element('C',0.035,percent_type='wo')
+inconel.add_element('Cu',0.12,percent_type='wo')
+inconel.add_element('Si',0.175,percent_type='wo')
+inconel.add_element('S',0.007,percent_type='wo')
+inconel.add_element('Al',0.105,percent_type='wo')
+inconel.add_element('Ti',0.1725,percent_type='wo')
+inconel.add_element('B',0.04625,percent_type='wo')
+inconel.add_element('N',0.0295*2,percent_type='wo')
+
+```
 
 
 ### operating temperature & thermal expansion     
