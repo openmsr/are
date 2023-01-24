@@ -17,7 +17,7 @@ the cad model is converted to an OpenMC-readable h5m file via the cubit-DAGMC to
 
 ### materials 
 
-all materiels definitions in OpenMC are consistent with material analysis and descriptions provided in the ORNL docs. see [initialize_materials.py](/scripts/initialize_materials.py)
+all material definitions in OpenMC are consistent with material analysis and descriptions provided in the ORNL docs. instantiation and definitions of their respective `openmc.Material()` objects can be found in [initialize_materials.py](/scripts/initialize_materials.py). of particular importance to the steady-state neutronics are the fuel and inconel materials, which are discussed in more detail below.
 
 #### fuel 
 
