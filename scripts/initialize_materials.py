@@ -17,9 +17,10 @@ def create_materials(operating_temp):
 
     #moderator blocks
     BeO = openmc.Material(name='BeO',temperature = operating_temp)
-    # try with impurities
     BeO.add_element('Be',35.8718,percent_type='wo')
     BeO.add_element('O',63.6819,percent_type='wo')
+
+    # impurities (ORNL-1845 Appendix B)
     BeO.add_element('Si',0.2352,percent_type='wo')
     BeO.add_element('Al',0.0458,percent_type='wo')
     BeO.add_element('Pb',0.0744,percent_type='wo')
