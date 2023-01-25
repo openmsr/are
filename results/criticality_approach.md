@@ -85,8 +85,8 @@ inconel.add_element('S',0.007,percent_type='wo')
 inconel.add_element('Al',0.105,percent_type='wo')
 inconel.add_element('Ti',0.1725,percent_type='wo')
 inconel.add_element('B',0.04625,percent_type='wo')
-inconel.add_element('N',0.0295*2,percent_type='wo')
-
+inconel.add_element('N',0.0295,percent_type='wo')
+inconel.set_density('g/cm3',8.5)
 ```
 
 #### moderator (BeO)
@@ -112,6 +112,7 @@ BeO.add_element('Pb',25)
 BeO.add_element('Ni',5)
 BeO.add_element('Mn',5)
 BeO.add_element('Co',1)
+BeO.set_density('g/cm3',2.75*0.968266752)
 ```
 
 
