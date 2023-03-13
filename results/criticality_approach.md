@@ -212,8 +212,8 @@ to account for thermal expansion, the cad [model](https://cad.onshape.com/docume
 as mentioned above, the fuel, inconel, and moderator materials are thought to be the most important with regard to the steady-state neutronics. the coefficient for inconel was used for the scale factor of the cad model because inconel makes up the majority of the core materials. however to account for differential expansion between the inconel and the BeO moderator, the Beryllium density was reduced in proportion to the difference in scale factors. no adjustment is made to the fuel densities, because the fuel will simply fill the volume of the inconel tubing, and there are empirical densities available for each run. the adjustment to the BeO density is detailed below:
 
 ```math
-\lambda_{BeO} = 9.0*10^{-6} K^{-1} \quad \lambda_{Inconel} = 14.4*10^{-6} K^{-1}
+\lambda_{BeO} = 9.0*10^{-6} K^{-1} \quad \lambda_{Inconel} = 14.4*10^{-6} K^{-1} \\
 
-\rho_{adjusted} = \rho_{BeO} \frac{1+\lambda_{BeO}T}{1+\lambda_{Inconel}T}
+\rho_{adjusted} = \frac{1+\lambda_{BeO}T}{1+\lambda_{Inconel}T} \rho_{BeO}
 ```
 
