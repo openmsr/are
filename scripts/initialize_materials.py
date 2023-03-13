@@ -31,7 +31,7 @@ def create_materials(operating_temp):
     BeO.add_element('Ni',5)
     BeO.add_element('Mn',5)
     BeO.add_element('Co',1)
-    BeO.set_density('g/cm3',2.75*0.968266752)
+    BeO.set_density('g/cm3',2.75*0.9948)
 
     #######################################################################
     #inconel
