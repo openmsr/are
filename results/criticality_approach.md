@@ -213,4 +213,7 @@ as mentioned above, the fuel, inconel, and moderator materials are thought to be
 
 ```math
 \lambda_{BeO} = 9.0*10^{-6} K^{-1} \quad \lambda_{Inconel} = 14.4*10^{-6} K^{-1}
+
+\rho_{adjusted} = \rho_{BeO} \frac{1+\lambda_{BeO}T}{1+\lambda_{Inconel}T}
 ```
+
