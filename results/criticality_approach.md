@@ -233,6 +233,21 @@ BeO.set_density('g/cm3',rho_0*temp_adj*diff_exp_adj)
 
 ## results
 
-using parameters and material definitions provided above, 11 k-eigenvalue simulations are run; one for each of the 11 fuel compositions and compared with the experimental values. results are shown in the figure below
+using parameters and material definitions provided above, 11 k-eigenvalue simulations are run; one for each of the 11 fuel compositions and compared with the experimental values. results are shown in the figure and associated table below
 
 ![](figures/criticality_approach.png)
+
+| run | k (ORNL-1845) | k (OpenMC) | $\Delta (\%)$ |
+|-----|---------------|------------|---------------|
+|  1  |   0.000       |   0.000    |  0.00         |
+|  2  |   0.361       |   0.500    |  38.5         |
+|  3  |   0.510       |   0.690    |  35.2         |
+|  4  |   0.667       |   0.819    |  22.8         |
+|  5  |   0.780       |   0.901    |  15.5         |
+|  6  |   0.848       |   0.956    |  12.7         |
+|  7  |   0.908       |   0.993    |  9.36         |
+|  8  |   0.936       |   1.014    |  8.33         |
+|  9  |   0.952       |   1.025    |  7.67         |
+| 10  |   0.972       |   1.037    |  6.69         |
+| 11  |   0.990       |   1.047    |  5.76         |
+| 12  |   1.000       |   1.053    |  5.30         |
