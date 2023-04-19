@@ -237,7 +237,7 @@ using parameters and material definitions provided above, 11 k-eigenvalue simula
 
 ![](figures/criticality_approach.png)
 
-| run | k (ORNL-1845) | k (OpenMC) | $\Delta (\%)$ |
+| run | k (ORNL-1845) | k (OpenMC) | $\Delta$ (%)  |
 |-----|---------------|------------|---------------|
 |  1  |   0.000       |   0.000    |  0.00         |
 |  2  |   0.361       |   0.500    |  38.5         |
