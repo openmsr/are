@@ -30,7 +30,6 @@ reactivity was measured for 12 different fuel compositions using two fission cha
 
 appendix B on page 113 of ORNL-1845 details the carrier composition as NaF-ZrF<sub>4</sub> (50-50 mol%) . the weight percentages for each run detailed below were derived from the above tables in conjunction with the carrier and concentrate compositions.
 
-<center>
 | run | Na (wt %) | F (wt %) | Zr (wt %) | U235 (wt %) | U238 (wt %) |
 |-----|-----------|----------|-----------|-------------|-------------|
 |  1  |   10.99   |   45.41  |   43.60   |    0.00     |    0.00     |
@@ -45,7 +44,6 @@ appendix B on page 113 of ORNL-1845 details the carrier composition as NaF-ZrF<s
 | 10  |   11.12   |   42.23  |   35.25   |   10.64     |    0.76     |
 | 11  |   11.12   |   42.07  |   34.82   |   11.18     |    0.80     |
 | 12  |   11.13   |   41.96  |   34.52   |   11.57     |    0.83     |
-</center>
 
 calculations for the above values -- using carrier and concentrate compositions combined with fuel concentrate added (in lbs) -- are detailed [here](https://docs.google.com/spreadsheets/d/1RVwap77GXaVlIsbrXgNQTB-KTa4BvGLSgHnxRFQPmuA/edit?usp=sharing). note, weight percentages for U<sub>235</sub> agree with those in tables 4.3 and 4.4 of [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf) (see above). the data above along with densities taken directly from the ORNL tables are used as the material parameters for OpenMC. additionally, halfnium impurity of 0.002% is assumed. see below from [fuel_salts.py](/scripts/fuel_salts.py)
 for reference
@@ -237,7 +235,6 @@ BeO.set_density('g/cm3',rho_0*temp_adj*diff_exp_adj)
 
 using parameters and material definitions provided above, 11 k-eigenvalue simulations are run; one for each of the 11 fuel compositions and compared with the experimental values. results are shown in the figure and associated table below
 
-<center>
 ![](figures/criticality_approach.png)
 
 | run | k (ORNL-1845) | k (OpenMC) | $\Delta$ (%)  |
@@ -254,4 +251,3 @@ using parameters and material definitions provided above, 11 k-eigenvalue simula
 | 10  |   0.972       |   1.037    |  6.69         |
 | 11  |   0.990       |   1.047    |  5.76         |
 | 12  |   1.000       |   1.053    |  5.30         |
-</center>
