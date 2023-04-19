@@ -8,7 +8,7 @@ from materials import *
 #generate geometry plot of are (all safety rods fully inserted)
 ###############################################################################
 
-h5m_filepath = './h5m_files/ARE_rods_35.h5m'
+h5m_filepath = './h5m_files/ARE_pos_0..h5m'
 
 # materials
 mats = openmc.Materials([salt,BeO,inconel,insulation,coolant,helium,stainless,boron])

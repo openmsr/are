@@ -4,7 +4,7 @@ the approach to criticality was a phase of the critical experiment (E-1) detaile
 
 ## data
 
-### design, geometry & configuration 
+### design, geometry & configuration
 
 [/design/are.pdf](/design/are.pdf) lists reference of the ARE core design, documented in the ornl reports and located in the repository [github.com/openmsr/msr-archive](https://github.com/openmsr/msr-archive/blob/master/README.md)
 
@@ -15,13 +15,13 @@ appendix D of [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/doc
 the cad model is converted to an OpenMC-readable h5m file via the cubit-DAGMC toolchain. see [step_to_h5m_cubit.py](/scripts/step_to_h5m_cubit.py)
 
 
-### materials 
+### materials
 
 all material definitions in OpenMC are consistent with material analysis and descriptions provided in the ORNL docs. instantiation and definitions of their respective `openmc.Material()` objects can be found in [initialize_materials.py](/scripts/initialize_materials.py). of particular importance to the steady-state neutronics are the fuel, inconel and moderator materials, which are discussed in more detail below.
 
-#### fuel 
+#### fuel
 
-the circulating fuel consisted of a NaF-ZrF<sub>4</sub> (50-50 mol%) carrier mixed with a Na<sub>2</sub>-UF<sub>6</sub> (66.7-33.3 mol%) concentrate enriched to 93.40%(see [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf)  Appendix B) 
+the circulating fuel consisted of a NaF-ZrF<sub>4</sub> (50-50 mol%) carrier mixed with a Na<sub>2</sub>-UF<sub>6</sub> (66.7-33.3 mol%) concentrate enriched to 93.40%(see [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf)  Appendix B)
 
 
 reactivity was measured for 12 different fuel compositions using two fission chambers and a BF<sub>3</sub> counter. detailed information on reactivity and fuel additions are given in tables 4.3 and 4.4 of [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf) on page 33 (shown below).
@@ -45,8 +45,8 @@ appendix B on page 113 of ORNL-1845 details the carrier composition as NaF-ZrF<s
 | 11  |   11.12   |   42.07  |   34.82   |   11.18     |    0.80     |
 | 12  |   11.13   |   41.96  |   34.52   |   11.57     |    0.83     |
 
-calculations for the above values -- using carrier and concentrate compositions combined with fuel concentrate added (in lbs) -- are detailed [here](https://docs.google.com/spreadsheets/d/1RVwap77GXaVlIsbrXgNQTB-KTa4BvGLSgHnxRFQPmuA/edit?usp=sharing). note, weight percentages for U<sub>235</sub> agree with those in tables 4.3 and 4.4 of [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf) (see above). the data above along with densities taken directly from the ORNL tables are used as the material parameters for OpenMC. see below from [fuel_salts.py](/scripts/fuel_salts.py)
-for reference 
+calculations for the above values -- using carrier and concentrate compositions combined with fuel concentrate added (in lbs) -- are detailed [here](https://docs.google.com/spreadsheets/d/1RVwap77GXaVlIsbrXgNQTB-KTa4BvGLSgHnxRFQPmuA/edit?usp=sharing). note, weight percentages for U<sub>235</sub> agree with those in tables 4.3 and 4.4 of [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf) (see above). the data above along with densities taken directly from the ORNL tables are used as the material parameters for OpenMC. additionally, halfnium impurity of 0.002% is assumed. see below from [fuel_salts.py](/scripts/fuel_salts.py)
+for reference
 
 ```python
 # run 1
@@ -152,15 +152,15 @@ inconel makes up the large majority of the material in the ARE and the neutronic
 
 ![](figures/inconel.png)
 
-as referenced in the footnotes of the table, the data is from a mechanical engineering textbook instead of on-site analysis. a structural analysis of inconel is documented in [ORNL-2264](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-2264.pdf) and was conducted for the purposes of a "prototype aircraft reactor test unit" (pg. 1), which refers to the Aircraft Reactor Test (ART). the structural analysis includes the chemical composition of the speciments tested (see below). 
+as referenced in the footnotes of the table, the data is from a mechanical engineering textbook instead of on-site analysis. a structural analysis of inconel is documented in [ORNL-2264](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-2264.pdf) and was conducted for the purposes of a "prototype aircraft reactor test unit" (pg. 1), which refers to the Aircraft Reactor Test (ART). the structural analysis includes the chemical composition of the speciments tested (see below).
 
 ![](figures/inconel_2264.png)
 
 an averaged composition of these specimens is used to define the composition of the inconel in this criticality approach experiment as it is assumed to be more accurate than the data given in appendix B of [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf) (above), and is consistent with the nominal composition of inconel 600. see below from [initialize_materials.py](/scripts/initialize_materials.py)
-for reference 
+for reference
 
 ```python
-inconel = openmc.Material(name='inconel',temperature = operating_temp)
+# from ORNL-2264 (average)
 inconel.add_element('Ni',76.5,percent_type='wo')
 inconel.add_element('Cr',15.275,percent_type='wo')
 inconel.add_element('Fe',7.375,percent_type='wo')
@@ -173,7 +173,8 @@ inconel.add_element('Al',0.105,percent_type='wo')
 inconel.add_element('Ti',0.1725,percent_type='wo')
 inconel.add_element('B',0.04625,percent_type='wo')
 inconel.add_element('N',0.0295,percent_type='wo')
-inconel.set_density('g/cm3',8.5)
+temp_adj = 1/(1+lambda_inconel*operating_temp)
+inconel.set_density('g/cm3',8.5*temp_adj)
 ```
 
 #### moderator (BeO)
@@ -188,7 +189,7 @@ see below from [initialize_materials.py](/scripts/initialize_materials.py) for r
 ```python
 BeO = openmc.Material(name='BeO',temperature = operating_temp)
 
-# by ao, expressed in ppm 
+# by ao, expressed in ppm
 BeO.add_element('Be',499792)
 BeO.add_element('O',499792)
 
@@ -199,7 +200,6 @@ BeO.add_element('Pb',25)
 BeO.add_element('Ni',5)
 BeO.add_element('Mn',5)
 BeO.add_element('Co',1)
-BeO.set_density('g/cm3',2.75*0.9948)
 ```
 
 
@@ -207,7 +207,7 @@ BeO.set_density('g/cm3',2.75*0.9948)
 
 [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf) page 23 describes "Both the sodium and the fuel system were at an isothermal temperature of 1300&deg;F". All materials are thus set to this temperature (977.5955&deg;K) in openmc.
 
-to account for thermal expansion, the cad [model](https://cad.onshape.com/documents/b83e5f739a4507bf06f2a2a9/w/9511a6ac44a9e4d439d86976/e/36d3d4af112bbf8cad7d521b?renderMode=0&uiState=62d907b3549a2247567bee8c) is uniformly scaled, starting from the dimensions detailed [here](../design/are.pdf). As inconel makes up a large majority of the material in the core, the thermal expansion coefficient $\lambda$ of inconel is used for scaling. the particular type of inconel used in the ARE is not provided in the documents, nor is any measurement of the linear thermal expansion coefficient $\lambda$. for the purposes of this simulation, it is assumed to be inconel 600 because at the time of the experiment (1954), only inconel 600 and 617 were available, and the nominal composition of inconel 600 is consistent with both appendix B of [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf) and the chemical analysis in in [ORNL-2264](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-2264.pdf). $\lambda$ is thus assumed to be $\sim$ $14.4*10^{-6} K^{-1}$ (interpolated from [here](https://www.hightempmetals.com/techdata/hitempInconel600data.php)). our scale factor for the model $s$ can therefore be expressed as $s = 1+\lambda T = 1.014$, where $T$ is the temperature in Kelvin (977.5955&deg;K for this simulation). 
+to account for thermal expansion, the cad [model](https://cad.onshape.com/documents/b83e5f739a4507bf06f2a2a9/w/9511a6ac44a9e4d439d86976/e/36d3d4af112bbf8cad7d521b?renderMode=0&uiState=62d907b3549a2247567bee8c) is uniformly scaled, starting from the dimensions detailed [here](../design/are.pdf). As inconel makes up a large majority of the material in the core, the thermal expansion coefficient $\lambda$ of inconel is used for scaling. the particular type of inconel used in the ARE is not provided in the documents, nor is any measurement of the linear thermal expansion coefficient $\lambda$. for the purposes of this simulation, it is assumed to be inconel 600 because at the time of the experiment (1954), only inconel 600 and 617 were available, and the nominal composition of inconel 600 is consistent with both appendix B of [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf) and the chemical analysis in in [ORNL-2264](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-2264.pdf). $\lambda$ is thus assumed to be $\sim$ $14.4*10^{-6} K^{-1}$ (interpolated from [here](https://www.hightempmetals.com/techdata/hitempInconel600data.php)). our scale factor for the model $s$ can therefore be expressed as $s = 1+\lambda T = 1.014$, where $T$ is the temperature in Kelvin (977.5955&deg;K for this simulation).
 
 as mentioned above, the fuel, inconel, and moderator materials are thought to be the most important with regard to the steady-state neutronics. the coefficient for inconel was used for the scale factor of the cad model because inconel makes up the majority of the core materials. however to account for differential expansion between the inconel and the BeO moderator, the Beryllium density was reduced in proportion to the difference in scale factors. no adjustment is made to the fuel densities, because the fuel will simply fill the volume of the inconel tubing, and there are empirical densities available for each run. the adjustment to the BeO density is detailed below:
 
@@ -219,9 +219,20 @@ as mentioned above, the fuel, inconel, and moderator materials are thought to be
 \rightarrow \rho_{adjusted} = \frac{1+\lambda_{BeO}T}{1+\lambda_{Inconel}T} \rho_{BeO} = 0.9948 \rho_{BeO}
 ```
 
-The factor of 0.9948 is included in the material definition of BeO above.  
+see below from [initialize_materials.py](/scripts/initialize_materials.py) for reference
+
+```python
+# density with temperature and differential expansion adjustment
+lambda_BeO = 9.0e-6
+lambda_inconel = 14.4e-6
+rho_0 = 2.75
+temp_adj = rho_0/(1+lambda_BeO*operating_temp)
+diff_exp_adj = (1+lambda_BeO*operating_temp)/(1+lambda_inconel*operating_temp)
+BeO.set_density('g/cm3',rho_0*temp_adj*diff_exp_adj)
+```
 
 ## results
 
+using parameters and material definitions provided above, 11 k-eigenvalue simulations are run; one for each of the 11 fuel compositions and compared with the experimental values. results are shown in the figure below
 
-
+![](figures/criticality_approach.png)

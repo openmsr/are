@@ -12,6 +12,8 @@ operating_temp = 977.59
 
 #ARE material definitions
 
+h = 0.03
+
 # run 1
 salt1 = openmc.Material(name='salt', temperature = operating_temp)
 salt1.set_density('g/cm3',3.3142201)
@@ -110,40 +112,45 @@ salt12.add_nuclide('U235',11.57,percent_type='wo')
 
 # shim rod calibration fuels
 salt_8A = openmc.Material(name='salt', temperature = operating_temp)
-salt_8A.set_density('g/cm3',3.3142201)
-salt_8A.add_element('Na',7.95,percent_type='wo')
-salt_8A.add_element('Zr',40.56,percent_type='wo')
-salt_8A.add_element('F',42.37,percent_type='wo')
-salt_8A.add_nuclide('U235',9.12,percent_type='wo')
+salt_8A.set_density('g/cm3',3.27578)
+salt_8A.add_element('Na',11.10,percent_type='wo')
+salt_8A.add_element('Zr',36.02,percent_type='wo')
+salt_8A.add_element('F',42.53,percent_type='wo')
+salt_8A.add_nuclide('U235',9.66,percent_type='wo')
+salt_8A.add_nuclide('U238',0.69,percent_type='wo')
 
 # shim rod calibration fuels
 salt_9B = openmc.Material(name='salt', temperature = operating_temp)
-salt_9B.set_density('g/cm3',3.3142201)
-salt_9B.add_element('Na',7.64,percent_type='wo')
-salt_9B.add_element('Zr',40.25,percent_type='wo')
-salt_9B.add_element('F',42.05,percent_type='wo')
-salt_9B.add_nuclide('U235',10.06,percent_type='wo')
+salt_9B.set_density('g/cm3',3.28378)
+salt_9B.add_element('Na',11.11,percent_type='wo')
+salt_9B.add_element('Zr',35.70,percent_type='wo')
+salt_9B.add_element('F',42.40,percent_type='wo')
+salt_9B.add_nuclide('U235',10.07,percent_type='wo')
+salt_9B.add_nuclide('U238',0.72,percent_type='wo')
 
 # shim rod calibration fuels
 salt_10C = openmc.Material(name='salt', temperature = operating_temp)
-salt_10C.set_density('g/cm3',3.3142201)
-salt_10C.add_element('Na',7.44,percent_type='wo')
-salt_10C.add_element('Zr',40.06,percent_type='wo')
-salt_10C.add_element('F',41.86,percent_type='wo')
+salt_10C.set_density('g/cm3',3.29500)
+salt_10C.add_element('Na',11.12,percent_type='wo')
+salt_10C.add_element('Zr',35.25,percent_type='wo')
+salt_10C.add_element('F',42.23,percent_type='wo')
 salt_10C.add_nuclide('U235',10.64,percent_type='wo')
+salt_10C.add_nuclide('U238',0.76,percent_type='wo')
 
 # shim rod calibration fuels
 salt_11C = openmc.Material(name='salt', temperature = operating_temp)
-salt_11C.set_density('g/cm3',3.3142201)
-salt_11C.add_element('Na',7.26,percent_type='wo')
-salt_11C.add_element('Zr',39.88,percent_type='wo')
-salt_11C.add_element('F',41.68,percent_type='wo')
+salt_11C.set_density('g/cm3',3.30621)
+salt_11C.add_element('Na',11.12,percent_type='wo')
+salt_11C.add_element('Zr',34.82,percent_type='wo')
+salt_11C.add_element('F',42.07,percent_type='wo')
 salt_11C.add_nuclide('U235',11.18,percent_type='wo')
+salt_11C.add_nuclide('U238',0.80,percent_type='wo')
 
 # shim rod calibration fuels
 salt_12B = openmc.Material(name='salt', temperature = operating_temp)
 salt_12B.set_density('g/cm3',3.3142201)
-salt_12B.add_element('Na',7.13,percent_type='wo')
-salt_12B.add_element('Zr',39.75,percent_type='wo')
-salt_12B.add_element('F',41.55,percent_type='wo')
+salt_12B.add_element('Na',11.13,percent_type='wo')
+salt_12B.add_element('Zr',35.70,percent_type='wo')
+salt_12B.add_element('F',41.96,percent_type='wo')
 salt_12B.add_nuclide('U235',11.57,percent_type='wo')
+salt_12B.add_nuclide('U238',0.83,percent_type='wo')

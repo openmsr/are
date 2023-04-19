@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import os
 
 # inputs
-filename ='k_effs_calibration.txt'
+filename ='src_k.txt'
 s8A_experimental = [0.860,0.883,0.904,0.918]
 s9B_experimental = [0.889,0.919,0.942,0.952]
 s10C_experimental = [0.913,0.934,0.960,0.972]

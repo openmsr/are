@@ -14,9 +14,7 @@ operating_temperature = 977
 graveyard=openmc.Sphere(r=10000,boundary_type='vacuum')
 
 cad_univ = openmc.DAGMCUniverse(filename=h5m_filepath,auto_geom_ids=True,universe_id=996 )
-
 cad_cell = openmc.Cell(cell_id=997 , region= -graveyard, fill= cad_univ)
-
 root = openmc.Universe(universe_id=998)
 root.add_cells([cad_cell])
 geometry = openmc.Geometry(root)

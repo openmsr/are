@@ -6,21 +6,25 @@ import openmc
 def create_materials(operating_temp):
     #ARE material definitions
 
+    # halfnium concentration in zirconium
+    h = 0.0001
+
     #######################################################################
     #fuel salt NaF-ZrF4-UF4 0.5309-0.4073-0.0618 %mol
     salt = openmc.Material(name='salt', temperature = operating_temp)
     salt.add_element('F',41.96,percent_type='wo')
     salt.add_element('Na',11.13,percent_type='wo')
-    salt.add_element('Zr',34.52,percent_type='wo')
+    salt.add_element('Zr',34.52*(1.0-h),percent_type='wo')
+    salt.add_element('Hf',34.52*(h),percent_type='wo')
     salt.add_nuclide('U235',11.57,percent_type='wo')
-    salt.add_nuclide('U238',11.57,percent_type='wo')
+    salt.add_nuclide('U238',0.83,percent_type='wo')
     salt.set_density('g/cm3',3.3142201)
 
     #######################################################################
     #moderator blocks
     BeO = openmc.Material(name='BeO',temperature = operating_temp)
 
-    # by ao, expressed in ppm 
+    # by ao, expressed in ppm
     BeO.add_element('Be',499792)
     BeO.add_element('O',499792)
 
@@ -31,7 +35,13 @@ def create_materials(operating_temp):
     BeO.add_element('Ni',5)
     BeO.add_element('Mn',5)
     BeO.add_element('Co',1)
-    BeO.set_density('g/cm3',2.75*0.9948)
+
+    # density with temperature and differential expansion adjustment
+    lambda_BeO = 9.0e-6
+    lambda_inconel = 14.4e-6
+    temp_adj_BeO = 1/(1+lambda_BeO*operating_temp)
+    diff_exp_adj = (1+lambda_BeO*operating_temp)/(1+lambda_inconel*operating_temp)
+    BeO.set_density('g/cm3',2.75*temp_adj_BeO*diff_exp_adj)
 
     #######################################################################
     #inconel
@@ -50,19 +60,51 @@ def create_materials(operating_temp):
     inconel.add_element('Ti',0.1725,percent_type='wo')
     inconel.add_element('B',0.04625,percent_type='wo')
     inconel.add_element('N',0.0295,percent_type='wo')
-    inconel.set_density('g/cm3',8.5)
 
-    #insulation
+    #inconel
+    #trace = 0.0001
+    #inconel = openmc.Material(name='inconel',temperature = operating_temp)
+    #inconel.add_element('Ni',78.5,percent_type='wo')
+    #inconel.add_element('Cr',14.0,percent_type='wo')
+    #inconel.add_element('Fe',6.5,percent_type='wo')
+    #inconel.add_element('Mn',0.25,percent_type='wo')
+    #inconel.add_element('Si',0.25,percent_type='wo')
+    #inconel.add_element('Cu',0.2,percent_type='wo')
+    #inconel.add_element('Co',0.2,percent_type='wo')
+    #inconel.add_element('Al',0.2,percent_type='wo')
+    #inconel.add_element('Ti',0.2,percent_type='wo')
+    #inconel.add_element('Ta',0.5,percent_type='wo')
+    #inconel.add_element('W',0.5,percent_type='wo')
+    #inconel.add_element('Zn',0.2,percent_type='wo')
+    #inconel.add_element('Zr',0.1,percent_type='wo')
+    #inconel.add_element('C',trace,percent_type='wo')
+    #inconel.add_element('Mo',trace,percent_type='wo')
+    #inconel.add_element('Ag',trace,percent_type='wo')
+    #nconel.add_element('B',trace,percent_type='wo')
+    #inconel.add_element('Ba',trace,percent_type='wo')
+    #inconel.add_element('Be',trace,percent_type='wo')
+    #inconel.add_element('Ca',trace,percent_type='wo')
+    #inconel.add_element('Cd',trace,percent_type='wo')
+    #inconel.add_element('V',trace,percent_type='wo')
+    #inconel.add_element('Sn',trace,percent_type='wo')
+    #inconel.add_element('Mg',trace,percent_type='wo')
+    temp_adj_inconel = 1/(1+lambda_inconel*operating_temp)
+    inconel.set_density('g/cm3',8.5*temp_adj_inconel)
+
+    #insulation (diatomaceous earth)(ORNL1535 pg. 80)
     insulation = openmc.Material(name='insulation',temperature = operating_temp)
     insulation.add_element('Si',1)
-    insulation.add_element('O',13)
-    insulation.add_element('Al',2)
-    insulation.add_element('Ca',1)
-    insulation.add_element('Fe',2)
-    insulation.add_element('K',2)
-    insulation.add_element('Na',2)
-    insulation.add_element('Ti',1)
-    insulation.set_density('g/cm3',2.24)
+    insulation.add_element('O',2)
+    insulation.set_density('g/cm3',0.28832)
+
+    #insulation.add_element('O',13)
+    #insulation.add_element('Al',2)
+    #insulation.add_element('Ca',1)
+    #insulation.add_element('Fe',2)
+    #insulation.add_element('K',2)
+    #insulation.add_element('Na',2)
+    #insulation.add_element('Ti',1)
+    #insulation.set_density('g/cm3',2.24)
 
     #######################################################################
     #coolant
@@ -88,14 +130,16 @@ def create_materials(operating_temp):
     stainless.add_element('Ni',8.0,percent_type='wo')
     stainless.add_element('N',0.1,percent_type='wo')
     stainless.add_element('Fe',39.045,percent_type='wo')
-    stainless.set_density('g/cm3',8.5)
+    stainless.set_density('g/cm3',8.5*temp_adj_inconel)
 
     #######################################################################
     #absorber
+    lambda_boron = 4.6e-6
+    temp_adj_boron = 1/(1+lambda_boron*operating_temp)
     boron = openmc.Material(name = 'boron',temperature = operating_temp)
     boron.add_element('B',4.0)
     boron.add_element('C',1.0)
-    boron.set_density('g/cm3',2.52)
+    boron.set_density('g/cm3',2.52*temp_adj_boron)
 
     #######################################################################
     #blanket

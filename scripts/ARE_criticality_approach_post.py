@@ -21,12 +21,13 @@ for k in k_file.readlines():
 k_file.close()
 
 # generate plots
-fig, ax = plt.subplots()
-ax.plot(runs,k_experimental,label = 'experimental',linestyle='--',marker='x')
-ax.errorbar(runs,k_simulated, yerr=stdev_simulated,label = 'simulated',linestyle='--',marker='o')
-ax.set_xlabel('run no.')
-ax.set_ylabel('k')
-ax.set_title('ARE criticality approach')
-ax.legend()
-
+fig, ax = plt.subplots(figsize=(8,6))
+ax.plot(runs, k_experimental, label='ORNL-1845', color='forestgreen', linestyle='-', marker='o')
+ax.plot(runs, k_simulated, label='OpenMC', color='indianred', linestyle='-', marker='x')
+ax.set_xlabel('Run Number', fontsize=14)
+ax.set_ylabel('k', fontsize=14)
+ax.set_title('ARE Criticality Approach', fontsize=16)
+ax.legend(fontsize=12)
+ax.grid(True)
 plt.savefig('criticality_approach.png')
+plt.show()
