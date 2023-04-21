@@ -17,8 +17,8 @@ def make_are_fuel(na:float=0.0,
     aircraft reactor experiment
     """
 
-    # halfnium concentration
-    h = 0.0001
+    # halfnium concentration <50 ppm accoring to ORNL-4616, so 25 ppm assumed
+    h = 0.0025
 
     # fuel salt NaF-ZrF4-UF4 0.5309-0.4073-0.0618 %mol
     salt = openmc.Material(name='salt', temperature = temp)

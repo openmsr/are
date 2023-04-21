@@ -6,8 +6,8 @@ import openmc
 def create_materials(operating_temp):
     #ARE material definitions
 
-    # halfnium concentration in zirconium
-    h = 0.0001
+    # halfnium concentration <50 ppm accoring to ORNL-4616, so 25 ppm assumed
+    h = 0.0025
 
     #######################################################################
     #fuel salt NaF-ZrF4-UF4 0.5309-0.4073-0.0618 %mol
@@ -60,34 +60,6 @@ def create_materials(operating_temp):
     inconel.add_element('Ti',0.1725,percent_type='wo')
     inconel.add_element('B',0.04625,percent_type='wo')
     inconel.add_element('N',0.0295,percent_type='wo')
-
-    #inconel
-    #trace = 0.0001
-    #inconel = openmc.Material(name='inconel',temperature = operating_temp)
-    #inconel.add_element('Ni',78.5,percent_type='wo')
-    #inconel.add_element('Cr',14.0,percent_type='wo')
-    #inconel.add_element('Fe',6.5,percent_type='wo')
-    #inconel.add_element('Mn',0.25,percent_type='wo')
-    #inconel.add_element('Si',0.25,percent_type='wo')
-    #inconel.add_element('Cu',0.2,percent_type='wo')
-    #inconel.add_element('Co',0.2,percent_type='wo')
-    #inconel.add_element('Al',0.2,percent_type='wo')
-    #inconel.add_element('Ti',0.2,percent_type='wo')
-    #inconel.add_element('Ta',0.5,percent_type='wo')
-    #inconel.add_element('W',0.5,percent_type='wo')
-    #inconel.add_element('Zn',0.2,percent_type='wo')
-    #inconel.add_element('Zr',0.1,percent_type='wo')
-    #inconel.add_element('C',trace,percent_type='wo')
-    #inconel.add_element('Mo',trace,percent_type='wo')
-    #inconel.add_element('Ag',trace,percent_type='wo')
-    #nconel.add_element('B',trace,percent_type='wo')
-    #inconel.add_element('Ba',trace,percent_type='wo')
-    #inconel.add_element('Be',trace,percent_type='wo')
-    #inconel.add_element('Ca',trace,percent_type='wo')
-    #inconel.add_element('Cd',trace,percent_type='wo')
-    #inconel.add_element('V',trace,percent_type='wo')
-    #inconel.add_element('Sn',trace,percent_type='wo')
-    #inconel.add_element('Mg',trace,percent_type='wo')
     temp_adj_inconel = 1/(1+lambda_inconel*operating_temp)
     inconel.set_density('g/cm3',8.5*temp_adj_inconel)
 
