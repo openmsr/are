@@ -13,8 +13,6 @@ operating_temp = 977.59
 
 # halfnium concentration <50 ppm accoring to ORNL-4616, so 25 ppm assumed
 h = 0.0025
-salt.add_element('Zr',34.52*(1.0-h),percent_type='wo')
-salt.add_element('Hf',34.52*(h),percent_type='wo')
 
 # run 1
 salt1 = openmc.Material(name='salt', temperature = operating_temp)
