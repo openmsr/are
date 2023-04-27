@@ -26,7 +26,7 @@ the circulating fuel consisted of a NaF-ZrF<sub>4</sub> (50-50 mol%) carrier mix
 
 reactivity was measured for 12 different fuel compositions using two fission chambers and a BF<sub>3</sub> counter. detailed information on reactivity and fuel additions are given in tables 4.3 and 4.4 of [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf) on page 33 (shown below).
 
-![](figures/criticality_approach.png)
+![](figures/ca.png)
 
 table 4.6 on pages 37-38, and shown below, detail the fuel compositions and reactivity measurements associated with each rod position. 
 
