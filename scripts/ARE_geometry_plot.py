@@ -1,6 +1,4 @@
 import matplotlib
-import sys
-sys.path.append('/opt/openmc/')
 import openmc
 from materials import *
 
@@ -21,8 +19,8 @@ geom.export_to_xml()
 #plotting geometry
 plots = openmc.Plots()
 
-x_width = 350
-y_width = 350
+x_width = 325
+y_width = 325
 
 #xy plot
 p1 = openmc.Plot()
@@ -33,13 +31,14 @@ p1.color_by = 'material'
 #xz plot (split plane)
 p2 = openmc.Plot()
 p2.basis = 'xz'
-#p2.origin = (0,5,0)
+p2.origin = (0,0,25)
 p2.width = (x_width,y_width)
 p2.pixels = (2000, 2000)
 p2.color_by = 'material'
 
 p3 = openmc.Plot()
 p3.basis = 'yz'
+p3.origin = (0,0,25)
 p3.width = (x_width,y_width)
 p3.pixels = (2000, 2000)
 p3.color_by = 'material'

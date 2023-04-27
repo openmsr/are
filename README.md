@@ -55,3 +55,9 @@ sample results for each are shown below, and summarized separately [here](./resu
 ![](./results/figures/k.png)
 
 ### geometry plot
+
+xz plane
+![](./results/figures/xz.png)
+
+yz plane
+![](./results/figures/yz.png)

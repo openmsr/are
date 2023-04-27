@@ -1,7 +1,7 @@
 from initialize_materials import create_materials
 import openmc
 
-def build_model(h5m_filepath,fuel=None,nuclear_data=None,operating_temp=977.59):
+def build_model(h5m_filepath,fuel=None,nuclear_data=None,operating_temp=977.59,batches=100,inactive=10,particles=10000):
 
     mats = create_materials(operating_temp)
     if fuel:
@@ -14,9 +14,9 @@ def build_model(h5m_filepath,fuel=None,nuclear_data=None,operating_temp=977.59):
     mats_openmc.export_to_xml()
     settings = openmc.Settings()
     settings.temperature = {'method':'interpolation'}
-    settings.batches = 100
-    settings.inactive = 10
-    settings.particles = 10000
+    settings.batches = batches
+    settings.inactive = inactive
+    settings.particles = particles
     settings.export_to_xml()
     source_area = openmc.stats.Box([-200., -200., -200.],[ 200.,  200.,  200.],only_fissionable = True)
     settings.source = openmc.Source(space=source_area)
