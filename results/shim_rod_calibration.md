@@ -1,6 +1,6 @@
 # shim rod calibration
 
-shim rod calibrations were performed at each phase of the critical experiment (E-1) detailed in [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf). a description, detailed timeline, and all recorded data for the critical experiment can be found on pages 23-39. during the approach to criticality, successive additions of the fuel concentrate Na<sub>2</sub>-UF<sub>6</sub> (66.7-33.3 mol%) were added to the NaF-ZrF<sub>4</sub> (50-50 mol%) carrier until criticality was reached. Page 36 of [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf) describes "After each fuel addition, all three rods were simultaneously withdrawn to positions of 20, 25, 30, and 35 in. out; total movement was 36 in. The counting rate of each of the neutron detectors was recorded for each rod position." 
+shim rod calibrations were performed at each phase of the critical experiment (E-1) detailed in [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf). a description, detailed timeline, and all recorded data for the critical experiment can be found on pages 23-39. during the approach to criticality, successive additions of the fuel concentrate Na<sub>2</sub>-UF<sub>6</sub> (66.7-33.3 mol%) were added to the NaF-ZrF<sub>4</sub> (50-50 mol%) carrier until criticality was reached, see simulation results [here](./criticality_approach.md). Page 36 of [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf) describes "After each fuel addition, all three rods were simultaneously withdrawn to positions of 20, 25, 30, and 35 in. out; total movement was 36 in. The counting rate of each of the neutron detectors was recorded for each rod position." 
 
 ## data
 
@@ -26,28 +26,26 @@ the circulating fuel consisted of a NaF-ZrF<sub>4</sub> (50-50 mol%) carrier mix
 
 reactivity was measured for 12 different fuel compositions using two fission chambers and a BF<sub>3</sub> counter. detailed information on reactivity and fuel additions are given in tables 4.3 and 4.4 of [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf) on page 33 (shown below).
 
-![](figures/ca.png)
+![](figures/criticality_approach.png)
 
-appendix B on page 113 of ORNL-1845 details the carrier composition as NaF-ZrF<sub>4</sub> (50-50 mol%) . the weight percentages for each run detailed below were derived from the above tables in conjunction with the carrier and concentrate compositions.
+table 4.6 on pages 37-38, and shown below, detail the fuel compositions and reactivity measurements associated with each rod position. 
 
-| run | Na (wt %) | F (wt %) | Zr (wt %) | U235 (wt %) | U238 (wt %) |
-|-----|-----------|----------|-----------|-------------|-------------|
-|  1  |   10.99   |   45.41  |   43.60   |    0.00     |    0.00     |
-|  2  |   11.01   |   44.89  |   42.24   |    1.74     |    0.12     |
-|  3  |   11.03   |   44.47  |   41.14   |    3.14     |    0.22     |
-|  4  |   11.05   |   44.00  |   39.89   |    4.73     |    0.34     |
-|  5  |   11.06   |   43.55  |   38.72   |    6.22     |    0.45     |
-|  6  |   11.08   |   43.14  |   37.62   |    7.62     |    0.55     |
-|  7  |   11.09   |   42.75  |   36.62   |    8.90     |    0.64     |
-|  8  |   11.10   |   42.53  |   36.02   |    9.66     |    0.69     |
-|  9  |   11.11   |   42.40  |   35.70   |   10.07     |    0.72     |
-| 10  |   11.12   |   42.23  |   35.25   |   10.64     |    0.76     |
-| 11  |   11.12   |   42.07  |   34.82   |   11.18     |    0.80     |
-| 12  |   11.13   |   41.96  |   34.52   |   11.57     |    0.83     |
+![](figures/table4.6_full.png)
+
+comparison of the "U<sup>235</sup> in system" column with that of tables 4.3 and 4.4 allows us to make the follwing mapping of from the fuel compositions of from the [criticality approach](./shim_rod_calibration.md) experiment to those of the shim rod calibration
+
+| run (table 4.3)| run (table 4.6) | Na (wt %) | F (wt %) | Zr (wt %) | U235 (wt %) | U238 (wt %) |
+|----------------|-----------------|-----------|----------|-----------|-------------|-------------|
+|  8             |        8A       |   11.10   |   42.53  |   36.02   |    9.66     |    0.69     |
+|  9             |        9B       |   11.11   |   42.40  |   35.70   |   10.07     |    0.72     |
+| 10             |       10C       |   11.12   |   42.23  |   35.25   |   10.64     |    0.76     |
+| 11             |       11C       |   11.12   |   42.07  |   34.82   |   11.18     |    0.80     |
+| 12             |       12B       |   11.13   |   41.96  |   34.52   |   11.57     |    0.83     |
+
 
 calculations for the above values -- using carrier and concentrate compositions combined with fuel concentrate added (in lbs) -- are detailed [here](https://docs.google.com/spreadsheets/d/1RVwap77GXaVlIsbrXgNQTB-KTa4BvGLSgHnxRFQPmuA/edit?usp=sharing). note, weight percentages for U<sub>235</sub> agree with those in tables 4.3 and 4.4 of [ORNL-1845](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-1845.pdf) (see above). the data above along with densities taken directly from the ORNL tables are used as the material parameters for OpenMC. 
 
-additionally, [ORNL-4616](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-4616.pdf) describes "Normal commerical grades of zirconium compounds may contain from 1 to 3% halfnium as an impurity and would invoke a severe penalty in neutron economy if used in the MSRE. However, separation processes, based on an early development in the nuclear industry, are well known. Accordingly, zirconium tetraflouride that was essentially "halfnium free" (<50 ppm Hf) was available from commercial sources on a competative bid arrangement. a halfnium impurity of 0.025% is therefore assumed, which corresponds to ~ 25 ppm. see below from [fuel_salts.py](/scripts/fuel_salts.py)
+additionally, [ORNL-4616](https://github.com/openmsr/msr-archive/blob/master/docs/ORNL-4616.pdf) describes "Normal commerical grades of zirconium compounds may contain from 1 to 3% halfnium as an impurity and would invoke a severe penalty in neutron economy if used in the MSRE. However, separation processes, based on an early development in the nuclear industry, are well known. Accordingly, zirconium tetraflouride that was essentially "halfnium free" (<50 ppm Hf) was available from commercial sources on a competative bid arrangement. a halfnium impurity of 0.0025% in the zirconium tetraflouride is therefore assumed, which corresponds to ~ 25 ppm. see below from [fuel_salts.py](/scripts/fuel_salts.py)
 for reference
 
 ```python
