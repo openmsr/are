@@ -35,3 +35,17 @@ enter the are folder and run the `run.sh` script
 cd are
 bash run.sh
 ```
+
+which will show 
+
+```
+1) k eigenvalue          3) neutron flux          5) criticality approach  7) all
+2) geometry plot         4) photon flux           6) shim rod calibration  8) quit
+ARE simulations: 
+```
+
+enter a number to start the associated simulation or quit the prompt.
+
+## results
+
+sample results for each are shown below, and summarized in separate [wrtieups](./results)
