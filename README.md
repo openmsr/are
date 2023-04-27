@@ -44,7 +44,7 @@ which will show
 ARE simulations: 
 ```
 
-enter a number to start the associated simulation or quit the prompt.
+enter a number to start the associated simulation or quit the prompt
 
 ## results
 
@@ -61,3 +61,15 @@ xz plane
 
 yz plane
 ![](./results/figures/yz.png)
+
+### neutron flux
+
+xy plane
+![](./results/figures/neutron_flux_xy.png)
+
+xz plane
+![](./results/figures/neutron_flux_xz.png)
+
+yz plane
+![](./results/figures/neutron_flux_yz.png)
+
