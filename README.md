@@ -48,4 +48,10 @@ enter a number to start the associated simulation or quit the prompt.
 
 ## results
 
-sample results for each are shown below, and summarized in separate [wrtieups](./results)
+sample results for each are shown below, and summarized separately [here](./results)
+
+### k eigenvalue
+
+![](./results/figures/k.png)
+
+### geometry plot

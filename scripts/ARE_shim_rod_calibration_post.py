@@ -29,11 +29,11 @@ k_file.close()
 # generate plot
 pos = [20,25,30,35]
 fig, ax = plt.subplots()
-ax.plot(pos,s8A_experimental,label = '8A: experimental',linestyle='--',marker='x')
-ax.plot(pos,s9B_experimental,label = '9B: experimental',linestyle='--',marker='x')
-ax.plot(pos,s10C_experimental,label = '10C: experimental',linestyle='--',marker='x')
-ax.plot(pos,s11C_experimental,label = '11C: experimental',linestyle='--',marker='x')
-ax.plot(pos,s12B_experimental,label = '12B: experimental',linestyle='--',marker='x')
+#ax.plot(pos,s8A_experimental,label = '8A: experimental',linestyle='--',marker='x')
+#ax.plot(pos,s9B_experimental,label = '9B: experimental',linestyle='--',marker='x')
+#ax.plot(pos,s10C_experimental,label = '10C: experimental',linestyle='--',marker='x')
+#ax.plot(pos,s11C_experimental,label = '11C: experimental',linestyle='--',marker='x')
+#ax.plot(pos,s12B_experimental,label = '12B: experimental',linestyle='--',marker='x')
 
 ax.plot(pos,simulated[0],label = '8A: simulated',linestyle='--',marker='x')
 ax.plot(pos,simulated[1],label = '9B: simulated',linestyle='--',marker='x')
