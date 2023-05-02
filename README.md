@@ -65,11 +65,14 @@ yz plane
 ### neutron flux
 
 xy plane
+
 ![](./results/figures/neutron_flux_xy.png)
 
 xz plane
+
 ![](./results/figures/neutron_flux_xz.png)
 
 yz plane
+
 ![](./results/figures/neutron_flux_yz.png)
 

@@ -1,6 +1,6 @@
 # k_effective
 
-the [critical experiment](/results/k_effective.md) consisted of 12 fuel additions ending in criticality with fuel salt NaF-ZrF4-UF4 0.5309-0.4073-0.0618 %mol of density 3.3142201 g/cc. 
+the [critical experiment](/results/criticality_approach.md) consisted of 12 fuel additions ending in criticality with fuel salt NaF-ZrF4-UF4 0.5309-0.4073-0.0618 %mol of density 3.3142201 g/cc. 
 
 ## data
 
