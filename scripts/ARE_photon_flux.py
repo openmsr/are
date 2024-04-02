@@ -24,7 +24,7 @@ settings = openmc.Settings()
 settings.temperature = {'method':'interpolation'}
 settings.batches = 100
 settings.inactive = 10
-settings.particles = 5000
+settings.particles = 100
 settings.photon_transport = True
 source_area = openmc.stats.Box([-200., -200., -200.],[ 200.,  200.,  200.],only_fissionable = True)
 settings.source = openmc.Source(space=source_area)
@@ -39,10 +39,11 @@ energy_bins = openmc.mgxs.GROUP_STRUCTURES['VITAMIN-J-175']
 energy_filter = openmc.EnergyFilter(energy_bins)
 
 
+# Define a mesh that spans the xz plane
 mesh = openmc.RegularMesh()
-mesh.dimension = [1000,1000]
-mesh.lower_left = [-150,-150]
-mesh.upper_right = [150,150]
+mesh.dimension = [2000, 1, 2000]  # Adjust the dimension to cover XZ plane with 1 unit in Y just to satisfy the requirement
+mesh.lower_left = [-150, -0.5, -100]  # Adjust for XZ plane, assuming Y=-0.5 to 0.5 to minimally cover Y dimension
+mesh.upper_right = [150, 0.5, 200]  # Adjust for XZ plane
 
 mesh_filter = openmc.MeshFilter(mesh)
 
@@ -64,11 +65,11 @@ s_tally = sp.get_tally(scores=['flux'])
 
 flux = s_tally.get_slice(scores=['flux'])
 
-flux.std_dev.shape = (1000,1000)
-flux.mean.shape = (1000,1000)
+flux.std_dev.shape = (2000,1,2000)
+flux.mean.shape = (2000,1,2000)
 
 fig = plt.subplot(121)
-fig.axis([350,650,350,650])
+# fig.axis([350,650,350,650])
 fig.pixels = (2000,2000)
 fig.imshow(flux.mean)
 plt.savefig('photon_flux', dpi=2000)

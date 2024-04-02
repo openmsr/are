@@ -37,4 +37,12 @@ settings.export_to_xml()
 #geom.export_to_xml()
 
 
+# tallies
+tallies = openmc.Tallies()
+
+model = openmc.model.Model(geometry, mats, settings, tallies)
+sp_filename = model.run()
+sp = openmc.StatePoint(sp_filename)
+
+
 openmc.run()

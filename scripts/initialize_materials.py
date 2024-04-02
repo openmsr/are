@@ -3,7 +3,7 @@ sys.path.append('/opt/openmc/')
 import openmc
 
 
-def create_materials(operating_temp):
+def create_materials(operating_temp, c_temp = 977.59, fuel_temp = 977.59, Tm = 977.59):
     #ARE material definitions
 
     # halfnium concentration <50 ppm accoring to ORNL-4616, so 25 ppm assumed
@@ -11,18 +11,18 @@ def create_materials(operating_temp):
 
     #######################################################################
     #fuel salt NaF-ZrF4-UF4 0.5309-0.4073-0.0618 %mol
-    salt = openmc.Material(name='salt', temperature = operating_temp)
+    salt = openmc.Material(name='salt', temperature = fuel_temp)
     salt.add_element('F',41.96,percent_type='wo')
     salt.add_element('Na',11.13,percent_type='wo')
     salt.add_element('Zr',34.52*(1.0-h),percent_type='wo')
     salt.add_element('Hf',34.52*(h),percent_type='wo')
     salt.add_nuclide('U235',11.57,percent_type='wo')
     salt.add_nuclide('U238',0.83,percent_type='wo')
-    salt.set_density('g/cm3',3.3142201)
+    salt.set_density('g/cm3',3.79-0.00093*fuel_temp)
 
     #######################################################################
     #moderator blocks
-    BeO = openmc.Material(name='BeO',temperature = operating_temp)
+    BeO = openmc.Material(name='BeO',temperature = Tm)
 
     # by ao, expressed in ppm
     BeO.add_element('Be',499792)
@@ -39,7 +39,7 @@ def create_materials(operating_temp):
     # density with temperature and differential expansion adjustment
     lambda_BeO = 9.0e-6
     lambda_inconel = 14.4e-6
-    temp_adj_BeO = 1/(1+lambda_BeO*operating_temp)
+    temp_adj_BeO = 1/(1+lambda_BeO*(Tm+253))
     diff_exp_adj = (1+lambda_BeO*operating_temp)/(1+lambda_inconel*operating_temp)
     BeO.set_density('g/cm3',2.75*temp_adj_BeO*diff_exp_adj)
 
@@ -80,9 +80,9 @@ def create_materials(operating_temp):
 
     #######################################################################
     #coolant
-    coolant = openmc.Material(name='coolant',temperature = operating_temp)
+    coolant = openmc.Material(name='coolant',temperature = c_temp)
     coolant.add_element('Na',1.0)
-    coolant.set_density('g/cm3',0.78)
+    coolant.set_density('g/cm3',-0.00024*c_temp+0.88648)
 
     #######################################################################
     #helium

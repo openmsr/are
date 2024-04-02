@@ -7,7 +7,7 @@ from materials import *
 ###############################################################################
 
 #Geometry
-h5m_filepath = 'h5m_files/ARE_pos_0..h5m'
+h5m_filepath = 'h5m_files/ARE_rods_35.h5m'
 graveyard=openmc.Sphere(r=10000,boundary_type='vacuum')
 cad_univ = openmc.DAGMCUniverse(filename=h5m_filepath,auto_geom_ids=True,universe_id=996 )
 cad_cell = openmc.Cell(cell_id=997 , region= -graveyard, fill= cad_univ)
@@ -25,7 +25,7 @@ settings = openmc.Settings()
 settings.temperature = {'method':'interpolation'}
 settings.batches = 50
 settings.inactive = 20
-settings.particles = 30000
+settings.particles = 40000
 source_area = openmc.stats.Box([-200., -200., -200.],[ 200.,  200.,  200.],only_fissionable = True)
 settings.source = openmc.Source(space=source_area)
 settings.export_to_xml()
@@ -34,18 +34,18 @@ settings.export_to_xml()
 tallies = openmc.Tallies()
 
 # resolution
-res = 200
+res = 500
 
 mesh = openmc.RegularMesh()
 mesh.dimension = [res,res,res]
-mesh.lower_left = [-70,-70,0]
-mesh.upper_right = [70,70,120]
+mesh.lower_left = [-72,-70,-15]
+mesh.upper_right = [72,70,115]
 
 mesh_filter = openmc.MeshFilter(mesh)
 
 tally = openmc.Tally(name='flux')
 tally.filters = [mesh_filter]
-tally.scores = ['flux','fission']
+tally.scores = ['flux'] # ,'fission']
 tallies.append(tally)
 
 tallies.export_to_xml()
@@ -54,76 +54,76 @@ model = openmc.model.Model(geometry, mats, settings, tallies)
 sp_filename = model.run()
 sp = openmc.StatePoint(sp_filename)
 
-s_tally = sp.get_tally(scores=['flux','fission'])
+s_tally = sp.get_tally(scores=['flux']) #,'fission'])
 flux = s_tally.get_slice(scores=['flux'])
-fission = s_tally.get_slice(scores=['fission'])
+#fission = s_tally.get_slice(scores=['fission'])
 
 flux.std_dev.shape = (res,res,res)
 flux.mean.shape = (res,res,res)
-fission.std_dev.shape = (res,res,res)
-fission.mean.shape = (res,res,res)
+# fission.std_dev.shape = (res,res,res)
+# fission.mean.shape = (res,res,res)
 
 
 split_index = int(res/2)
 
 # flux
 # xy plot
-xy_mean = flux.mean[split_index,:,:]
-fig,ax = plt.subplots()
-pos = ax.imshow(xy_mean)
-ax.set_xlabel('X / cm')
-ax.set_ylabel('Y / cm')
-ax.set_title('mean neutron flux: xy plane')
-plt.colorbar(pos,ax=ax,label=r'Flux [neutrons/cm$^2$-s]')
-plt.savefig('neutron_flux_xy')
+# xy_mean = flux.mean[split_index,:,:]
+# fig,ax = plt.subplots()
+# pos = ax.imshow(xy_mean)
+# ax.set_xlabel('X / cm')
+# ax.set_ylabel('Y / cm')
+# ax.set_title('mean neutron flux: xy plane')
+# plt.colorbar(pos,ax=ax,label=r'Flux [neutrons/cm$^2$-s]')
+# plt.savefig('neutron_flux_xy')
 
 # xz plot
 xz_mean = flux.mean[:,split_index, :]
-fig,ax = plt.subplots()
+fig,ax = plt.subplots(figsize=(2*4.41, 2*5.12))
 pos = ax.imshow(xz_mean)
-ax.set_xlabel('X / cm')
-ax.set_ylabel('Z / cm')
-ax.set_title('mean neutron flux: xz plane')
+ax.set_xlabel('X / cm',fontsize=14)
+ax.set_ylabel('Z / cm',fontsize=14)
+ax.set_title('mean neutron flux: xz plane',fontsize=20)
 plt.colorbar(pos,ax=ax,label=r'Flux [neutrons/cm$^2$-s]')
 plt.savefig('neutron_flux_xz')
 
 # yz plot
-yz_mean = flux.mean[:,:,split_index]
-fig,ax = plt.subplots()
-pos = ax.imshow(yz_mean)
-ax.set_xlabel('Y / cm')
-ax.set_ylabel('Z / cm')
-ax.set_title('mean neutron flux: yz plane')
-plt.colorbar(pos, ax=ax,label=r'Flux [neutrons/cm$^2$-s]')
-plt.savefig('neutron_flux_yz')
+# yz_mean = flux.mean[:,:,split_index]
+# fig,ax = plt.subplots()
+# pos = ax.imshow(yz_mean)
+# ax.set_xlabel('Y / cm')
+# ax.set_ylabel('Z / cm')
+# ax.set_title('mean neutron flux: yz plane')
+# plt.colorbar(pos, ax=ax,label=r'Flux [neutrons/cm$^2$-s]')
+# plt.savefig('neutron_flux_yz')
 
 # fission 
 # xy plot
-xy_mean = fission.mean[split_index,:,:]
-fig,ax = plt.subplots()
-pos = ax.imshow(xy_mean)
-ax.set_xlabel('X / cm')
-ax.set_ylabel('Y / cm')
-ax.set_title('fission events: xy plane')
-plt.colorbar(pos,ax=ax,label=r'Fission [reactions/cm$^2$-s]')
-plt.savefig('fission_xy')
+# xy_mean = fission.mean[split_index,:,:]
+# fig,ax = plt.subplots()
+# pos = ax.imshow(xy_mean)
+# ax.set_xlabel('X / cm')
+# ax.set_ylabel('Y / cm')
+# ax.set_title('fission events: xy plane')
+# plt.colorbar(pos,ax=ax,label=r'Fission [reactions/cm$^2$-s]')
+# plt.savefig('fission_xy')
 
 # xz plot
-xz_mean = fission.mean[:,split_index, :]
-fig,ax = plt.subplots()
-pos = ax.imshow(xz_mean)
-ax.set_xlabel('X / cm')
-ax.set_ylabel('Z / cm')
-ax.set_title('fission events: xz plane')
-plt.colorbar(pos,ax=ax,label=r'Fission [reactions/cm$^2$-s]')
-plt.savefig('fission_xz')
+# xz_mean = fission.mean[:,split_index, :]
+# fig,ax = plt.subplots()
+# pos = ax.imshow(xz_mean)
+# ax.set_xlabel('X / cm')
+# ax.set_ylabel('Z / cm')
+# ax.set_title('fission events: xz plane')
+# plt.colorbar(pos,ax=ax,label=r'Fission [reactions/cm$^2$-s]')
+# plt.savefig('fission_xz')
 
 # yz plot
-yz_mean = fission.mean[:,:,split_index]
-fig,ax = plt.subplots()
-pos = ax.imshow(yz_mean)
-ax.set_xlabel('Y / cm')
-ax.set_ylabel('Z / cm')
-ax.set_title('fission events: yz plane')
-plt.colorbar(pos, ax=ax,label=r'Fission [reactions/cm$^2$-s]')
-plt.savefig('fission_yz')
+# yz_mean = fission.mean[:,:,split_index]
+# fig,ax = plt.subplots()
+# pos = ax.imshow(yz_mean)
+# ax.set_xlabel('Y / cm')
+# ax.set_ylabel('Z / cm')
+# ax.set_title('fission events: yz plane')
+# plt.colorbar(pos, ax=ax,label=r'Fission [reactions/cm$^2$-s]')
+# plt.savefig('fission_yz')
