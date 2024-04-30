@@ -5,7 +5,7 @@ detailed cad model and simulations of the [are](https://en.wikipedia.org/wiki/Ai
 
 ## model
 
-### are core 
+### are core
 ![](figures/core.png)
 
 [docs/are.pdf](docs/are.pdf) lists reference of the are core design, documented in the ornl reports and located in the repository [github.com/openmsr/msr-archive](https://github.com/openmsr/msr-archive/blob/master/README.md)
@@ -14,12 +14,24 @@ work-in-progress cad model of the are can be found [here](https://cad.onshape.co
 
 note that this work and the cad model is under the GNU General Public License v3.0
 
-## prerequisites 
+## prerequisites
 ### CAD_to_openMC
 [CAD_to_openMC](https://github.com/openmsr/CAD_to_openMC) is an open-source package to convert CAD geometry (in the form of '.step' files) into an openmc-readable h5m file
 
+To create the meshed model files of ARE you may use the step-files found in
+this repository. h5m-geometries may be created by means of the
+step_to_h5m.py-script. This script calls the helper tool CAD_to_OpenMC
+[github.com/openmsr/CAD_to_OpenMC].
+Once this is done you have a set of three h5m-files. The reason to split the
+geometry in 3, is that two of them refer to movable control and safety rods in
+the reactor. Having them as separate enitities allows us to dynamically move
+them up and down just as for a real reactor system.
+
+
 ### openmc
 these simulations use [openmc](https://docs.openmc.org/en/stable/). automated source installation scripts for linux can be found [here](https://github.com/openmsr/openmc_install_scripts)
+
+
 
 ## simulation guide
 
