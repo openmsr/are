@@ -18,32 +18,55 @@ note that this work and the cad model is under the GNU General Public License v3
 ### CAD_to_openMC
 [CAD_to_openMC](https://github.com/openmsr/CAD_to_openMC) is an open-source package to convert CAD geometry (in the form of '.step' files) into an openmc-readable h5m file
 
-To create the meshed model files of ARE you may use the step-files found in
-this repository. h5m-geometries may be created by means of the
-step_to_h5m.py-script. This script calls the helper tool CAD_to_OpenMC
-[github.com/openmsr/CAD_to_OpenMC].
-Once this is done you have a set of three h5m-files. The reason to split the
-geometry in 3, is that two of them refer to movable control and safety rods in
-the reactor. Having them as separate enitities allows us to dynamically move
-them up and down just as for a real reactor system.
 
 
 ### openmc
-these simulations use [openmc](https://docs.openmc.org/en/stable/). automated source installation scripts for linux can be found [here](https://github.com/openmsr/openmc_install_scripts)
+These simulations use [openmc](https://docs.openmc.org/en/stable/). automated source installation scripts for linux can be found [here](https://github.com/openmsr/openmc_install_scripts)
 
 
 
 ## simulation guide
+We have set up a set of helper scripts to run a set of standard simulations
+with the ARE-geometry: k_eff, neutron_flux, ...
 
-first, clone the repository
+All these runs first check if the necessary set of three .h5m-files exist. If
+they do, they ae used, of not a set will be created on the fly using the helper
+script are_step_to_h5m.py.  Thus, should you wish to regenerate the set (or
+part of it) you can simply move the files out of the way or run
+are_step_to_h5m.py manually.
 
-```
-git clone https://github.com/openmsr/are.git
-```
+### k\_eff This is often the first simulation run done on a geometry which
+estimates the reactivity or criticality of the reactor geometry.
 
-enter the are folder and run the `run.sh` script
+### energy spectrum
+This run defines an overall tally in the reactor geometry that measures the
+energy of neutron within it, as well as a set of localized energy-scoring
+tallies only scoring particles within:
+1. fuel-salt within the reactor core
+2. the reactor vessel wall.
+3. the coolant salt.
 
-```
-cd are
-bash run.sh
-```
+Please note that even though the ARE reactor geometry describes a fluid
+fuel-reactor, this simulation is a static steady-state run, meaning we
+presently neglect depletion/burn-up and things like delayed neutrons.
+It is possible to account for such effects, but is considere out-of-scope for
+this set of sims.
+
+### neutron_flux
+This simulation run is very similar to k_eff, ecept that it adds a set of
+mesh-tallies on slices through the reactor core. Each plane is set
+to score the neutron-flux in the regions as a function of spatial coordinate, or more precisely flux binnned in cuboid volume elements in the planes.
+The tallies predefined in the computations are a set of
+XY|z\in{-50,-25,0,25,50} slices as well as slices at XZ|y=0, and YZ|z=0.
+Tallies, and mesh-tallies in particular, create some extra overhead slowing the
+simulations down somewhat - this is normal.
+
+### geometry plot
+This type of run is not a simulation run as such, instead it creates a set of
+geometry slice plots aælong the principal axis. This is useful to make sure
+that you are in fact simulating the geometry you think you are.
+Lately, a new tool has been included the openmc-distribution: openmc-plotter,
+which largely renders doing this type of run manually moot. The plotter does perform a geometry plot-run in the background.
+
+# Jupyter notebooks
+All this is also put together in a jupyter notebook that may be found in the subdirectory jupyter.
