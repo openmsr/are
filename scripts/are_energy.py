@@ -36,9 +36,8 @@ ARE.bld_model()
 ARE.model.tallies=tallies
 ARE.model.settings.photon_transport=True
 
-#sp_filename = ARE.model.run()
-#sp = openmc.StatePoint(sp_filename)
-sp = openmc.StatePoint("statepoint.100.h5")
+sp_filename = ARE.model.run()
+sp = openmc.StatePoint(sp_filename)
 
 n_tally = sp.get_tally(name='energyn')
 p_tally = sp.get_tally(name='energyp')
@@ -52,7 +51,6 @@ pos=ax.errorbar(energy_midpts,fluxn.mean.squeeze(), yerr=fluxn.std_dev.squeeze()
 pos=ax.errorbar(energy_midpts,fluxp.mean.squeeze(), yerr=fluxp.std_dev.squeeze(), capsize=3, capthick=1, label='photon flux')
 ax.grid()
 ax.set_xscale('log')
-#ax.set_yscale('log')
 ax.set_xlabel('energy [eV]')
 ax.set_ylabel('flux [cts. / (s s.p)]')
 plt.tight_layout()
