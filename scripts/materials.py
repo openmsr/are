@@ -1,13 +1,15 @@
-import sys
-sys.path.append('/opt/openmc/')
 import openmc
 
-
-#equilibrium operating temperature in kelvin
+#equilibrium operating temperature in Kelvin
 operating_temp = 977.59
 
-
 #ARE material definitions
+
+inconel_vol_exp = 1.032774032
+
+BeO_vol_exp = 1.015456356
+
+
 
 #fuel salt NaF-ZrF4-UF4 0.5309-0.4073-0.0618 %mol
 salt = openmc.Material(name='salt', temperature = operating_temp)
@@ -22,7 +24,7 @@ salt.add_nuclide('U238',0.5309*0/2+0.4073*0/5+0.0618*0.066*1/5)
 BeO = openmc.Material(name='BeO',temperature = operating_temp)
 BeO.add_element('Be',1.0)
 BeO.add_element('O',1.0)
-BeO.set_density('g/cm3',2.75)
+BeO.set_density('g/cm3',2.75/BeO_vol_exp)
 
 #inconel
 trace = 0.01
@@ -51,7 +53,7 @@ inconel.add_element('Cd',trace,percent_type='wo')
 inconel.add_element('V',trace,percent_type='wo')
 inconel.add_element('Sn',trace,percent_type='wo')
 inconel.add_element('Mg',trace,percent_type='wo')
-inconel.set_density('g/cm3',8.5)
+inconel.set_density('g/cm3',8.5/inconel_vol_exp)
 
 #insulation
 insulation = openmc.Material(name='insulation')
@@ -88,11 +90,17 @@ stainless.add_element('N',0.1,percent_type='wo')
 stainless.set_density('g/cm3',8.5)
 
 #absorber
-boron = openmc.Material(name = 'boron')
-boron.add_element('B',4.0)
-boron.add_element('C',1.0)
-boron.set_density('g/cm3',2.52)
+b4c = openmc.Material(name = 'b4c')
+b4c.add_nuclide('B10',4.0)
+b4c.add_element('C',1.0)
+b4c.set_density('g/cm3',2.52)
 
+iron = openmc.Material(name = 'iron')
+iron.add_element('Fe',1.0)
+iron.set_density('g/cm3',7.874)
+
+boron = openmc.Material.mix_materials([b4c,iron],[0.999,0.001],'ao')
+boron.name = 'boron'
 
 #blanket
 blanket = openmc.Material(name = 'blanket')
