@@ -17,7 +17,7 @@ class ARE_reactor:
 
         for ff in [core_h5m, shim_rod_h5m,control_rod_h5m]:
             if (not pl.Path(ff).exists()):
-                print(f'That file \"{h5mf}\" does not appear to exist')
+                print(f'That file \"{ff}\" does not appear to exist')
                 raise IOError
         self.fuel=fuel
 
