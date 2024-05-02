@@ -132,4 +132,4 @@ for tname in ['xy0','xy1','xy2','xy3','xy4','xz','yz']:
     ax[1].set_yticklabels(np.linspace(-300,300,7) )
     ax[1].set_ylabel("y [cm]")
     plt.tight_layout()
-    plt.savefig(f'photon{tname}', dpi=256)
+    plt.savefig(f'photon_flux{tname}', dpi=256)
