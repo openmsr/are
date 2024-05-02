@@ -106,12 +106,20 @@ def create_materials(operating_temp):
 
     #######################################################################
     #absorber
-    lambda_boron = 4.6e-6
-    temp_adj_boron = 1/(1+lambda_boron*operating_temp)
-    boron = openmc.Material(name = 'boron',temperature = operating_temp)
-    boron.add_element('B',4.0)
-    boron.add_element('C',1.0)
-    boron.set_density('g/cm3',2.52*temp_adj_boron)
+    lambda_b4c = 4.6e-6
+    temp_adj_b4c = 1/(1+lambda_b4c*operating_temp)
+    b4c = openmc.Material(name = 'b4c',temperature = operating_temp)
+    b4c.add_nuclide('B10',4.0)
+    b4c.add_element('C',1.0)
+    b4c.set_density('g/cm3',2.52*temp_adj_b4c)
+
+    iron = openmc.Material(name = 'iron',temperature = operating_temp)
+    iron.add_element('Fe',1.0)
+    iron.set_density('g/cm3',7.874)
+
+    boron = openmc.Material.mix_materials([b4c,iron],[0.995,0.005],'ao')
+    boron.name = 'boron'
+    boron.temperature=operating_temp
 
     #######################################################################
     #blanket
