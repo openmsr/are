@@ -133,4 +133,6 @@ dmypy.json
 *.txt
 *.h5
 *.png
+*.out
+*.err
 h5m_files/*
