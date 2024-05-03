@@ -4,41 +4,37 @@ on:
   schedule:
     - cron: '44 4 * * 0'
 
-
-
 jobs:
-  install:
-    run-openmc-installer:
-      runs-on: ubuntu-22.04
-      steps:
-        - name: checkout_main_repo
-          uses: actions/checkout@v5
-          with:
-            repository: 'openmsr/are'
-            ref: '${{github.sha}}'
-            path: are
+  run-openmc-installer:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: checkout_main_repo
+        uses: actions/checkout@v5
+        with:
+          repository: 'openmsr/are'
+          ref: '${{github.sha}}'
+          path: are
 
-        - name: bootstrap
-          run: sudo apt-get -y update
+      - name: bootstrap
+        run: sudo apt-get -y update
 
-        - name: environment
-          uses: mamba-org/setup-micromamba@v1
-          with:
-            environment-name: cad2omc
-            create-args: >-
-              python=3.10
-              openmc_0.13.3=dagmc_mpi_openmpi*
-            init_shell: bash
+      - name: environment
+        uses: mamba-org/setup-micromamba@v1
+        with:
+          environment-name: cad2omc
+          create-args: >-
+            python=3.10
+            openmc_0.13.3=dagmc_mpi_openmpi*
+          init_shell: bash
 
-        - name: check openmc
-          run: |
-            openmc --version
-            python -c "import openmc"
-        - name: install cad-to-openmc
-          run: |
-            python -m pip install upgrade pip
-            python -m pip install cad_to_openmc
-        - name:
+      - name: check openmc
+        run: |
+          openmc --version
+          python -c "import openmc"
+      - name: install cad-to-openmc
+        run: |
+          python -m pip install upgrade pip
+          python -m pip install cad_to_openmc
   run_tests:
     strategy:
       matrix:
