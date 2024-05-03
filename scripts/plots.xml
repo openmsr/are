@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<plots>
+  <plot basis="xy" color_by="material" filename="reactor_xy" id="2" type="slice">
+    <pixels>8192 8192</pixels>
+    <origin>0 0 0</origin>
+    <width>300 300</width>
+  </plot>
+  <plot basis="xz" color_by="material" filename="reactor_xz" id="4" type="slice">
+    <pixels>8192 8192</pixels>
+    <origin>0 0 0</origin>
+    <width>300 300</width>
+  </plot>
+  <plot basis="yz" color_by="material" filename="reactor_yz" id="6" type="slice">
+    <pixels>8192 8192</pixels>
+    <origin>0 0 0</origin>
+    <width>300 300</width>
+  </plot>
+</plots>

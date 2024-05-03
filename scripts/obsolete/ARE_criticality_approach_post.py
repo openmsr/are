@@ -15,15 +15,18 @@ stdev_simulated = [0]
 #plot from .txt file
 k_file = open(filename, 'r')
 for k in k_file.readlines():
+    if k[0]=='#':
+      continue
     k_eff, std = k.split()
     k_simulated.append(float(k_eff))
     stdev_simulated.append(float(std))
 k_file.close()
-
+print(len(runs))
+print(len(k_simulated))
 # generate plots
 fig, ax = plt.subplots(figsize=(8,6))
 ax.plot(runs, k_experimental, label='ORNL-1845', color='forestgreen', linestyle='-', marker='o')
-ax.plot(runs, k_simulated, label='OpenMC', color='indianred', linestyle='-', marker='x')
+ax.errorbar(runs[1:], k_simulated, yerr=stdev_simulated,label='OpenMC', color='indianred', linestyle='-', marker='x', capsize=4)
 ax.set_xlabel('Run Number', fontsize=14)
 ax.set_ylabel('k', fontsize=14)
 ax.set_title('ARE Criticality Approach', fontsize=16)

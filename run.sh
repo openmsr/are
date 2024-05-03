@@ -3,7 +3,8 @@
 set -ex
 
 PS3='ARE simulations: '
-options=("k eigenvalue" "geometry plot" "neutron flux" "photon flux" "quit")
+options=("k eigenvalue" "geometry plot" "neutron flux" "photon flux"
+         "criticality approach" "shim rod calibration" "quit")
 select opt in "${options[@]}"
 do
     case $opt in
@@ -22,6 +23,14 @@ do
         "photon flux")
             echo "generating photon flux plot..." &&
             bash ./scripts/pf.sh
+            ;;
+        "criticality approach")
+            echo "criticality approach..." &&
+            bash ./scripts/ca.sh
+            ;;
+        "shim rod calibration")
+            echo "shim rod calibration..." &&
+            bash ./scripts/src.sh
             ;;
         "quit")
             break
