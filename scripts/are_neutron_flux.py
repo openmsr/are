@@ -112,7 +112,7 @@ for tname in ['xy0','xy1','xy2','xy3','xy4','xz','yz']:
 
     fig,ax = plt.subplots(1,2)
     pos=ax[0].imshow(flux.mean, origin='lower')
-    cb=fig.colorbar(pos,ax=ax[0], fraction=0.046, pad=0.04t)
+    cb=fig.colorbar(pos,ax=ax[0], fraction=0.046, pad=0.04)
     cb.set_label('neutron flux [#n / s #src ptcl.')
     ax[0].set_title('mean')
     ax[0].set_xticks(np.linspace(0,1000,7))
