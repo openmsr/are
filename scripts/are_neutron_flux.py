@@ -1,3 +1,4 @@
+#/usr/bin/env python
 import openmc
 import matplotlib.pyplot as plt
 import numpy as np
