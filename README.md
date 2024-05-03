@@ -35,7 +35,8 @@ script are_step_to_h5m.py.  Thus, should you wish to regenerate the set (or
 part of it) you can simply move the files out of the way or run
 are_step_to_h5m.py manually.
 
-### k\_eff This is often the first simulation run done on a geometry which
+### k\_eff
+This is often the first simulation run done on a geometry which
 estimates the reactivity or criticality of the reactor geometry.
 
 ### energy
@@ -52,13 +53,18 @@ It is possible to account for such effects, but is considere out-of-scope for
 this set of sims.
 
 ### neutron_flux
-This simulation run is very similar to k_eff, ecept that it adds a set of
+This simulation run is similar to k_eff, ecept that it adds a set of
 mesh-tallies on slices through the reactor core. Each plane is set
-to score the neutron-flux in the regions as a function of spatial coordinate, or more precisely flux binnned in cuboid volume elements in the planes.
+to score the neutron-flux in the regions as a function of spatial coordinate,
+or more precisely flux binnned in cuboid volume elements in the planes.
 The tallies predefined in the computations are a set of
 XY|z\in{-50,-25,0,25,50} slices as well as slices at XZ|y=0, and YZ|z=0.
 Tallies, and mesh-tallies in particular, create some extra overhead slowing the
 simulations down somewhat - this is normal.
+
+### photon_flux
+Very similar to the neutron flux run except in this case what is monitored is the
+photon flux, i.e. the gamma-radiation also produced in the reactor.
 
 ### geometry plot
 This type of run is not a simulation run as such, instead it creates a set of
@@ -67,5 +73,27 @@ that you are in fact simulating the geometry you think you are.
 Lately, a new tool has been included the openmc-distribution: openmc-plotter,
 which largely renders doing this type of run manually moot. The plotter does perform a geometry plot-run in the background.
 
-# Jupyter notebooks
-All this is also put together in a jupyter notebook that may be found in the subdirectory jupyter.
+### volume
+Run a stochastic volume calculation on the ARE-geometry. This type of computation estimates the volume occupied by each defined
+material in the model.
+
+### crit_approach
+One of the 1st experiments performed with the ARE was to approach a the
+cirticality point of the reactor. This was done by adding small batches of
+fissile fuel to the carrier salt in the reactor. Using the experimental logs of
+the time (see ORNL-) we have estimated the amount of fuel added and hence the
+constituent concentration of various nuclides in the ARE-core.
+The procedure was to gradually increase the amount of fissile material all the while
+measuring reactivity, until criticality was reached.
+Ths simulation sript mimics this procedure and plots the result for 35 in. withdrawn.
+
+ref: Cottrell, W. B., et. al, "Operation of the Aircraft Reactor Experiment", ORNL-1845, 1955
+
+### shim_rod_calibration
+In the latter stages of the criticality approach experiment, further measurements were
+performed; The experimental procedure was to insert the safety rods half-way (20 in. in), add fuel, and
+then measure the reactivity at set of safety rod positions: 20,25,30,35 in. withdrawn.
+This way experimenters obtained a first estimate of the safety rod worth.
+
+This simulation runs attempts to mimic this set of measurements.
+ref: Cottrell, W. B., et. al, "Operation of the Aircraft Reactor Experiment", ORNL-1845, 1955
