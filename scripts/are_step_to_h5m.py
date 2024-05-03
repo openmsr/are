@@ -4,6 +4,9 @@
 import pathlib as pl
 import subprocess as sp
 import CAD_to_OpenMC.assembly as ab
+from datetime import datetime
+from contextlib import redirect_stdout,redirect_stderr
+
 
 # inputs
 step_files = [pl.Path('step_files') / f for f in ['ARE_core.step','ARE_safety_rod.step','ARE_regulating_rod.step']]
