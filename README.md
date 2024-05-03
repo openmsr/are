@@ -38,13 +38,12 @@ are_step_to_h5m.py manually.
 ### k\_eff This is often the first simulation run done on a geometry which
 estimates the reactivity or criticality of the reactor geometry.
 
-### energy spectrum
+### energy
 This run defines an overall tally in the reactor geometry that measures the
 energy of neutron within it, as well as a set of localized energy-scoring
 tallies only scoring particles within:
 1. fuel-salt within the reactor core
-2. the reactor vessel wall.
-3. the coolant salt.
+2. the coolant salt.
 
 Please note that even though the ARE reactor geometry describes a fluid
 fuel-reactor, this simulation is a static steady-state run, meaning we
