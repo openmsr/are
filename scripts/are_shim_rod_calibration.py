@@ -28,7 +28,7 @@ output_filename='k_effs_shim_rod_calibration.dat'
 for l,s in shim_rod_salts.items():
     U235lbs=concentrations[l][8]*concentrations[l][3]/100.0
     for sz in positions:
-      reactor=ARE_reactor(h5m_files[0],h5m_files[1],h5m_files[2],s,shim_rod_z=[sz,sz,sz],ctrl_rod_z=ctrl_rod_z,batches=200,inactive=5, particles=200)
+      reactor=ARE_reactor(h5m_files[0],h5m_files[1],h5m_files[2],s,shim_rod_z=[sz,sz,sz],ctrl_rod_z=ctrl_rod_z,batches=100,inactive=10, particles=1000)
       reactor.bld_model()
       reactor.export_to_xml()
 
