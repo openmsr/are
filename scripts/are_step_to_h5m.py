@@ -14,7 +14,7 @@ h5m_files = [pl.Path('h5m_files') / pl.Path(s.name).with_suffix('.h5m') for s in
 
 # mesher config
 ab.mesher_config['tolerance'] = 0.01
-ab.mesher_config['angular_tolerance'] = 0.05
+ab.mesher_config['angular_tolerance'] = 0.02
 
 # output
 for sf,hf in zip(step_files,h5m_files):
