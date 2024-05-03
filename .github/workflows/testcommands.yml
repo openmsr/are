@@ -1,11 +1,11 @@
-name: build on Ubuntu 22
+name: test commands
 on:
   workflow_dispatch:
   schedule:
     - cron: '44 4 * * 0'
 
 jobs:
-  run-openmc-installer:
+  install_deps:
     runs-on: ubuntu-22.04
     steps:
       - name: checkout_main_repo
