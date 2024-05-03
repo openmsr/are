@@ -12,7 +12,7 @@ in2cm = 2.54
 
 class ARE_reactor:
     def __init__(self, core_h5m, shim_rod_h5m,control_rod_h5m,
-            fuel=None,operating_temp=977.59,batches=100,inactive=10,particles=10000,
+            fuel=None,operating_temp=977.59,batches=20,inactive=5,particles=1000,
             padding=0, shim_rod_z=[0,0,0], ctrl_rod_z=0, output_dir='.'):
 
         for ff in [core_h5m, shim_rod_h5m,control_rod_h5m]:
@@ -83,15 +83,17 @@ class ARE_reactor:
         shim2_lower=openmc.ZPlane(z0=core_bottomz+pos2[2])
         shim3_lower=openmc.ZPlane(z0=core_bottomz+pos3[2])
 
-        shim1_rod=openmc.Cell(region=(-shim1_cyl & +shim1_lower), fill=shim_rod_du)
+        rod_upper = openmc.ZPlane(z0=1000)
+
+        shim1_rod=openmc.Cell(region=(-shim1_cyl & +shim1_lower & -rod_upper), fill=shim_rod_du)
         shim1_rod.translation=pos1
         shim1_rod_void=openmc.Cell(region=(-shim1_cyl & -shim1_lower & +core_bottom), fill=helium)
 
-        shim2_rod=openmc.Cell(region=(-shim2_cyl & +shim2_lower), fill=shim_rod_du)
+        shim2_rod=openmc.Cell(region=(-shim2_cyl & +shim2_lower & -rod_upper), fill=shim_rod_du)
         shim2_rod.translation=pos2
         shim2_rod_void=openmc.Cell(region=(-shim2_cyl & -shim2_lower & +core_bottom), fill=helium)
 
-        shim3_rod=openmc.Cell(region=(-shim3_cyl & +shim3_lower), fill=shim_rod_du)
+        shim3_rod=openmc.Cell(region=(-shim3_cyl & +shim3_lower & -rod_upper), fill=shim_rod_du)
         shim3_rod.translation=pos3
         shim3_rod_void=openmc.Cell(region=(-shim3_cyl & -shim3_lower & +core_bottom), fill=helium)
 
@@ -102,7 +104,7 @@ class ARE_reactor:
         cr_pos=np.array( [0,0, core_bottomz+self.ctrl_rod_z] )
         cr_cyl = openmc.ZCylinder(r=control_rod_radius)
         cr_lower=openmc.ZPlane(z0=core_bottomz+cr_pos[2]*in2cm)
-        control_rod=openmc.Cell(region=(-cr_cyl & +cr_lower), fill=reg_rod_du)
+        control_rod=openmc.Cell(region=(-cr_cyl & +cr_lower & -rod_upper), fill=reg_rod_du)
         control_rod.translation=cr_pos
         control_rod_void=openmc.Cell(region=(-cr_cyl & -cr_lower & +core_bottom), fill=helium)
 
