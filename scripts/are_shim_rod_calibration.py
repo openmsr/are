@@ -9,8 +9,7 @@ import matplotlib.pyplot as plt
 ###############################################################################
 
 # inputs (nuclear data path is optional)
-h5m_files = [os.getenv('HOME') + '/Sandbox/are/' + f for f in ['ARE_b_salt_beo_cool_v9.h5m','ARE_safety_rod.h5m','ARE_regulating_rod.h5m']]
-print(h5m_files)
+h5m_files=['h5m_files/ARE_core.h5m','h5m_files/ARE_safety_rod.h5m','h5m_files/ARE_regulating_rod.h5m']
 
 operating_temp = 977.59
 density_are = 3.3142201
