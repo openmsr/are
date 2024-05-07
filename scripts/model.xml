@@ -1,0 +1,180 @@
+<?xml version='1.0' encoding='utf-8'?>
+<model>
+  <materials>
+    <material depletable="true" id="2" name="salt" temperature="977.59">
+      <density units="g/cc" value="3.113851884"/>
+      <nuclide name="Na23" wo="11.0101"/>
+      <nuclide name="F19" wo="44.8887"/>
+      <nuclide name="Zr90" wo="21.311172715720588"/>
+      <nuclide name="Zr91" wo="4.699192825888822"/>
+      <nuclide name="Zr92" wo="7.261778707945353"/>
+      <nuclide name="Zr94" wo="7.51941646183483"/>
+      <nuclide name="Zr96" wo="1.2372392886104138"/>
+      <nuclide name="Hf174" wo="0.00032931522161897816"/>
+      <nuclide name="Hf176" wo="0.0109508050537162"/>
+      <nuclide name="Hf177" wo="0.03894387220930884"/>
+      <nuclide name="Hf178" wo="0.05744063586963792"/>
+      <nuclide name="Hf179" wo="0.02883971176318447"/>
+      <nuclide name="Hf180" wo="0.0746956598825336"/>
+      <nuclide name="U235" wo="1.7402"/>
+      <nuclide name="U238" wo="0.1245"/>
+    </material>
+    <material id="27" name="BeO" temperature="977.59">
+      <density units="g/cm3" value="2.711824839040672"/>
+      <nuclide ao="499792.0" name="Be9"/>
+      <nuclide ao="498602.7949152" name="O16"/>
+      <nuclide ao="189.421168" name="O17"/>
+      <nuclide ao="999.7839167999999" name="O18"/>
+      <nuclide ao="304.35794400000003" name="Si28"/>
+      <nuclide ao="15.454428" name="Si29"/>
+      <nuclide ao="10.187628" name="Si30"/>
+      <nuclide ao="50.0" name="Al27"/>
+      <nuclide ao="0.35000000000000003" name="Pb204"/>
+      <nuclide ao="6.0249999999999995" name="Pb206"/>
+      <nuclide ao="5.525" name="Pb207"/>
+      <nuclide ao="13.100000000000001" name="Pb208"/>
+      <nuclide ao="3.4038449999999996" name="Ni58"/>
+      <nuclide ao="1.3111549999999998" name="Ni60"/>
+      <nuclide ao="0.056995" name="Ni61"/>
+      <nuclide ao="0.18172500000000003" name="Ni62"/>
+      <nuclide ao="0.04628" name="Ni64"/>
+      <nuclide ao="5.0" name="Mn55"/>
+      <nuclide ao="1.0" name="Co59"/>
+    </material>
+    <material id="28" name="inconel" temperature="977.59">
+      <density units="g/cm3" value="8.382004047943896"/>
+      <nuclide name="Ni58" wo="51.40624455189127"/>
+      <nuclide name="Ni60" wo="20.483611617910615"/>
+      <nuclide name="Ni61" wo="0.9052697002519833"/>
+      <nuclide name="Ni62" wo="2.9336390621676847"/>
+      <nuclide name="Ni64" wo="0.7712350677784524"/>
+      <nuclide name="Cr50" wo="0.6375306316202224"/>
+      <nuclide name="Cr52" wo="12.785077599168085"/>
+      <nuclide name="Cr53" wo="1.4776403865526344"/>
+      <nuclide name="Cr54" wo="0.37475138265905883"/>
+      <nuclide name="Fe54" wo="0.4163599189246306"/>
+      <nuclide name="Fe56" wo="6.777737747492731"/>
+      <nuclide name="Fe57" wo="0.15932718525850445"/>
+      <nuclide name="Fe58" wo="0.02157514832413434"/>
+      <nuclide name="Mn55" wo="0.2075"/>
+      <nuclide name="C12" wo="0.034580239577999036"/>
+      <nuclide name="C13" wo="0.00041976042200097164"/>
+      <nuclide name="Cu63" wo="0.0821750342462868"/>
+      <nuclide name="Cu65" wo="0.0378249657537132"/>
+      <nuclide name="Si28" wo="0.16077865524496432"/>
+      <nuclide name="Si29" wo="0.008455563012376191"/>
+      <nuclide name="Si30" wo="0.005765781742659473"/>
+      <nuclide name="S32" wo="0.00663380275657931"/>
+      <nuclide name="S33" wo="5.389173564278247e-05"/>
+      <nuclide name="S34" wo="0.0003111606680613216"/>
+      <nuclide name="S36" wo="1.1448397165860923e-06"/>
+      <nuclide name="Al27" wo="0.105"/>
+      <nuclide name="Ti46" wo="0.013662164247213695"/>
+      <nuclide name="Ti47" wo="0.012588674507511752"/>
+      <nuclide name="Ti48" wo="0.12738271514129546"/>
+      <nuclide name="Ti49" wo="0.009543028678341864"/>
+      <nuclide name="Ti50" wo="0.009323417425637208"/>
+      <nuclide name="B10" wo="0.00848941684222138"/>
+      <nuclide name="B11" wo="0.03776058315777861"/>
+      <nuclide name="N14" wo="0.029384277792624217"/>
+      <nuclide name="N15" wo="0.0001157222073757781"/>
+    </material>
+    <material id="29" name="insulation" temperature="977.59">
+      <density units="g/cm3" value="0.28832"/>
+      <nuclide ao="0.9222968" name="Si28"/>
+      <nuclide ao="0.0468316" name="Si29"/>
+      <nuclide ao="0.0308716" name="Si30"/>
+      <nuclide ao="1.9952412" name="O16"/>
+      <nuclide ao="0.000758" name="O17"/>
+      <nuclide ao="0.0040008" name="O18"/>
+    </material>
+    <material id="30" name="coolant" temperature="977.59">
+      <density units="g/cm3" value="0.78"/>
+      <nuclide ao="1.0" name="Na23"/>
+    </material>
+    <material id="31" name="helium" temperature="977.59">
+      <density units="g/cm3" value="0.00010300000000000001"/>
+      <nuclide ao="2e-06" name="He3"/>
+      <nuclide ao="0.999998" name="He4"/>
+    </material>
+    <material id="32" name="stainless" temperature="977.59">
+      <density units="g/cm3" value="8.382004047943896"/>
+      <nuclide name="C12" wo="0.029640205352570597"/>
+      <nuclide name="C13" wo="0.00035979464742940423"/>
+      <nuclide name="Mn55" wo="2.0"/>
+      <nuclide name="P31" wo="0.045"/>
+      <nuclide name="S32" wo="0.028430583242482755"/>
+      <nuclide name="S33" wo="0.0002309645813262106"/>
+      <nuclide name="S34" wo="0.0013335457202628069"/>
+      <nuclide name="S36" wo="4.90645592822611e-06"/>
+      <nuclide name="Si28" wo="0.6890513796212757"/>
+      <nuclide name="Si29" wo="0.036238127195897966"/>
+      <nuclide name="Si30" wo="0.024710493182826317"/>
+      <nuclide name="Cr50" wo="0.7512635920892964"/>
+      <nuclide name="Cr52" wo="15.065885223242262"/>
+      <nuclide name="Cr53" wo="1.741245627361533"/>
+      <nuclide name="Cr54" wo="0.44160555730691053"/>
+      <nuclide name="Ni58" wo="5.3758164237271915"/>
+      <nuclide name="Ni60" wo="2.142077031938365"/>
+      <nuclide name="Ni61" wo="0.09466872682373681"/>
+      <nuclide name="Ni62" wo="0.3067857842789736"/>
+      <nuclide name="Ni64" wo="0.08065203323173359"/>
+      <nuclide name="N14" wo="0.09960772133092956"/>
+      <nuclide name="N15" wo="0.0003922786690704343"/>
+      <nuclide name="Fe54" wo="2.204308208055892"/>
+      <nuclide name="Fe56" wo="35.882951911980165"/>
+      <nuclide name="Fe57" wo="0.8435159252092619"/>
+      <nuclide name="Fe58" wo="0.11422395475468818"/>
+    </material>
+    <material id="35" name="boron" temperature="977.59">
+      <density units="g/cm3" value="2.5543968217080346"/>
+      <nuclide ao="0.796" name="B10"/>
+      <nuclide ao="0.196795478" name="C12"/>
+      <nuclide ao="0.0022045219999999996" name="C13"/>
+      <nuclide ao="0.0002922500000000001" name="Fe54"/>
+      <nuclide ao="0.0045877" name="Fe56"/>
+      <nuclide ao="0.00010595000000000003" name="Fe57"/>
+      <nuclide ao="1.4100000000000002e-05" name="Fe58"/>
+    </material>
+  </materials>
+  <geometry>
+    <cell fill="2" id="1" region="-2 5" translation="0.0 19.05 81.4324" universe="4"/>
+    <cell fill="2" id="3" region="-3 6" translation="16.497783942093555 -9.525 81.4324" universe="4"/>
+    <cell fill="2" id="5" region="-4 7" translation="-16.497783942093555 -9.525 81.4324" universe="4"/>
+    <cell fill="3" id="7" region="-8 9" translation="0.0 0.0 -7.4676" universe="4"/>
+    <cell fill="1" id="9" region="10000 -10001 10002 -10003 10004 -10005 ~(-2 5) ~(-3 6) ~(-4 7) ~(-8 9)" universe="4"/>
+    <dagmc_universe auto_geom_ids="true" filename="/home/erkn/Sandbox/are/ARE_b_salt_beo_cool_v9.h5m" id="1"/>
+    <dagmc_universe auto_geom_ids="true" filename="/home/erkn/Sandbox/are/ARE_safety_rod.h5m" id="2"/>
+    <dagmc_universe auto_geom_ids="true" filename="/home/erkn/Sandbox/are/ARE_regulating_rod.h5m" id="3"/>
+    <surface coeffs="0.0 19.05 3.05" id="2" type="z-cylinder"/>
+    <surface coeffs="16.497783942093555 -9.525 3.05" id="3" type="z-cylinder"/>
+    <surface coeffs="-16.497783942093555 -9.525 3.05" id="4" type="z-cylinder"/>
+    <surface coeffs="73.9648" id="5" type="z-plane"/>
+    <surface coeffs="73.9648" id="6" type="z-plane"/>
+    <surface coeffs="73.9648" id="7" type="z-plane"/>
+    <surface coeffs="0.0 0.0 3.05" id="8" type="z-cylinder"/>
+    <surface coeffs="-26.435304000000002" id="9" type="z-plane"/>
+    <surface boundary="vacuum" coeffs="-105.8740005493164" id="10000" type="x-plane"/>
+    <surface boundary="vacuum" coeffs="194.32220458984375" id="10001" type="x-plane"/>
+    <surface boundary="vacuum" coeffs="-111.6011962890625" id="10002" type="y-plane"/>
+    <surface boundary="vacuum" coeffs="96.48999786376953" id="10003" type="y-plane"/>
+    <surface boundary="vacuum" coeffs="-122.68070220947266" id="10004" type="z-plane"/>
+    <surface boundary="vacuum" coeffs="227.3300018310547" id="10005" type="z-plane"/>
+  </geometry>
+  <settings>
+    <run_mode>eigenvalue</run_mode>
+    <particles>10000</particles>
+    <batches>200</batches>
+    <inactive>5</inactive>
+    <max_lost_particles>1000</max_lost_particles>
+    <source particle="neutron" strength="1.0" type="independent">
+      <space type="fission">
+        <parameters>-30 -30 0 30 30 100</parameters>
+      </space>
+      <angle type="isotropic"/>
+      <energy parameters="988000.0 2.249e-06" type="watt"/>
+    </source>
+    <temperature_method>interpolation</temperature_method>
+    <temperature_range>950 1000</temperature_range>
+  </settings>
+  </model>

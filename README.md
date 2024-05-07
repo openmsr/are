@@ -5,7 +5,7 @@ detailed cad model and simulations of the [are](https://en.wikipedia.org/wiki/Ai
 
 ## model
 
-### are core 
+### are core
 ![](figures/core.png)
 
 [docs/are.pdf](docs/are.pdf) lists reference of the are core design, documented in the ornl reports and located in the repository [github.com/openmsr/msr-archive](https://github.com/openmsr/msr-archive/blob/master/README.md)
@@ -14,24 +14,86 @@ work-in-progress cad model of the are can be found [here](https://cad.onshape.co
 
 note that this work and the cad model is under the GNU General Public License v3.0
 
-## prerequisites 
+## prerequisites
 ### CAD_to_openMC
 [CAD_to_openMC](https://github.com/openmsr/CAD_to_openMC) is an open-source package to convert CAD geometry (in the form of '.step' files) into an openmc-readable h5m file
 
+
+
 ### openmc
-these simulations use [openmc](https://docs.openmc.org/en/stable/). automated source installation scripts for linux can be found [here](https://github.com/openmsr/openmc_install_scripts)
+These simulations use [openmc](https://docs.openmc.org/en/stable/). automated source installation scripts for linux can be found [here](https://github.com/openmsr/openmc_install_scripts)
+
+
 
 ## simulation guide
+We have set up a set of helper scripts to run a set of standard simulations
+with the ARE-geometry: k_eff, neutron_flux, ...
 
-first, clone the repository
+All these runs first check if the necessary set of three .h5m-files exist. If
+they do, they are used, if not a set will be created on the fly using the helper
+script are_step_to_h5m.py.  Thus, should you wish to regenerate the set (or
+part of it) you can simply move the files out of the way or run
+are_step_to_h5m.py manually.
 
-```
-git clone https://github.com/openmsr/are.git
-```
+### k\_eff
+This is often the first simulation run done on a geometry which
+estimates the reactivity or criticality of the reactor geometry.
 
-enter the are folder and run the `run.sh` script
+### energy
+This run defines an overall tally in the reactor geometry that measures the
+energy of neutron within it, as well as a set of localized energy-scoring
+tallies only scoring particles within:
+1. fuel-salt within the reactor core
+2. the coolant salt.
 
-```
-cd are
-bash run.sh
-```
+Please note that even though the ARE reactor geometry describes a fluid
+fuel-reactor, this simulation is a static steady-state run, meaning we
+presently neglect depletion/burn-up and things like delayed neutrons.
+It is possible to account for such effects, but is considere out-of-scope for
+this set of sims.
+
+### neutron_flux
+This simulation run is similar to k_eff, ecept that it adds a set of
+mesh-tallies on slices through the reactor core. Each plane is set
+to score the neutron-flux in the regions as a function of spatial coordinate,
+or more precisely flux binnned in cuboid volume elements in the planes.
+The tallies predefined in the computations are a set of
+XY|z\in{-50,-25,0,25,50} slices as well as slices at XZ|y=0, and YZ|z=0.
+Tallies, and mesh-tallies in particular, create some extra overhead slowing the
+simulations down somewhat - this is normal.
+
+### photon_flux
+Very similar to the neutron flux run except in this case what is monitored is the
+photon flux, i.e. the gamma-radiation also produced in the reactor.
+
+### geometry plot
+This type of run is not a simulation run as such, instead it creates a set of
+geometry slice plots aælong the principal axis. This is useful to make sure
+that you are in fact simulating the geometry you think you are.
+Lately, a new tool has been included the openmc-distribution: openmc-plotter,
+which largely renders doing this type of run manually moot. The plotter does perform a geometry plot-run in the background.
+
+### volume
+Run a stochastic volume calculation on the ARE-geometry. This type of computation estimates the volume occupied by each defined
+material in the model.
+
+### crit_approach
+One of the 1st experiments performed with the ARE was to approach a the
+cirticality point of the reactor. This was done by adding small batches of
+fissile fuel to the carrier salt in the reactor. Using the experimental logs of
+the time (see ORNL-) we have estimated the amount of fuel added and hence the
+constituent concentration of various nuclides in the ARE-core.
+The procedure was to gradually increase the amount of fissile material all the while
+measuring reactivity, until criticality was reached.
+Ths simulation sript mimics this procedure and plots the result for 35 in. withdrawn.
+
+ref: Cottrell, W. B., et. al, "Operation of the Aircraft Reactor Experiment", ORNL-1845, 1955
+
+### shim_rod_calibration
+In the latter stages of the criticality approach experiment, further measurements were
+performed; The experimental procedure was to insert the safety rods half-way (20 in. in), add fuel, and
+then measure the reactivity at set of safety rod positions: 20,25,30,35 in. withdrawn.
+This way experimenters obtained a first estimate of the safety rod worth.
+
+This simulation runs attempts to mimic this set of measurements.
+ref: Cottrell, W. B., et. al, "Operation of the Aircraft Reactor Experiment", ORNL-1845, 1955
