@@ -30,7 +30,7 @@ We have set up a set of helper scripts to run a set of standard simulations
 with the ARE-geometry: k_eff, neutron_flux, ...
 
 All these runs first check if the necessary set of three .h5m-files exist. If
-they do, they ae used, of not a set will be created on the fly using the helper
+they do, they are used, if not a set will be created on the fly using the helper
 script are_step_to_h5m.py.  Thus, should you wish to regenerate the set (or
 part of it) you can simply move the files out of the way or run
 are_step_to_h5m.py manually.
